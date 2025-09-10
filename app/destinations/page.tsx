@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Search, MapPin } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import DestinationCard from '@/components/DestinationCard'
+import DestinationCard from '@/components/sections/DestinationCard'
 
 export default function Destinations() {
 	const { t } = useLanguage()

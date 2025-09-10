@@ -6,7 +6,9 @@
 	"tours": "Turlar",
 	"hotels": "Mehmonxonalar",
 	"reports": "Hisobotlar",
-
+	"getInTouch": "Bog‘lanish",
+	"contactUs": "Biz bilan aloqa",
+	"contactDesc": "Sizdan xabar olishdan mamnun bo‘lamiz! Turlar, buyurtmalar yoki savollar uchun bog‘laning.",
 	"heroTitle": "Ajoyib joylarni kashf eting",
 	"heroSubtitle": "Tajribali yo‘lboshchilarimiz bilan unutilmas sayohatlar",
 	"exploreButton": "Yo‘nalishlarni ko‘rish",
@@ -24,22 +26,21 @@
 	"bestPricesDesc": "Yashirin to‘lovlarsiz raqobatbardosh narxlar",
 	"safeTravel": "Xavfsiz sayohat",
 	"safeTravelDesc": "24/7 qo‘llab-quvvatlash va kafolatlangan xavfsizlik",
-
 	"aboutTitle": "Sayohat agentligimiz haqida",
 	"aboutDescription": "Biz mijozlarimiz uchun unutilmas xotiralar yaratishga bag‘ishlangan sayohat mutaxassislarimiz. 10 yildan ortiq tajriba bilan, biz ajoyib yo‘nalishlarning go‘zalligi va madaniyatini ko‘rsatadigan sayohatlar tashkil qilamiz.",
 	"companyLicenses": "Kompaniya litsenziyalari",
 	"managementStructure": "Boshqaruv tuzilmasi",
+	"managementStructureDesc": "Tajribali rahbariyat jamoamiz bilan tanishing",
 	"ourTeam": "Bizning jamoa",
+	"ourTeamDesc": "Har bir sayohatni unutilmas qiladigan fidoyi xodimlarimiz",
 	"previousToursSection": "Avvalgi turlar",
 	"licenseText": "Kompaniyamiz Turizm vazirligi va rasmiy sayohat uyushmalaridan litsenziya va sertifikatlarga ega.",
 	"ourMission": "Bizning missiyamiz",
 	"missionText": "Doimiy xotiralar qoldiradigan sayohatlarni tashkil etish va barqaror turizmni rivojlantirish.",
 	"ourVision": "Bizning viziyamiz",
 	"visionText": "Shaxsiy xizmat va unutilmas sarguzashtlari bilan yetakchi agentlik bo‘lish.",
-
 	"destinationsTitle": "Mashhur yo‘nalishlar",
 	"destinationsSubtitle": "Ehtiyotkorlik bilan tanlangan yo‘nalishlarimizni kashf qiling",
-
 	"contactTitle": "Biz bilan bog‘laning",
 	"contactSubtitle": "Sarguzashtingizni boshlashga tayyormisiz? Bugun bog‘laning!",
 	"mainOffice": "Asosiy ofis",
@@ -51,10 +52,8 @@
 	"contactInfo": "Aloqa ma’lumotlari",
 	"phone": "Telefon",
 	"address": "Manzil",
-
 	"customerReviews": "Mijozlar fikrlari",
 	"whatClientsSay": "Mijozlarimiz nima deydi",
-
 	"samarkand": "Samarqand",
 	"samarkandDesc": "Islom me’morchiligi bilan mashhur qadimiy shahar",
 	"bukhara": "Buxoro",
@@ -67,12 +66,10 @@
 	"parisDesc": "Sevgi va yorug‘lik shahri",
 	"tokyo": "Tokio",
 	"tokyoDesc": "Qadimiy an’analar va zamonaviy metropolis",
-
 	"duration": "Davomiyligi",
 	"includes": "Ichiga kiradi",
 	"rating": "Reyting",
 	"perNight": "tuniga",
-
 	"footerAbout": "Dunyo bo‘ylab unutilmas sayohatlar uchun ishonchli hamkoringiz.",
 	"quickLinks": "Tezkor havolalar",
 	"followUs": "Bizni kuzatib boring",

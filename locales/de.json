@@ -6,7 +6,9 @@
 	"tours": "Touren",
 	"hotels": "Hotels",
 	"reports": "Berichte",
-
+	"getInTouch": "",
+	"contactUs": "",
+	"contactDesc": "",
 	"heroTitle": "Entdecken Sie erstaunliche Reiseziele",
 	"heroSubtitle": "Unvergessliche Reisen mit unseren erfahrenen Reiseleitern",
 	"exploreButton": "Reiseziele entdecken",
@@ -24,22 +26,21 @@
 	"bestPricesDesc": "Faire Preise ohne versteckte Gebühren",
 	"safeTravel": "Sicheres Reisen",
 	"safeTravelDesc": "24/7 Unterstützung und garantierte Sicherheit",
-
 	"aboutTitle": "Über unser Reisebüro",
 	"aboutDescription": "Wir sind leidenschaftliche Reiseexperten, die unvergessliche Erlebnisse schaffen. Mit über 10 Jahren Erfahrung organisieren wir maßgeschneiderte Reisen, die die Schönheit und Kultur einzigartiger Orte zeigen.",
 	"companyLicenses": "Unternehmenslizenzen",
 	"managementStructure": "Managementstruktur",
+	"managementStructureDesc": "",
 	"ourTeam": "Unser Team",
+	"ourTeamDesc": "",
 	"previousToursSection": "Frühere Touren",
 	"licenseText": "Unser Unternehmen ist vollständig vom Tourismusministerium und offiziellen Reiseverbänden lizenziert.",
 	"ourMission": "Unsere Mission",
 	"missionText": "Unvergessliche Reisen bieten und nachhaltigen Tourismus fördern.",
 	"ourVision": "Unsere Vision",
 	"visionText": "Das führende Reisebüro für persönlichen Service und unvergessliche Abenteuer zu sein.",
-
 	"destinationsTitle": "Beliebte Reiseziele",
 	"destinationsSubtitle": "Entdecken Sie unsere sorgfältig ausgewählten Reiseziele",
-
 	"contactTitle": "Kontaktieren Sie uns",
 	"contactSubtitle": "Bereit für Ihr Abenteuer? Kontaktieren Sie uns noch heute!",
 	"mainOffice": "Hauptbüro",
@@ -51,10 +52,8 @@
 	"contactInfo": "Kontaktinformationen",
 	"phone": "Telefon",
 	"address": "Adresse",
-
 	"customerReviews": "Kundenbewertungen",
 	"whatClientsSay": "Was unsere Kunden sagen",
-
 	"samarkand": "Samarkand",
 	"samarkandDesc": "Antike Stadt mit beeindruckender islamischer Architektur",
 	"bukhara": "Buxoro",
@@ -67,12 +66,10 @@
 	"parisDesc": "Die Stadt der Liebe und des Lichts",
 	"tokyo": "Tokio",
 	"tokyoDesc": "Moderne Metropole mit alten Traditionen",
-
 	"duration": "Dauer",
 	"includes": "Enthält",
 	"rating": "Bewertung",
 	"perNight": "pro Nacht",
-
 	"footerAbout": "Ihr zuverlässiger Partner für unvergessliche Reisen weltweit.",
 	"quickLinks": "Schnellzugriff",
 	"followUs": "Folgen Sie uns",

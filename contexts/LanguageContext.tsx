@@ -4,19 +4,21 @@ import { createContext, useContext, useState, ReactNode } from 'react'
 
 type Language = 'en' | 'uz' | 'ru' | 'de' | 'fr'
 
-interface LanguageContextType {
-	language: Language
-	setLanguage: (lang: Language) => void
-	t: (key: string) => string
-}
-
 import en from '@/locales/en.json'
 import uz from '@/locales/uz.json'
 import ru from '@/locales/ru.json'
 import de from '@/locales/de.json'
 import fr from '@/locales/fr.json'
 
-const translations = { en, uz, ru, de, fr }
+type Translations = typeof en
+
+const translations: Record<Language, Translations> = { en, uz, ru, de, fr }
+
+interface LanguageContextType {
+	language: Language
+	setLanguage: (lang: Language) => void
+	t: (key: keyof Translations) => string
+}
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
 	undefined
@@ -25,8 +27,8 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 export function LanguageProvider({ children }: { children: ReactNode }) {
 	const [language, setLanguage] = useState<Language>('en')
 
-	const t = (key: string): string => {
-		return translations[language][key as keyof typeof en] || key
+	const t = (key: keyof Translations): string => {
+		return translations[language][key] || key
 	}
 
 	return (

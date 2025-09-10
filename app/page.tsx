@@ -3,35 +3,42 @@
 import Link from 'next/link'
 import { ArrowRight, Users, DollarSign, Shield } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import DestinationCard from '@/components/DestinationCard'
+import DestinationCard from '@/components/sections/DestinationCard'
 
-// Static data outside component
 const FEATURES = [
-	{ icon: Users, key: 'expertGuides', desc: 'expertGuidesDesc' },
-	{ icon: DollarSign, key: 'bestPrices', desc: 'bestPricesDesc' },
-	{ icon: Shield, key: 'safeTravel', desc: 'safeTravelDesc' },
-]
+	{
+		icon: Users,
+		key: 'expertGuides' as const,
+		desc: 'expertGuidesDesc' as const,
+	},
+	{
+		icon: DollarSign,
+		key: 'bestPrices' as const,
+		desc: 'bestPricesDesc' as const,
+	},
+	{ icon: Shield, key: 'safeTravel' as const, desc: 'safeTravelDesc' as const },
+] as const
 
 const DESTINATIONS = [
 	{
-		key: 'samarkand',
-		desc: 'samarkandDesc',
+		key: 'samarkand' as const,
+		desc: 'samarkandDesc' as const,
 		image: '/images/destinations/samarkand.jpg',
 		rating: 4.8,
 	},
 	{
-		key: 'bukhara',
-		desc: 'bukharaDesc',
+		key: 'bukhara' as const,
+		desc: 'bukharaDesc' as const,
 		image: '/images/destinations/bukhara.jpg',
 		rating: 4.9,
 	},
 	{
-		key: 'khiva',
-		desc: 'khivaDesc',
+		key: 'khiva' as const,
+		desc: 'khivaDesc' as const,
 		image: '/images/destinations/khiva.jpg',
 		rating: 4.7,
 	},
-]
+] as const
 
 export default function Home() {
 	const { t } = useLanguage()
