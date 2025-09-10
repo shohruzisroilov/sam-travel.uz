@@ -8,54 +8,54 @@ import ReviewCard from './ReviewCard'
 export default function CustomerReviews() {
 	const customerReviews = [
 		{
-			name: 'John Smith',
-			location: 'USA',
+			name: 'Shohruh Isroilov',
+			location: 'Tashkent, Uzbekistan',
 			rating: 5,
 			review:
-				'Amazing experience! The tour was perfectly organized and our guide was incredibly knowledgeable. Highly recommend this agency.',
+				'Ajoyib tajriba! Sayohat mukammal tashkil etilgan va yo‘lboshchi juda bilimdon edi. Ushbu agentlikni tavsiya qilaman.',
 			image:
-				'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
-			tour: 'Silk Road Adventure',
+				'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
+			tour: 'O‘zbekistan Bo‘ylab Sayohat',
 		},
 		{
-			name: 'Maria Garcia',
-			location: 'Spain',
+			name: 'Nilufar Tursunova',
+			location: 'Samarkand, Uzbekistan',
 			rating: 5,
 			review:
-				'Unforgettable journey through Uzbekistan. Every detail was taken care of. The hotels were excellent and the food was delicious.',
-			image:
-				'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
-			tour: 'Cultural Heritage Tour',
-		},
-		{
-			name: 'David Wilson',
-			location: 'UK',
-			rating: 4,
-			review:
-				'Great service and professional team. The architecture tour was fascinating and well-planned. Will definitely book again.',
+				'Unutilmas sayohat! Har bir detal e’tiborga olingan. Mehmonxonalar a’lo darajada va taomlar juda mazali.',
 			image:
 				'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
-			tour: 'Architecture & History Tour',
+			tour: 'Madaniyat va Tarix Turizmi',
 		},
 		{
-			name: 'David Wilson',
-			location: 'UK',
+			name: 'Alisher Karimov',
+			location: 'Bukhara, Uzbekistan',
 			rating: 4,
 			review:
-				'Great service and professional team. The architecture tour was fascinating and well-planned. Will definitely book again.',
+				'Jamoa juda professional va xizmatlar a’lo. Me’morchilik bo‘yicha ekskursiya juda qiziqarli va puxta rejalashtirilgan.',
 			image:
-				'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
-			tour: 'Architecture & History Tour',
+				'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
+			tour: 'Me’morchilik va Tarix Ekskursiyasi',
 		},
 		{
-			name: 'David Wilson',
-			location: 'UK',
+			name: 'Dilshod Mamatov',
+			location: 'Toshkent, Uzbekistan',
 			rating: 4,
 			review:
-				'Great service and professional team. The architecture tour was fascinating and well-planned. Will definitely book again.',
+				'Juda yoqimli tajriba, barcha narsalar tartibli va oson boshqariladi. Albatta yana buyurtma beraman.',
 			image:
-				'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
-			tour: 'Architecture & History Tour',
+				'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
+			tour: 'Shahar Bo‘ylab Ekskursiya',
+		},
+		{
+			name: 'Gulnora Abdurahmonova',
+			location: 'Fergana, Uzbekistan',
+			rating: 4,
+			review:
+				'Juda yoqimli xizmatlar va mehmonxonalar qulay edi. Sayohat tashkilotchilari bilan ishlash rohatli bo‘ldi.',
+			image:
+				'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
+			tour: 'Tabiat va Madaniyat Turizmi',
 		},
 	]
 

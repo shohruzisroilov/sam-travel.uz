@@ -52,43 +52,43 @@ const licenses = [
 
 const team = [
 	{
-		name: 'Sarah Johnson',
+		name: 'Shohruh Isroilov',
 		role: 'Founder & CEO',
 		image:
-			'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+			'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
 		description: 'Travel enthusiast with over 15 years of experience.',
 	},
 	{
-		name: 'Michael Chen',
+		name: 'Nilufar Tursunova',
 		role: 'Head of Operations',
 		image:
-			'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+			'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
 		description:
 			'Expert in logistics and ensuring every trip runs smoothly from start to finish.',
 	},
 	{
-		name: 'Emma Rodriguez',
+		name: 'Alisher Karimov',
 		role: 'Cultural Expert',
 		image:
-			'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+			'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
 		description:
 			'Specialist in cultural immersion and authentic local experiences.',
 	},
 	{
-		name: 'Emma Rodriguez',
-		role: 'Cultural Expert',
+		name: 'Dilshod Mamatov',
+		role: 'Tour Guide',
 		image:
-			'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+			'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
 		description:
-			'Specialist in cultural immersion and authentic local experiences.',
+			'Professional tour guide with extensive knowledge of local history and culture.',
 	},
 	{
-		name: 'Emma Rodriguez',
-		role: 'Cultural Expert',
+		name: 'Gulnora Abdurahmonova',
+		role: 'Customer Relations Manager',
 		image:
-			'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+			'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
 		description:
-			'Specialist in cultural immersion and authentic local experiences.',
+			'Ensures customer satisfaction and smooth communication throughout each journey.',
 	},
 ]
 
@@ -97,29 +97,29 @@ const managementTeam = [
 		name: 'Akmal Karimov',
 		role: 'CEO & Founder',
 		image:
-			'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
-		description: 'Over 15 years of experience in tourism industry',
+			'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+		description: 'Over 15 years of experience in the tourism industry',
 	},
 	{
 		name: 'Dilnoza Rashidova',
 		role: 'Operations Director',
 		image:
-			'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+			'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
 		description: 'Expert in tour operations and customer service',
 	},
 	{
 		name: 'Bobur Tursunov',
 		role: 'Marketing Director',
 		image:
-			'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+			'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
 		description: 'Specialist in digital marketing and brand development',
 	},
 	{
-		name: 'Bobur Tursunov',
-		role: 'Marketing Director',
+		name: 'Madina Yusupova',
+		role: 'Finance Director',
 		image:
-			'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
-		description: 'Specialist in digital marketing and brand development',
+			'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+		description: 'Responsible for financial planning and budget management',
 	},
 ]
 

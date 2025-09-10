@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Mail, Phone, MapPin } from 'lucide-react'
 import { FaFacebook, FaInstagram, FaTelegram } from 'react-icons/fa'
 import { useLanguage } from '@/contexts/LanguageContext'
+import Image from 'next/image'
 
 export default function Footer() {
 	const { t } = useLanguage()
@@ -14,13 +15,17 @@ export default function Footer() {
 				<div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
 					{/* Company Info */}
 					<div className='col-span-1 md:col-span-2'>
-						<div className='flex items-center space-x-2 mb-4'>
-							<div className='w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-lg flex items-center justify-center'>
-								<span className='text-white font-bold text-sm'>T</span>
-							</div>
-							<span className='font-bold text-xl'>SamTravel</span>
-						</div>
-						<p className='text-gray-300 mb-4 max-w-md'>{t('footerAbout')}</p>
+						<Link href='/'>
+							<Image
+								src='/images/logo.png'
+								alt='SamTravel Logo'
+								width={60}
+								height={60}
+							/>
+						</Link>
+						<p className='text-gray-300 mt-2 mb-4 max-w-md'>
+							{t('footerAbout')}
+						</p>
 						<div className='flex space-x-4'>
 							<a
 								href='#'
@@ -92,7 +97,7 @@ export default function Footer() {
 							</li>
 							<li className='flex items-center space-x-2 text-gray-300'>
 								<Mail className='w-4 h-4' />
-								<span>info@travelagent.uz</span>
+								<span>loremepsum@gmail.com</span>
 							</li>
 							<li className='flex items-center space-x-2 text-gray-300'>
 								<MapPin className='w-4 h-4' />

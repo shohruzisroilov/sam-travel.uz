@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Globe } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -35,13 +36,15 @@ export default function Navigation() {
 	return (
 		<nav className='bg-white shadow-sm sticky top-0 z-50'>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-				<div className='flex justify-between h-16'>
+				<div className='flex items-center justify-between h-16'>
 					{/* Logo */}
-					<Link href='/' className='flex items-center space-x-2'>
-						<div className='w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-lg flex items-center justify-center'>
-							<span className='text-white font-bold text-sm'>T</span>
-						</div>
-						<span className='font-bold text-xl text-gray-800'>SamTravel</span>
+					<Link href='/'>
+						<Image
+							src='/images/logo.png'
+							alt='SamTravel Logo'
+							width={60}
+							height={60}
+						/>
 					</Link>
 
 					{/* Desktop Navigation */}

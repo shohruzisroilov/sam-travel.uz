@@ -37,7 +37,7 @@ const DESTINATIONS = [
 	{
 		key: 'khiva' as const,
 		desc: 'khivaDesc' as const,
-		image: '/images/destinations/khiva.jpg',
+		image: '/images/destinations/Khiva.jpg',
 		rating: 4.7,
 	},
 ] as const
