@@ -73,5 +73,14 @@
 	"footerAbout": "Ihr zuverlässiger Partner für unvergessliche Reisen weltweit.",
 	"quickLinks": "Schnellzugriff",
 	"followUs": "Folgen Sie uns",
-	"allRightsReserved": "Alle Rechte vorbehalten."
+	"allRightsReserved": "Alle Rechte vorbehalten.",
+
+	"searchPlaceholder": "Reiseziele suchen...",
+	"noResultsTitle": "Keine Reiseziele gefunden",
+	"noResultsSubtitle": "Versuchen Sie, nach einem anderen Reiseziel zu suchen",
+	"ctaTitle": "Ihr Traumziel nicht gefunden?",
+	"ctaSubtitle": "Teilen Sie uns mit, wohin Sie reisen möchten, und wir erstellen eine individuelle Reiseroute nur für Sie.",
+
+	"yourName": "Ihr Name",
+	"yourMessage": "Ihre Nachricht"
 }

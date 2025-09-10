@@ -73,5 +73,14 @@
 	"footerAbout": "Dunyo bo‘ylab unutilmas sayohatlar uchun ishonchli hamkoringiz.",
 	"quickLinks": "Tezkor havolalar",
 	"followUs": "Bizni kuzatib boring",
-	"allRightsReserved": "Barcha huquqlar himoyalangan."
+	"allRightsReserved": "Barcha huquqlar himoyalangan.",
+
+	"searchPlaceholder": "Manzillarni qidiring...",
+	"noResultsTitle": "Hech qanday manzil topilmadi",
+	"noResultsSubtitle": "Boshqa manzilni qidirib ko‘ring",
+	"ctaTitle": "Orzuingizdagi manzilni topa olmadingizmi?",
+	"ctaSubtitle": "Qayerga borishni istashingizni bizga ayting, biz siz uchun maxsus marshrut tuzamiz.",
+
+	"yourName": "Ismingiz",
+	"yourMessage": "Xabaringiz"
 }

@@ -3,7 +3,9 @@
 import Link from 'next/link'
 import { ArrowRight, Users, DollarSign, Shield } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import DestinationCard from '@/components/sections/DestinationCard'
+import DestinationCard from '@/components/common/DestinationCard'
+import CustomerReviews from '@/components/common/CustomerReviews'
+import FAQ from '@/components/common/FAQ'
 
 const FEATURES = [
 	{
@@ -138,6 +140,10 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
+
+			{/* Imported sections */}
+			<CustomerReviews />
+			<FAQ />
 
 			{/* Contact Call to Action */}
 			<section className='py-20 bg-gray-50'>

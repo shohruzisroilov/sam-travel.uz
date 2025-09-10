@@ -81,5 +81,14 @@
 	"footerAbout": "Your trusted travel partner for unforgettable experiences worldwide.",
 	"quickLinks": "Quick Links",
 	"followUs": "Follow Us",
-	"allRightsReserved": "All rights reserved."
+	"allRightsReserved": "All rights reserved.",
+
+	"searchPlaceholder": "Search destinations...",
+	"noResultsTitle": "No destinations found",
+	"noResultsSubtitle": "Try searching for a different destination",
+	"ctaTitle": "Can't Find Your Dream Destination?",
+	"ctaSubtitle": "Let us know where you want to go, and we'll create a custom itinerary just for you.",
+
+	"yourMessage": "Your message",
+	"yourName": "Your name"
 }

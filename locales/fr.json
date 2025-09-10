@@ -73,5 +73,14 @@
 	"footerAbout": "Votre partenaire de confiance pour des expériences inoubliables à travers le monde.",
 	"quickLinks": "Liens rapides",
 	"followUs": "Suivez-nous",
-	"allRightsReserved": "Tous droits réservés."
+	"allRightsReserved": "Tous droits réservés.",
+
+	"searchPlaceholder": "Rechercher des destinations...",
+	"noResultsTitle": "Aucune destination trouvée",
+	"noResultsSubtitle": "Essayez de rechercher une autre destination",
+	"ctaTitle": "Vous ne trouvez pas votre destination de rêve ?",
+	"ctaSubtitle": "Dites-nous où vous souhaitez aller et nous créerons un itinéraire personnalisé pour vous.",
+
+	"yourName": "Votre nom",
+	"yourMessage": "Votre message"
 }

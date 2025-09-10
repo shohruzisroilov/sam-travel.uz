@@ -11,7 +11,7 @@ import {
 } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import Image from 'next/image'
-import TeamCard from '@/components/sections/TeamCard'
+import TeamCard from '@/components/common/TeamCard'
 import Counter from '@/components/ui/Counter'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
