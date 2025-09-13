@@ -1,46 +1,20 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, Users, DollarSign, Shield } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import DestinationCard from '@/components/common/DestinationCard'
 import CustomerReviews from '@/components/common/CustomerReviews'
 import FAQ from '@/components/common/FAQ'
 
-const FEATURES = [
-	{
-		icon: Users,
-		key: 'expertGuides' as const,
-		desc: 'expertGuidesDesc' as const,
-	},
-	{
-		icon: DollarSign,
-		key: 'bestPrices' as const,
-		desc: 'bestPricesDesc' as const,
-	},
-	{ icon: Shield, key: 'safeTravel' as const, desc: 'safeTravelDesc' as const },
-] as const
+// Swiper
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Pagination, Autoplay } from 'swiper/modules'
 
-const DESTINATIONS = [
-	{
-		key: 'samarkand' as const,
-		desc: 'samarkandDesc' as const,
-		image: '/images/destinations/samarkand.jpg',
-		rating: 4.8,
-	},
-	{
-		key: 'bukhara' as const,
-		desc: 'bukharaDesc' as const,
-		image: '/images/destinations/bukhara.jpg',
-		rating: 4.9,
-	},
-	{
-		key: 'khiva' as const,
-		desc: 'khivaDesc' as const,
-		image: '/images/destinations/Khiva.jpg',
-		rating: 4.7,
-	},
-] as const
+// Constants
+import { FEATURES, DESTINATIONS, HERO_SLIDES } from '@/constants/homeConstants'
 
 export default function Home() {
 	const { t } = useLanguage()
@@ -48,29 +22,40 @@ export default function Home() {
 	return (
 		<>
 			{/* Hero Section */}
-			<section className='relative h-screen flex items-center justify-center overflow-hidden'>
-				<div
-					className='absolute inset-0 z-0 bg-cover bg-center'
-					style={{ backgroundImage: "url('/images/hero-image.jpeg')" }}
+			<section className='relative h-screen overflow-hidden'>
+				<Swiper
+					modules={[Pagination, Autoplay]}
+					pagination={{ clickable: true }}
+					autoplay={{ delay: 5000, disableOnInteraction: false }}
+					className='h-full'
 				>
-					<div className='absolute inset-0 bg-gradient-to-r from-black/60 to-black/30' />
-				</div>
+					{HERO_SLIDES.map(({ image, titleKey, subKey }, i) => (
+						<SwiperSlide key={i}>
+							<div
+								className='absolute inset-0 bg-cover bg-center'
+								style={{ backgroundImage: `url(${image})` }}
+							>
+								<div className='absolute inset-0 bg-black/60' />
+							</div>
 
-				<div className='relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl'>
-					<h1 className='text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight'>
-						{t('heroTitle')}
-					</h1>
-					<p className='text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed'>
-						{t('heroSubtitle')}
-					</p>
-					<Link
-						href='/destinations'
-						className='inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:from-orange-500 hover:to-orange-600'
-					>
-						<span>{t('exploreButton')}</span>
-						<ArrowRight className='w-5 h-5' />
-					</Link>
-				</div>
+							<div className='relative z-10 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8'>
+								<h1 className='text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight'>
+									{t(titleKey)}
+								</h1>
+								<p className='text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed'>
+									{t(subKey)}
+								</p>
+								<Link
+									href='/destinations'
+									className='inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:from-orange-500 hover:to-orange-600'
+								>
+									<span>{t('exploreButton')}</span>
+									<ArrowRight className='w-5 h-5' />
+								</Link>
+							</div>
+						</SwiperSlide>
+					))}
+				</Swiper>
 			</section>
 
 			{/* Features Section */}
@@ -102,7 +87,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* Featured Destinations */}
+			{/* Destinations Section */}
 			<section className='py-20'>
 				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 					<div className='text-center mb-16'>
@@ -116,13 +101,12 @@ export default function Home() {
 					</div>
 
 					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-						{DESTINATIONS.map(({ key, desc, image, rating }, i) => (
+						{DESTINATIONS.map(({ key, image }, i) => (
 							<DestinationCard
 								key={i}
 								title={t(key)}
-								description={t(desc)}
+								description={t(`${key}Desc`)}
 								image={image}
-								rating={rating}
 							/>
 						))}
 					</div>
@@ -141,11 +125,11 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* Imported sections */}
+			{/* Customer Reviews & FAQ */}
 			<CustomerReviews />
 			<FAQ />
 
-			{/* Contact Call to Action */}
+			{/* Contact Call-to-Action */}
 			<section className='py-20 bg-gray-50'>
 				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 					<div className='bg-gradient-to-r from-orange-400 to-orange-500 rounded-2xl shadow-lg p-10 md:p-16 text-center text-white relative overflow-hidden'>

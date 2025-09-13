@@ -28,6 +28,7 @@
 	"safeTravelDesc": "24/7 support and safety guaranteed",
 
 	"aboutTitle": "About Our Travel Agency",
+	"aboutHeroDesc": "We are passionate travel experts dedicated to creating unforgettable experiences for our clients",
 	"aboutDescription": "We are passionate travel experts dedicated to creating unforgettable experiences for our clients. With over 10 years of experience in the travel industry, we specialize in crafting personalized journeys that showcase the beauty and culture of amazing destinations.",
 	"companyLicenses": "Company Licenses",
 	"managementStructure": "Management Structure",
@@ -90,5 +91,27 @@
 	"ctaSubtitle": "Let us know where you want to go, and we'll create a custom itinerary just for you.",
 
 	"yourMessage": "Your message",
-	"yourName": "Your name"
+	"yourName": "Your name",
+
+	"learnMore": "Learn More",
+
+	"rome": "Rome",
+	"romeDesc": "The Eternal City, rich in history and culture",
+	"london": "London",
+	"londonDesc": "Vibrant capital of the UK, blending tradition and modernity",
+	"barcelona": "Barcelona",
+	"barcelonaDesc": "Famous for Gaudí’s architecture and Mediterranean vibes",
+	"amsterdam": "Amsterdam",
+	"amsterdamDesc": "Charming canals and cultural landmarks",
+	"prague": "Prague",
+	"pragueDesc": "Fairytale city with gothic and baroque architecture",
+	"venice": "Venice",
+	"veniceDesc": "Romantic city built on canals",
+
+	"all": "All",
+	"historical": "Historical",
+	"modern": "Modern",
+	"international": "International",
+	"nature": "Nature",
+	"romantic": "Romantic"
 }

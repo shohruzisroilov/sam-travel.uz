@@ -27,6 +27,7 @@
 	"safeTravel": "Sicheres Reisen",
 	"safeTravelDesc": "24/7 Unterstützung und garantierte Sicherheit",
 	"aboutTitle": "Über unser Reisebüro",
+	"aboutHeroDesc": "Wir sind leidenschaftliche Reiseexperten, die sich darauf konzentrieren, unvergessliche Erlebnisse für unsere Kunden zu schaffen",
 	"aboutDescription": "Wir sind leidenschaftliche Reiseexperten, die unvergessliche Erlebnisse schaffen. Mit über 10 Jahren Erfahrung organisieren wir maßgeschneiderte Reisen, die die Schönheit und Kultur einzigartiger Orte zeigen.",
 	"companyLicenses": "Unternehmenslizenzen",
 	"managementStructure": "Managementstruktur",
@@ -82,5 +83,26 @@
 	"ctaSubtitle": "Teilen Sie uns mit, wohin Sie reisen möchten, und wir erstellen eine individuelle Reiseroute nur für Sie.",
 
 	"yourName": "Ihr Name",
-	"yourMessage": "Ihre Nachricht"
+	"yourMessage": "Ihre Nachricht",
+	"learnMore": "Mehr Erfahren",
+
+	"rome": "Rom",
+	"romeDesc": "Die Ewige Stadt, reich an Geschichte und Kultur",
+	"london": "London",
+	"londonDesc": "Lebendige Hauptstadt des Vereinigten Königreichs, die Tradition und Moderne vereint",
+	"barcelona": "Barcelona",
+	"barcelonaDesc": "Berühmt für Gaudís Architektur und mediterranes Flair",
+	"amsterdam": "Amsterdam",
+	"amsterdamDesc": "Charmante Kanäle und kulturelle Sehenswürdigkeiten",
+	"prague": "Prag",
+	"pragueDesc": "Märchenhafte Stadt mit gotischer und barocker Architektur",
+	"venice": "Venedig",
+	"veniceDesc": "Romantische Stadt, die auf Kanälen erbaut wurde",
+
+	"all": "Alle",
+	"historical": "Historisch",
+	"modern": "Modern",
+	"international": "International",
+	"nature": "Natur",
+	"romantic": "Romantisch"
 }

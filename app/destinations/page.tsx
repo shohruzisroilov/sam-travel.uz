@@ -6,106 +6,116 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import DestinationCard from '@/components/common/DestinationCard'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { DESTINATIONS } from '@/constants/destinations'
+import { CATEGORIES } from '@/constants/categories'
 
 export default function Destinations() {
 	const { t } = useLanguage()
 	const [searchTerm, setSearchTerm] = useState('')
+	const [selectedCategory, setSelectedCategory] = useState('all')
 
 	const destinations = useMemo(
-		() => [
-			{
-				title: t('samarkand'),
-				description: t('samarkandDesc'),
-				image: '/images/destinations/samarkand.jpg',
-				rating: 4.8,
-				category: 'historical',
-			},
-			{
-				title: t('bukhara'),
-				description: t('bukharaDesc'),
-				image: '/images/destinations/bukhara.jpg',
-				rating: 4.9,
-				category: 'historical',
-			},
-			{
-				title: t('khiva'),
-				description: t('khivaDesc'),
-				image: '/images/destinations/Khiva.jpg',
-				rating: 4.7,
-				category: 'historical',
-			},
-			{
-				title: t('tashkent'),
-				description: t('tashkentDesc'),
-				image: '/images/destinations/toshkent.jpg',
-				rating: 4.6,
-				category: 'modern',
-			},
-			{
-				title: t('paris'),
-				description: t('parisDesc'),
-				image:
-					'https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop',
-				rating: 4.9,
-				category: 'international',
-			},
-			{
-				title: t('tokyo'),
-				description: t('tokyoDesc'),
-				image:
-					'https://images.pexels.com/photos/2506923/pexels-photo-2506923.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop',
-				rating: 4.8,
-				category: 'international',
-			},
-		],
+		() =>
+			DESTINATIONS.map(d => ({
+				...d,
+				title: t(d.key),
+				description: t(`${d.key}Desc`),
+			})),
+		[t]
+	)
+
+	const categories = useMemo(
+		() =>
+			CATEGORIES.map(c => ({
+				...c,
+				label: t(c.i18nKey) || c.fallback,
+			})),
 		[t]
 	)
 
 	const filteredDestinations = useMemo(
 		() =>
-			destinations.filter(
-				d =>
+			destinations.filter(d => {
+				const matchesSearch =
 					d.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
 					d.description.toLowerCase().includes(searchTerm.toLowerCase())
-			),
-		[destinations, searchTerm]
+
+				const matchesCategory =
+					selectedCategory === 'all' || d.category === selectedCategory
+
+				return matchesSearch && matchesCategory
+			}),
+		[destinations, searchTerm, selectedCategory]
 	)
 
 	return (
 		<div className='min-h-screen'>
 			{/* Hero Section */}
-			<section className='relative py-20 bg-gradient-to-r from-orange-400 to-orange-500'>
-				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center'>
+			<section
+				className='relative py-40 bg-center bg-cover text-center'
+				style={{
+					backgroundImage: "url('/images/destinations-hero.jpg')",
+				}}
+			>
+				{/* Overlay */}
+				<div className='absolute inset-0 bg-black/60' />
+
+				<div className='relative z-10 max-w-3xl mx-auto px-4'>
 					<h1 className='text-4xl md:text-5xl font-bold text-white mb-4'>
 						{t('destinationsTitle')}
 					</h1>
-					<p className='text-xl text-orange-100 mb-8'>
+					<p className='text-xl text-gray-200 mb-8'>
 						{t('destinationsSubtitle')}
 					</p>
 					<div className='w-24 h-1 bg-white mx-auto' />
 				</div>
 			</section>
 
-			{/* Search Section */}
+			{/* Search + Category Filter */}
 			<section className='py-12 bg-white'>
 				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-					<div className='max-w-2xl mx-auto flex items-center gap-2'>
+					<div className='max-w-3xl mx-auto space-y-6'>
+						{/* Search Input */}
 						<div className='relative flex-1'>
-							<Search className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5' />
+							<Search className='absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[rgb(247,162,31)]' />
 							<Input
 								type='text'
 								placeholder={t('searchPlaceholder') || 'Search destinations...'}
 								value={searchTerm}
 								onChange={e => setSearchTerm(e.target.value)}
-								className='pl-10 h-12 shadow-sm'
+								className='pl-12 h-12 rounded-full border-2 border-[rgb(247,162,31)] 
+			focus-visible:ring-0 shadow-sm'
 							/>
+						</div>
+
+						{/* Category Buttons */}
+						<div className='flex flex-wrap gap-2 justify-center'>
+							{categories.map(cat => {
+								const isActive = selectedCategory === cat.key
+								return (
+									<Button
+										key={cat.key}
+										onClick={() => setSelectedCategory(cat.key)}
+										className={`capitalize px-5 py-2 rounded-full transition-all duration-200 
+					${
+						isActive
+							? 'bg-[rgb(247,162,31)] text-white shadow-md hover:bg-[rgb(220,140,20)]'
+							: 'border border-[rgb(247,162,31)] text-[rgb(247,162,31)] hover:bg-[rgb(247,162,31)] hover:text-white'
+					} 
+				`}
+										variant='ghost'
+									>
+										{cat.label}
+									</Button>
+								)
+							})}
 						</div>
 					</div>
 				</div>
 			</section>
 
 			{/* Destinations Grid */}
-			<section className='py-12'>
+			<section className='py-6'>
 				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 					{filteredDestinations.length > 0 ? (
 						<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>

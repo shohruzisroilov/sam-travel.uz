@@ -2,7 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { MapPin, Star } from 'lucide-react'
+import { MapPin } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 interface DestinationCardProps {
 	title: string
@@ -17,10 +18,9 @@ export default function DestinationCard({
 	title,
 	description,
 	image,
-	price,
-	rating,
 	href = '/destinations',
 }: DestinationCardProps) {
+	const { t } = useLanguage()
 	return (
 		<div className='bg-white rounded-xl shadow-[0_0_5px_0_rgba(0,0,0,0.1),0_0_1px_0_rgba(0,0,0,0.1)] overflow-hidden transition-all duration-300 hover:-translate-y-2 group'>
 			{/* Image Section */}
@@ -34,12 +34,6 @@ export default function DestinationCard({
 					priority
 				/>
 				<div className='absolute inset-0 bg-gradient-to-t from-black/30 to-transparent' />
-				{rating && (
-					<div className='absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 flex items-center space-x-1'>
-						<Star className='w-4 h-4 text-yellow-400 fill-current' />
-						<span className='text-sm font-medium'>{rating}</span>
-					</div>
-				)}
 			</div>
 
 			{/* Content */}
@@ -58,7 +52,7 @@ export default function DestinationCard({
 						href={href}
 						className='bg-gradient-to-r from-orange-400 to-orange-500 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 hover:from-orange-500 hover:to-orange-600 hover:scale-105'
 					>
-						Learn More
+						{t('learnMore')}
 					</Link>
 				</div>
 			</div>

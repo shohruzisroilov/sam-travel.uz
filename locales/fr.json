@@ -27,6 +27,7 @@
 	"safeTravel": "Voyages sûrs",
 	"safeTravelDesc": "Assistance 24h/24 et sécurité garantie",
 	"aboutTitle": "À propos de notre agence de voyage",
+	"aboutHeroDesc": "Nous sommes des experts en voyages passionnés, dédiés à créer des expériences inoubliables pour nos clients",
 	"aboutDescription": "Nous sommes des experts passionnés de voyage, dédiés à la création d’expériences inoubliables. Avec plus de 10 ans d’expérience, nous organisons des voyages personnalisés qui mettent en valeur la beauté et la culture des destinations uniques.",
 	"companyLicenses": "Licences de l’entreprise",
 	"managementStructure": "Structure de gestion",
@@ -82,5 +83,26 @@
 	"ctaSubtitle": "Dites-nous où vous souhaitez aller et nous créerons un itinéraire personnalisé pour vous.",
 
 	"yourName": "Votre nom",
-	"yourMessage": "Votre message"
+	"yourMessage": "Votre message",
+	"learnMore": "En Savoir Plus",
+
+	"rome": "Rome",
+	"romeDesc": "La Ville Éternelle, riche en histoire et en culture",
+	"london": "Londres",
+	"londonDesc": "Capitale vibrante du Royaume-Uni, mêlant tradition et modernité",
+	"barcelona": "Barcelone",
+	"barcelonaDesc": "Célèbre pour l’architecture de Gaudí et l’ambiance méditerranéenne",
+	"amsterdam": "Amsterdam",
+	"amsterdamDesc": "Canaux charmants et sites culturels",
+	"prague": "Prague",
+	"pragueDesc": "Ville féerique avec une architecture gothique et baroque",
+	"venice": "Venise",
+	"veniceDesc": "Ville romantique construite sur des canaux",
+
+	"all": "Tout",
+	"historical": "Historique",
+	"modern": "Moderne",
+	"international": "International",
+	"nature": "Nature",
+	"romantic": "Romantique"
 }

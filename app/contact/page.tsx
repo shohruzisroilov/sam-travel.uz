@@ -1,43 +1,38 @@
 'use client'
 
+import * as React from 'react'
 import { useState } from 'react'
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react'
+import { Phone, MapPin, Clock, Send } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
-import FAQ from '@/components/common/FAQ'
-import CustomerReviews from '@/components/common/CustomerReviews'
+import type { Value as E164Number } from 'react-phone-number-input'
+import { PhoneNumberInput } from '@/components/common/PhoneNumberInput'
 
 export default function Contact() {
 	const { t } = useLanguage()
-	const [formData, setFormData] = useState({
+
+	const [formData, setFormData] = useState<{
+		name: string
+		message: string
+		tel?: E164Number
+	}>({
 		name: '',
-		email: '',
 		message: '',
-		tel: '',
 	})
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
 		console.log('Form submitted:', formData)
-		setFormData({ name: '', email: '', message: '', tel: '' })
+		setFormData({ name: '', message: '', tel: undefined })
 	}
-
-	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-	) => setFormData({ ...formData, [e.target.name]: e.target.value })
 
 	const contactInfo = [
 		{
 			icon: <Phone className='w-6 h-6 text-white' />,
 			title: t('phone'),
 			lines: ['+998 90 123 45 67', '+998 71 123 45 67'],
-		},
-		{
-			icon: <Mail className='w-6 h-6 text-white' />,
-			title: 'Email',
-			lines: ['info@travelagent.uz', 'support@travelagent.uz'],
 		},
 		{
 			icon: <MapPin className='w-6 h-6 text-white' />,
@@ -64,13 +59,17 @@ export default function Contact() {
 
 	return (
 		<div className='min-h-screen'>
-			{/* Hero */}
-			<section className='relative py-16 sm:py-20 bg-gradient-to-r from-orange-400 to-orange-500'>
-				<div className='max-w-7xl mx-auto px-4 text-center'>
+			{/* Hero Section */}
+			<section
+				className='relative py-40 bg-center bg-cover text-center'
+				style={{ backgroundImage: "url('/images/contact-hero.jpg')" }}
+			>
+				<div className='absolute inset-0 bg-black/60' />
+				<div className='relative z-10 max-w-3xl mx-auto px-4'>
 					<h1 className='text-3xl md:text-5xl font-bold text-white mb-4'>
 						{t('contactTitle')}
 					</h1>
-					<p className='text-lg md:text-xl text-orange-100 mb-6 md:mb-8'>
+					<p className='text-lg md:text-xl text-gray-200 mb-6 md:mb-8'>
 						{t('contactSubtitle')}
 					</p>
 					<div className='w-20 h-1 bg-white mx-auto' />
@@ -79,48 +78,44 @@ export default function Contact() {
 
 			{/* Contact Form + Info */}
 			<section className='py-16 sm:py-20'>
-				<div className='max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12'>
+				<div className='max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20'>
 					{/* Form */}
-					<div className='bg-white rounded-xl shadow-sm p-6 sm:p-8'>
+					<div className='bg-white rounded-xl shadow-sm p-6'>
 						<h2 className='text-2xl font-semibold text-gray-800 mb-6'>
 							{t('sendMessage')}
 						</h2>
 
-						<form onSubmit={handleSubmit} className='space-y-5 sm:space-y-6'>
+						<form onSubmit={handleSubmit} className='space-y-3 sm:space-y-4'>
 							<Input
 								id='name'
 								name='name'
 								value={formData.name}
-								onChange={handleChange}
+								onChange={e =>
+									setFormData({ ...formData, name: e.target.value })
+								}
 								placeholder={t('yourName')}
+								className='h-12 px-4 focus:outline-none focus:ring-0 placeholder:text-gray-400'
 								required
 							/>
-							<Input
-								id='email'
-								type='email'
-								name='email'
-								value={formData.email}
-								onChange={handleChange}
-								placeholder='your@email.com'
-								required
-							/>
-							<Input
-								id='tel'
-								type='tel'
-								name='tel'
+
+							<PhoneNumberInput
 								value={formData.tel}
-								onChange={handleChange}
-								placeholder='+998 91 234 56 78'
+								onChange={val => setFormData({ ...formData, tel: val })}
 								required
 							/>
+
 							<Textarea
 								id='message'
 								name='message'
 								value={formData.message}
-								onChange={handleChange}
+								onChange={e =>
+									setFormData({ ...formData, message: e.target.value })
+								}
 								placeholder={t('yourMessage')}
+								className='min-h-[100px] px-4 py-3 focus:outline-none focus:ring-0 placeholder:text-gray-400'
 								required
 							/>
+
 							<Button
 								type='submit'
 								className='w-full bg-[rgb(247,162,31)] hover:bg-[rgb(230,145,20)] text-white font-semibold flex items-center justify-center'
@@ -131,12 +126,12 @@ export default function Contact() {
 						</form>
 					</div>
 
-					{/* Contact Info */}
+					{/* Contact Info + Maps */}
 					<div>
 						<h2 className='text-2xl font-semibold text-gray-800 mb-6'>
 							{t('contactInfo')}
 						</h2>
-						<div className='space-y-6'>
+						<div className='space-y-6 mb-8'>
 							{contactInfo.map((item, i) => (
 								<div key={i} className='flex items-start space-x-4'>
 									<div className='w-12 h-12 shrink-0 bg-gradient-to-br from-orange-400 to-orange-500 rounded-lg flex items-center justify-center'>
@@ -176,10 +171,6 @@ export default function Contact() {
 					))}
 				</div>
 			</section>
-
-			{/* Extra Sections */}
-			<CustomerReviews />
-			<FAQ />
 		</div>
 	)
 }

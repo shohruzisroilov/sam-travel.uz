@@ -27,6 +27,7 @@
 	"safeTravel": "Xavfsiz sayohat",
 	"safeTravelDesc": "24/7 qo‘llab-quvvatlash va kafolatlangan xavfsizlik",
 	"aboutTitle": "Sayohat agentligimiz haqida",
+	"aboutHeroDesc": "Biz mijozlarimiz uchun unutilmas xotiralar yaratishga bag‘ishlangan sayohat mutaxassislarimiz",
 	"aboutDescription": "Biz mijozlarimiz uchun unutilmas xotiralar yaratishga bag‘ishlangan sayohat mutaxassislarimiz. 10 yildan ortiq tajriba bilan, biz ajoyib yo‘nalishlarning go‘zalligi va madaniyatini ko‘rsatadigan sayohatlar tashkil qilamiz.",
 	"companyLicenses": "Kompaniya litsenziyalari",
 	"managementStructure": "Boshqaruv tuzilmasi",
@@ -82,5 +83,26 @@
 	"ctaSubtitle": "Qayerga borishni istashingizni bizga ayting, biz siz uchun maxsus marshrut tuzamiz.",
 
 	"yourName": "Ismingiz",
-	"yourMessage": "Xabaringiz"
+	"yourMessage": "Xabaringiz",
+	"learnMore": "Batafsil",
+
+	"rome": "Rim",
+	"romeDesc": "Abadiy shahar, tarix va madaniyatga boy",
+	"london": "London",
+	"londonDesc": "Buyuk Britaniyaning jonli poytaxti, an’ana va zamonaviylik uyg‘unlashgan",
+	"barcelona": "Barselona",
+	"barcelonaDesc": "Gaudi arxitekturasi va O‘rta yer dengizi muhitiga mashhur",
+	"amsterdam": "Amsterdam",
+	"amsterdamDesc": "Maftunkor kanallar va madaniy yodgorliklar",
+	"prague": "Praga",
+	"pragueDesc": "Gotika va barokko arxitekturasi bilan ertak shahar",
+	"venice": "Venetsiya",
+	"veniceDesc": "Kanallar ustida qurilgan romantik shahar",
+
+	"all": "Hammasi",
+	"historical": "Tarixiy",
+	"modern": "Zamonaviy",
+	"international": "Xalqaro",
+	"nature": "Tabiat",
+	"romantic": "Romantik"
 }
