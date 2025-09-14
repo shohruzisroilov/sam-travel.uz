@@ -26,7 +26,7 @@
 	"bestPricesDesc": "Tarifs compétitifs sans frais cachés",
 	"safeTravel": "Voyages sûrs",
 	"safeTravelDesc": "Assistance 24h/24 et sécurité garantie",
-	"aboutTitle": "À propos de notre agence de voyage",
+	"aboutTitle": "À propos de nous - photos, postes, licences",
 	"aboutHeroDesc": "Nous sommes des experts en voyages passionnés, dédiés à créer des expériences inoubliables pour nos clients",
 	"aboutDescription": "Nous sommes des experts passionnés de voyage, dédiés à la création d’expériences inoubliables. Avec plus de 10 ans d’expérience, nous organisons des voyages personnalisés qui mettent en valeur la beauté et la culture des destinations uniques.",
 	"companyLicenses": "Licences de l’entreprise",
@@ -40,7 +40,7 @@
 	"missionText": "Offrir des expériences de voyage uniques et promouvoir un tourisme durable.",
 	"ourVision": "Notre vision",
 	"visionText": "Être l’agence leader reconnue pour son service personnalisé et ses aventures inoubliables.",
-	"destinationsTitle": "Destinations populaires",
+	"destinationsTitle": "Destinations - Villes avec d'anciennes photos et vidéos de groupe",
 	"destinationsSubtitle": "Découvrez nos destinations soigneusement sélectionnées",
 	"contactTitle": "Contactez-nous",
 	"contactSubtitle": "Prêt à commencer votre aventure ? Contactez-nous dès aujourd’hui !",
@@ -104,5 +104,8 @@
 	"modern": "Moderne",
 	"international": "International",
 	"nature": "Nature",
-	"romantic": "Romantique"
+	"romantic": "Romantique",
+
+	"instagramTitle": "Reels Instagram",
+	"instagramSubtitle": "Nos derniers reels de voyage sur Instagram ✈️"
 }

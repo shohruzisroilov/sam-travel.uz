@@ -18,7 +18,7 @@ export default function DestinationCard({
 	title,
 	description,
 	image,
-	href = '/destinations',
+	href = 'https://www.instagram.com/samtraveluz/',
 }: DestinationCardProps) {
 	const { t } = useLanguage()
 	return (
@@ -50,6 +50,8 @@ export default function DestinationCard({
 				<div className='flex items-center justify-between '>
 					<Link
 						href={href}
+						target='_blank'
+						rel='noopener noreferrer'
 						className='bg-gradient-to-r from-orange-400 to-orange-500 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 hover:from-orange-500 hover:to-orange-600 hover:scale-105'
 					>
 						{t('learnMore')}

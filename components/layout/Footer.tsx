@@ -28,22 +28,28 @@ export default function Footer() {
 						</p>
 						<div className='flex space-x-4'>
 							<a
-								href='#'
-								className='text-gray-300 hover:text-orange-400 transition-colors duration-200'
-							>
-								<FaFacebook className='w-5 h-5' />
-							</a>
-							<a
-								href='#'
+								href='https://t.me/samtravel_uz'
+								target='_blank'
+								rel='noopener noreferrer'
 								className='text-gray-300 hover:text-orange-400 transition-colors duration-200'
 							>
 								<FaTelegram className='w-5 h-5' />
 							</a>
 							<a
-								href='#'
+								href='https://www.instagram.com/samtraveluz/'
+								target='_blank'
+								rel='noopener noreferrer'
 								className='text-gray-300 hover:text-orange-400 transition-colors duration-200'
 							>
 								<FaInstagram className='w-5 h-5' />
+							</a>
+							<a
+								href='#'
+								target='_blank'
+								rel='noopener noreferrer'
+								className='text-gray-300 hover:text-orange-400 transition-colors duration-200'
+							>
+								<FaFacebook className='w-5 h-5' />
 							</a>
 						</div>
 					</div>
@@ -93,11 +99,11 @@ export default function Footer() {
 						<ul className='space-y-2'>
 							<li className='flex items-center space-x-2 text-gray-300'>
 								<Phone className='w-4 h-4' />
-								<span>+998 90 123 45 67</span>
+								<span>+998 90 167 37 44</span>
 							</li>
 							<li className='flex items-center space-x-2 text-gray-300'>
 								<Mail className='w-4 h-4' />
-								<span>loremepsum@gmail.com</span>
+								<span>samtravel@gmail.com</span>
 							</li>
 							<li className='flex items-center space-x-2 text-gray-300'>
 								<MapPin className='w-4 h-4' />

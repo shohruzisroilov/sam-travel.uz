@@ -27,7 +27,7 @@
 	"safeTravel": "Safe Travel",
 	"safeTravelDesc": "24/7 support and safety guaranteed",
 
-	"aboutTitle": "About Our Travel Agency",
+	"aboutTitle": "About us contents - pics, positions, licences",
 	"aboutHeroDesc": "We are passionate travel experts dedicated to creating unforgettable experiences for our clients",
 	"aboutDescription": "We are passionate travel experts dedicated to creating unforgettable experiences for our clients. With over 10 years of experience in the travel industry, we specialize in crafting personalized journeys that showcase the beauty and culture of amazing destinations.",
 	"companyLicenses": "Company Licenses",
@@ -43,7 +43,7 @@
 	"ourVision": "Our Vision",
 	"visionText": "To be the leading travel agency known for personalized service, expert guidance, and unforgettable adventures.",
 
-	"destinationsTitle": "Popular Destinations",
+	"destinationsTitle": "Destinations - Cities with previous group photos and videos",
 	"destinationsSubtitle": "Explore our carefully selected travel destinations",
 
 	"contactTitle": "Get in Touch",
@@ -113,5 +113,8 @@
 	"modern": "Modern",
 	"international": "International",
 	"nature": "Nature",
-	"romantic": "Romantic"
+	"romantic": "Romantic",
+
+	"instagramTitle": "Instagram Reels",
+	"instagramSubtitle": "Our latest travel reels from Instagram ✈️"
 }

@@ -26,7 +26,7 @@
 	"bestPricesDesc": "Yashirin to‘lovlarsiz raqobatbardosh narxlar",
 	"safeTravel": "Xavfsiz sayohat",
 	"safeTravelDesc": "24/7 qo‘llab-quvvatlash va kafolatlangan xavfsizlik",
-	"aboutTitle": "Sayohat agentligimiz haqida",
+	"aboutTitle": "Biz haqimizda - rasmlar, lavozimlar, litsenziyalar",
 	"aboutHeroDesc": "Biz mijozlarimiz uchun unutilmas xotiralar yaratishga bag‘ishlangan sayohat mutaxassislarimiz",
 	"aboutDescription": "Biz mijozlarimiz uchun unutilmas xotiralar yaratishga bag‘ishlangan sayohat mutaxassislarimiz. 10 yildan ortiq tajriba bilan, biz ajoyib yo‘nalishlarning go‘zalligi va madaniyatini ko‘rsatadigan sayohatlar tashkil qilamiz.",
 	"companyLicenses": "Kompaniya litsenziyalari",
@@ -40,7 +40,7 @@
 	"missionText": "Doimiy xotiralar qoldiradigan sayohatlarni tashkil etish va barqaror turizmni rivojlantirish.",
 	"ourVision": "Bizning viziyamiz",
 	"visionText": "Shaxsiy xizmat va unutilmas sarguzashtlari bilan yetakchi agentlik bo‘lish.",
-	"destinationsTitle": "Mashhur yo‘nalishlar",
+	"destinationsTitle": "Manzillar - Avvalgi guruh rasmlari va videolari bilan shaharlar",
 	"destinationsSubtitle": "Ehtiyotkorlik bilan tanlangan yo‘nalishlarimizni kashf qiling",
 	"contactTitle": "Biz bilan bog‘laning",
 	"contactSubtitle": "Sarguzashtingizni boshlashga tayyormisiz? Bugun bog‘laning!",
@@ -104,5 +104,8 @@
 	"modern": "Zamonaviy",
 	"international": "Xalqaro",
 	"nature": "Tabiat",
-	"romantic": "Romantik"
+	"romantic": "Romantik",
+
+	"instagramTitle": "Instagram Reels",
+	"instagramSubtitle": "Instagramdagi so‘nggi sayohat reel videolarimiz ✈️"
 }

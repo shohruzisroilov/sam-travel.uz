@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import DestinationCard from '@/components/common/DestinationCard'
-import CustomerReviews from '@/components/common/CustomerReviews'
 import FAQ from '@/components/common/FAQ'
 
 // Swiper
@@ -15,6 +14,7 @@ import { Pagination, Autoplay } from 'swiper/modules'
 
 // Constants
 import { FEATURES, DESTINATIONS, HERO_SLIDES } from '@/constants/homeConstants'
+import InstagramSlider from '@/components/common/InstagramSlider'
 
 export default function Home() {
 	const { t } = useLanguage()
@@ -125,8 +125,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* Customer Reviews & FAQ */}
-			<CustomerReviews />
+			<InstagramSlider />
 			<FAQ />
 
 			{/* Contact Call-to-Action */}

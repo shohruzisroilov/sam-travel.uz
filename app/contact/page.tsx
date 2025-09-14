@@ -32,12 +32,12 @@ export default function Contact() {
 		{
 			icon: <Phone className='w-6 h-6 text-white' />,
 			title: t('phone'),
-			lines: ['+998 90 123 45 67', '+998 71 123 45 67'],
+			lines: ['+998 90 167 37 44', '+998 66 233 12 96'],
 		},
 		{
 			icon: <MapPin className='w-6 h-6 text-white' />,
 			title: t('address'),
-			lines: ['Amir Temur Avenue 42', 'Tashkent 100084, Uzbekistan'],
+			lines: ["Shayhontohur ko'chasi", 'Tashkent, Uzbekistan'],
 		},
 		{
 			icon: <Clock className='w-6 h-6 text-white' />,

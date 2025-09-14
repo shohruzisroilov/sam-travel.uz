@@ -2,19 +2,17 @@
 
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
-import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import { Navigation, Autoplay } from 'swiper/modules'
 
 import { useLanguage } from '@/contexts/LanguageContext'
 import TeamCard from '@/components/common/TeamCard'
 import Counter from '@/components/ui/Counter'
 
-import { Heart, Globe } from 'lucide-react'
-import { stats, licenses, team, managementTeam } from '@/constants/about'
+import { stats, team, managementTeam } from '@/constants/about'
 
 export default function About() {
 	const { t } = useLanguage()
@@ -66,37 +64,27 @@ export default function About() {
 					</h2>
 					<div className='w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto mb-6' />
 
-					<div className='relative'>
-						<Swiper
-							modules={[Navigation, Autoplay]}
-							spaceBetween={30}
-							slidesPerView={1}
-							navigation={{
-								prevEl: '.management-prev',
-								nextEl: '.management-next',
-							}}
-							autoplay={{ delay: 4000 }}
-							breakpoints={{
-								640: { slidesPerView: 2 },
-								768: { slidesPerView: 3 },
-								1024: { slidesPerView: 4 },
-							}}
-						>
-							{managementTeam.map(member => (
-								<SwiperSlide key={member.name}>
-									<TeamCard {...member} />
-								</SwiperSlide>
-							))}
-						</Swiper>
-
-						{/* RESPONSIVE BUTTONS */}
-						<button className='management-prev absolute top-1/2 -translate-y-1/2 bg-orange-500 hover:bg-orange-600 transition text-white w-10 h-10 flex items-center justify-center rounded-full shadow-lg z-10 left-2 xl:-left-6 2xl:-left-10'>
-							‹
-						</button>
-						<button className='management-next absolute top-1/2 -translate-y-1/2 bg-orange-500 hover:bg-orange-600 transition text-white w-10 h-10 flex items-center justify-center rounded-full shadow-lg z-10 right-2 xl:-right-6 2xl:-right-10'>
-							›
-						</button>
-					</div>
+					<Swiper
+						modules={[Autoplay, Navigation, Pagination]}
+						spaceBetween={30}
+						slidesPerView={1}
+						loop
+						autoplay={{ delay: 4000, disableOnInteraction: false }}
+						navigation
+						// pagination={{ clickable: true }}
+						breakpoints={{
+							768: { slidesPerView: 2 },
+							1024: { slidesPerView: 3 },
+							1280: { slidesPerView: 4 },
+						}}
+						className='custom-swiper'
+					>
+						{managementTeam.map(member => (
+							<SwiperSlide key={member.name}>
+								<TeamCard {...member} />
+							</SwiperSlide>
+						))}
+					</Swiper>
 				</div>
 			</section>
 
@@ -108,39 +96,46 @@ export default function About() {
 					</h2>
 					<div className='w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto mb-6' />
 
-					<div className='relative'>
-						<Swiper
-							modules={[Navigation, Autoplay]}
-							spaceBetween={30}
-							slidesPerView={1}
-							navigation={{
-								prevEl: '.team-prev',
-								nextEl: '.team-next',
-							}}
-							autoplay={{ delay: 4000 }}
-							breakpoints={{
-								640: { slidesPerView: 2 },
-								768: { slidesPerView: 3 },
-								1024: { slidesPerView: 4 },
-							}}
-						>
-							{team.map(member => (
-								<SwiperSlide key={member.name}>
-									<TeamCard {...member} />
-								</SwiperSlide>
-							))}
-						</Swiper>
-
-						{/* RESPONSIVE BUTTONS */}
-						<button className='team-prev absolute top-1/2 -translate-y-1/2 bg-orange-500 hover:bg-orange-600 transition text-white w-10 h-10 flex items-center justify-center rounded-full shadow-lg z-10 left-2 xl:-left-6 2xl:-left-10'>
-							‹
-						</button>
-						<button className='team-next absolute top-1/2 -translate-y-1/2 bg-orange-500 hover:bg-orange-600 transition text-white w-10 h-10 flex items-center justify-center rounded-full shadow-lg z-10 right-2 xl:-right-6 2xl:-right-10'>
-							›
-						</button>
-					</div>
+					<Swiper
+						modules={[Autoplay, Navigation, Pagination]}
+						spaceBetween={30}
+						slidesPerView={1}
+						loop
+						autoplay={{ delay: 4000, disableOnInteraction: false }}
+						navigation
+						// pagination={{ clickable: true }}
+						breakpoints={{
+							768: { slidesPerView: 2 },
+							1024: { slidesPerView: 3 },
+							1280: { slidesPerView: 4 },
+						}}
+						className='custom-swiper'
+					>
+						{team.map(member => (
+							<SwiperSlide key={member.name}>
+								<TeamCard {...member} />
+							</SwiperSlide>
+						))}
+					</Swiper>
 				</div>
 			</section>
+
+			{/* Swiper custom CSS */}
+			<style jsx global>{`
+				/* Pagination dots ranglari */
+				.custom-swiper .swiper-pagination-bullet {
+					background: rgba(247, 162, 31, 0.4);
+				}
+				.custom-swiper .swiper-pagination-bullet-active {
+					background: rgb(247, 162, 31);
+				}
+
+				/* Navigation tugmalari */
+				.custom-swiper .swiper-button-next,
+				.custom-swiper .swiper-button-prev {
+					color: rgb(247, 162, 31);
+				}
+			`}</style>
 		</div>
 	)
 }

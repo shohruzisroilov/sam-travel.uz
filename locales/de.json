@@ -26,7 +26,7 @@
 	"bestPricesDesc": "Faire Preise ohne versteckte Gebühren",
 	"safeTravel": "Sicheres Reisen",
 	"safeTravelDesc": "24/7 Unterstützung und garantierte Sicherheit",
-	"aboutTitle": "Über unser Reisebüro",
+	"aboutTitle": "Über uns - Bilder, Positionen, Lizenzen",
 	"aboutHeroDesc": "Wir sind leidenschaftliche Reiseexperten, die sich darauf konzentrieren, unvergessliche Erlebnisse für unsere Kunden zu schaffen",
 	"aboutDescription": "Wir sind leidenschaftliche Reiseexperten, die unvergessliche Erlebnisse schaffen. Mit über 10 Jahren Erfahrung organisieren wir maßgeschneiderte Reisen, die die Schönheit und Kultur einzigartiger Orte zeigen.",
 	"companyLicenses": "Unternehmenslizenzen",
@@ -40,7 +40,7 @@
 	"missionText": "Unvergessliche Reisen bieten und nachhaltigen Tourismus fördern.",
 	"ourVision": "Unsere Vision",
 	"visionText": "Das führende Reisebüro für persönlichen Service und unvergessliche Abenteuer zu sein.",
-	"destinationsTitle": "Beliebte Reiseziele",
+	"destinationsTitle": "Reiseziele - Städte mit früheren Gruppenfotos und -videos",
 	"destinationsSubtitle": "Entdecken Sie unsere sorgfältig ausgewählten Reiseziele",
 	"contactTitle": "Kontaktieren Sie uns",
 	"contactSubtitle": "Bereit für Ihr Abenteuer? Kontaktieren Sie uns noch heute!",
@@ -104,5 +104,7 @@
 	"modern": "Modern",
 	"international": "International",
 	"nature": "Natur",
-	"romantic": "Romantisch"
+	"romantic": "Romantisch",
+	"instagramTitle": "Instagram Reels",
+	"instagramSubtitle": "Unsere neuesten Travel-Reels auf Instagram ✈️"
 }
