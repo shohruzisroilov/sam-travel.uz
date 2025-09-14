@@ -1,19 +1,16 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 
-const geistSans = Geist({
-	variable: '--font-geist-sans',
+// Inter fontini qo'shish
+const inter = Inter({
+	variable: '--font-inter',
 	subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin'],
+	weight: ['400', '500', '600', '700'], // kerakli weightlar
 })
 
 const seoContent = {
@@ -75,14 +72,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children,
-}: Readonly<{
+}: {
 	children: React.ReactNode
-}>) {
+}) {
 	return (
 		<html lang='uz'>
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-			>
+			<body className={`${inter.variable} antialiased`}>
 				<LanguageProvider>
 					<div className='min-h-screen flex flex-col'>
 						<Navigation />

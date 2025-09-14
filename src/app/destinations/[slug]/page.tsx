@@ -1,5 +1,7 @@
-const DestinationDetails = () => {
-	return <div>DestinationDetails</div>
+import React from 'react'
+
+const Destinations = () => {
+	return <div>Destinations</div>
 }
 
-export default DestinationDetails
+export default Destinations
