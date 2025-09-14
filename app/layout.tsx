@@ -7,10 +7,61 @@ import Footer from '@/components/layout/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const seoContent = {
+	uz: {
+		title: 'SamTravel - Yevropa sari yangi sarguzasht | TravelAgent',
+		description:
+			'🌍 SamTravel bilan Yevropaga ishonchli sayohat: viza, turpaketlar va individual xizmatlar. ✈️ Orzu qilmang – biz bilan boshlang!',
+	},
+	en: {
+		title: 'SamTravel - New Adventures to Europe | TravelAgent',
+		description:
+			'🌍 Trusted travel to Europe with SamTravel: visas, packages, and personalized experiences. ✈️ Don’t just dream – start with us!',
+	},
+	ru: {
+		title: 'SamTravel - Новые приключения в Европе | TravelAgent',
+		description:
+			'🌍 Путешествуйте в Европу с SamTravel: визы, турпакеты и индивидуальные услуги. ✈️ Не мечтайте – начинайте с нами!',
+	},
+}
+
 export const metadata: Metadata = {
-	title: 'TravelAgent - Your Gateway to Amazing Destinations',
-	description:
-		'Discover amazing destinations with our expert travel guides. Professional travel agency offering personalized experiences worldwide.',
+	title: seoContent.uz.title,
+	description: seoContent.uz.description,
+	keywords: [
+		'SamTravel',
+		'Yevropa sayohati',
+		'Travel to Europe',
+		'Путешествие в Европу',
+		'Turpaketlar',
+		'Viza xizmatlari',
+		'TravelAgent',
+		'Sayohat agentligi',
+	],
+	openGraph: {
+		title: seoContent.uz.title,
+		description: seoContent.uz.description,
+		url: 'https://sam-travel.uz',
+		siteName: 'SamTravel',
+		images: [
+			{
+				url: '/samtravel-og.jpg',
+				width: 1200,
+				height: 630,
+				alt: 'SamTravel',
+			},
+		],
+		locale: 'uz_UZ',
+		type: 'website',
+	},
+	alternates: {
+		canonical: 'https://sam-travel.uz',
+		languages: {
+			'uz-UZ': 'https://sam-travel.uz',
+			'en-US': 'https://sam-travel.uz',
+			'ru-RU': 'https://sam-travel.uz',
+		},
+	},
 }
 
 export default function RootLayout({
@@ -19,7 +70,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang='en'>
+		<html lang='uz'>
 			<body className={inter.className}>
 				<LanguageProvider>
 					<div className='min-h-screen flex flex-col'>
