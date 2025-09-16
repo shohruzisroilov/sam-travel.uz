@@ -11,7 +11,7 @@ interface TeamCardProps {
 
 const TeamCard = ({ image, name, role, description }: TeamCardProps) => {
 	return (
-		<div className='h-[450px] bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 flex-shrink-0 w-72'>
+		<div className='h-[450px] border border-gray-200 bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 flex-shrink-0 w-72'>
 			<div className='h-64 overflow-hidden'>
 				<Image
 					src={image}

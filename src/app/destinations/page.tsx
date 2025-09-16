@@ -6,24 +6,15 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import DestinationCard from '@/components/common/DestinationCard'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { DESTINATIONS } from '@/constants/destinations'
 import { CATEGORIES } from '@/constants/categories'
+import { DESTINATIONS } from '@/constants/destinations'
 
 export default function Destinations() {
 	const { t } = useLanguage()
 	const [searchTerm, setSearchTerm] = useState('')
 	const [selectedCategory, setSelectedCategory] = useState('all')
 
-	const destinations = useMemo(
-		() =>
-			DESTINATIONS.map(d => ({
-				...d,
-				title: t(d.key),
-				description: t(`${d.key}Desc`),
-			})),
-		[t]
-	)
-
+	// kategoriya labelini tarjima qilish
 	const categories = useMemo(
 		() =>
 			CATEGORIES.map(c => ({
@@ -33,9 +24,10 @@ export default function Destinations() {
 		[t]
 	)
 
+	// filterlangan destinatsiyalar
 	const filteredDestinations = useMemo(
 		() =>
-			destinations.filter(d => {
+			DESTINATIONS.filter(d => {
 				const matchesSearch =
 					d.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
 					d.description.toLowerCase().includes(searchTerm.toLowerCase())
@@ -45,7 +37,7 @@ export default function Destinations() {
 
 				return matchesSearch && matchesCategory
 			}),
-		[destinations, searchTerm, selectedCategory]
+		[searchTerm, selectedCategory]
 	)
 
 	return (
@@ -57,16 +49,12 @@ export default function Destinations() {
 					backgroundImage: "url('/images/destinations-hero.jpg')",
 				}}
 			>
-				{/* Overlay */}
 				<div className='absolute inset-0 bg-black/60' />
 
-				<div className='relative z-10 max-w-3xl mx-auto px-4'>
+				<div className='relative z-10 max-w-4xl mx-auto px-4'>
 					<h1 className='text-4xl md:text-5xl font-bold text-white mb-4'>
 						{t('destinationsTitle')}
 					</h1>
-					<p className='text-xl text-gray-200 mb-8'>
-						{t('destinationsSubtitle')}
-					</p>
 					<div className='w-24 h-1 bg-white mx-auto' />
 				</div>
 			</section>
@@ -84,7 +72,7 @@ export default function Destinations() {
 								value={searchTerm}
 								onChange={e => setSearchTerm(e.target.value)}
 								className='pl-12 h-12 rounded-full border-2 border-[rgb(247,162,31)] 
-			focus-visible:ring-0 shadow-sm'
+									focus-visible:ring-0 shadow-sm'
 							/>
 						</div>
 
@@ -97,12 +85,12 @@ export default function Destinations() {
 										key={cat.key}
 										onClick={() => setSelectedCategory(cat.key)}
 										className={`capitalize px-5 py-2 rounded-full transition-all duration-200 
-					${
-						isActive
-							? 'bg-[rgb(247,162,31)] text-white shadow-md hover:bg-[rgb(220,140,20)]'
-							: 'border border-[rgb(247,162,31)] text-[rgb(247,162,31)] hover:bg-[rgb(247,162,31)] hover:text-white'
-					} 
-				`}
+											${
+												isActive
+													? 'bg-[rgb(247,162,31)] text-white shadow-md hover:bg-[rgb(220,140,20)]'
+													: 'border border-[rgb(247,162,31)] text-[rgb(247,162,31)] hover:bg-[rgb(247,162,31)] hover:text-white'
+											} 
+										`}
 										variant='ghost'
 									>
 										{cat.label}
@@ -121,11 +109,11 @@ export default function Destinations() {
 						<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
 							{filteredDestinations.map(destination => (
 								<DestinationCard
-									key={destination.title}
+									key={destination.key}
+									slug={destination.key}
 									title={destination.title}
 									description={destination.description}
-									image={destination.image}
-									rating={destination.rating}
+									image={destination.mainImage}
 								/>
 							))}
 						</div>

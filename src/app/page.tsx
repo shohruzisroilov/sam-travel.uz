@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import DestinationCard from '@/components/common/DestinationCard'
-import FAQ from '@/app/components/FAQ'
+import FAQ from '@/components/pages/home/FAQ'
 
 // Swiper
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -13,8 +13,9 @@ import 'swiper/css/pagination'
 import { Pagination, Autoplay } from 'swiper/modules'
 
 // Constants
-import { FEATURES, DESTINATIONS, HERO_SLIDES } from '@/constants/homeConstants'
-import InstagramSlider from './components/InstagramSlider'
+import { FEATURES, HERO_SLIDES } from '@/constants/homeConstants'
+import InstagramSlider from '../components/pages/home/InstagramSlider'
+import { DESTINATIONS } from '@/constants/destinations'
 
 export default function Home() {
 	const { t } = useLanguage()
@@ -101,12 +102,13 @@ export default function Home() {
 					</div>
 
 					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-						{DESTINATIONS.map(({ key, image }, i) => (
+						{DESTINATIONS.slice(0, 3).map(destination => (
 							<DestinationCard
-								key={i}
-								title={t(key)}
-								description={t(`${key}Desc`)}
-								image={image}
+								key={destination.key}
+								slug={destination.key}
+								title={destination.title}
+								description={destination.description}
+								image={destination.mainImage}
 							/>
 						))}
 					</div>

@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import type { Value as E164Number } from 'react-phone-number-input'
-import { PhoneNumberInput } from './components/PhoneNumberInput'
+import { PhoneNumberInput } from '../../components/pages/contact/PhoneNumberInput'
 
 export default function Contact() {
 	const { t } = useLanguage()

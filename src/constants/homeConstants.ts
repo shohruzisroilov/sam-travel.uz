@@ -18,24 +18,6 @@ export const FEATURES = [
 	},
 ] as const
 
-export const DESTINATIONS = [
-	{
-		key: 'london',
-		image:
-			'https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop',
-	},
-	{
-		key: 'paris',
-		image:
-			'https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop',
-	},
-	{
-		key: 'rome',
-		image:
-			'https://images.pexels.com/photos/1797154/pexels-photo-1797154.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop',
-	},
-] as const
-
 export const HERO_SLIDES = [
 	{
 		image: '/images/hero-image1.jpg',

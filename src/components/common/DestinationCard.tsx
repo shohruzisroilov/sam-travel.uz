@@ -3,26 +3,22 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { MapPin } from 'lucide-react'
-import { useLanguage } from '@/contexts/LanguageContext'
 
 interface DestinationCardProps {
+	slug: string
 	title: string
 	description: string
 	image: string
-	price?: string
-	rating?: number
-	href?: string
 }
 
 export default function DestinationCard({
+	slug,
 	title,
 	description,
 	image,
-	href = 'https://www.instagram.com/samtraveluz/',
 }: DestinationCardProps) {
-	const { t } = useLanguage()
 	return (
-		<div className='bg-white rounded-xl shadow-[0_0_5px_0_rgba(0,0,0,0.1),0_0_1px_0_rgba(0,0,0,0.1)] overflow-hidden transition-all duration-300 hover:-translate-y-2 group'>
+		<div className='bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:-translate-y-2 group'>
 			{/* Image Section */}
 			<div className='relative h-48 overflow-hidden'>
 				<Image
@@ -47,16 +43,12 @@ export default function DestinationCard({
 					{description}
 				</p>
 
-				<div className='flex items-center justify-between '>
-					<Link
-						href={href}
-						target='_blank'
-						rel='noopener noreferrer'
-						className='bg-gradient-to-r from-orange-400 to-orange-500 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 hover:from-orange-500 hover:to-orange-600 hover:scale-105'
-					>
-						{t('learnMore')}
-					</Link>
-				</div>
+				<Link
+					href={`/destinations/${slug}`}
+					className='inline-block bg-gradient-to-r from-orange-400 to-orange-500 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 hover:from-orange-500 hover:to-orange-600 hover:scale-105'
+				>
+					Learn More
+				</Link>
 			</div>
 		</div>
 	)
