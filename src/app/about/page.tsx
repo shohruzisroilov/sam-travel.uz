@@ -2,17 +2,13 @@
 
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Navigation, Pagination } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
 
 import { useLanguage } from '@/contexts/LanguageContext'
 
-import { stats, team, managementTeam } from '@/constants/about'
+import { stats, team } from '@/constants/about'
 import Counter from '@/components/pages/about/Counter'
 import TeamCard from '@/components/pages/about/TeamCard'
+import Image from 'next/image'
 
 export default function About() {
 	const { t } = useLanguage()
@@ -31,9 +27,6 @@ export default function About() {
 					<h1 className='text-4xl md:text-5xl font-bold text-white mb-6'>
 						{t('aboutTitle')}
 					</h1>
-					{/* <p className='text-lg md:text-xl text-gray-200 leading-relaxed mb-8'>
-						{t('aboutHeroDesc')}
-					</p> */}
 					<div className='w-24 h-1 bg-white mx-auto' />
 				</div>
 			</section>
@@ -56,38 +49,6 @@ export default function About() {
 				</div>
 			</section>
 
-			{/* Management */}
-			<section className='py-20'>
-				<div className='max-w-7xl mx-auto px-4 text-center'>
-					<h2 className='text-4xl font-bold text-gray-800 mb-4'>
-						{t('managementStructure')}
-					</h2>
-					<div className='w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto mb-6' />
-
-					<Swiper
-						modules={[Autoplay, Navigation, Pagination]}
-						spaceBetween={30}
-						slidesPerView={1}
-						loop
-						autoplay={{ delay: 4000, disableOnInteraction: false }}
-						navigation
-						// pagination={{ clickable: true }}
-						breakpoints={{
-							768: { slidesPerView: 2 },
-							1024: { slidesPerView: 3 },
-							1280: { slidesPerView: 4 },
-						}}
-						className='custom-swiper'
-					>
-						{managementTeam.map(member => (
-							<SwiperSlide key={member.name}>
-								<TeamCard {...member} />
-							</SwiperSlide>
-						))}
-					</Swiper>
-				</div>
-			</section>
-
 			{/* Team */}
 			<section className='py-20 bg-gray-50'>
 				<div className='max-w-7xl mx-auto px-4 text-center'>
@@ -96,46 +57,42 @@ export default function About() {
 					</h2>
 					<div className='w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto mb-6' />
 
-					<Swiper
-						modules={[Autoplay, Navigation, Pagination]}
-						spaceBetween={30}
-						slidesPerView={1}
-						loop
-						autoplay={{ delay: 4000, disableOnInteraction: false }}
-						navigation
-						// pagination={{ clickable: true }}
-						breakpoints={{
-							768: { slidesPerView: 2 },
-							1024: { slidesPerView: 3 },
-							1280: { slidesPerView: 4 },
-						}}
-						className='custom-swiper'
-					>
-						{team.map(member => (
-							<SwiperSlide key={member.name}>
-								<TeamCard {...member} />
-							</SwiperSlide>
-						))}
-					</Swiper>
+					<div className='flex justify-center'>
+						<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5'>
+							{team.map(member => (
+								<TeamCard key={member.image} {...member} />
+							))}
+						</div>
+					</div>
 				</div>
 			</section>
 
-			{/* Swiper custom CSS */}
-			<style jsx global>{`
-				/* Pagination dots ranglari */
-				.custom-swiper .swiper-pagination-bullet {
-					background: rgba(247, 162, 31, 0.4);
-				}
-				.custom-swiper .swiper-pagination-bullet-active {
-					background: rgb(247, 162, 31);
-				}
+			{/* Licenses */}
+			<section className='py-20 bg-white'>
+				<div className='max-w-7xl mx-auto px-4 text-center'>
+					<h2 className='text-4xl font-bold text-gray-800 mb-4'>
+						{t('licenses')}
+					</h2>
+					<div className='w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto mb-6' />
 
-				/* Navigation tugmalari */
-				.custom-swiper .swiper-button-next,
-				.custom-swiper .swiper-button-prev {
-					color: rgb(247, 162, 31);
-				}
-			`}</style>
+					<div className='grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center'>
+						<Image
+							src='/images/license1.jpg'
+							alt='License 1'
+							width={500}
+							height={400}
+							className='rounded-xl shadow-md object-contain'
+						/>
+						<Image
+							src='/images/license2.jpg'
+							alt='License 2'
+							width={500}
+							height={400}
+							className='rounded-xl shadow-md object-contain'
+						/>
+					</div>
+				</div>
+			</section>
 		</div>
 	)
 }

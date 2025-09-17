@@ -42,6 +42,12 @@
 	"visionText": "Être l’agence leader reconnue pour son service personnalisé et ses aventures inoubliables.",
 	"destinationsTitle": "Destinations - Villes avec d'anciennes photos et vidéos de groupe",
 	"destinationsSubtitle": "Découvrez nos destinations soigneusement sélectionnées",
+
+	"destinationNotFound": "Destination introuvable",
+	"destinationNotFoundDescription": "Nous n’avons pas pu trouver la destination que vous recherchez.",
+	"backToDestinations": "Retour aux destinations",
+	"gallery": "Galerie",
+
 	"contactTitle": "Contactez-nous",
 	"contactSubtitle": "Prêt à commencer votre aventure ? Contactez-nous dès aujourd’hui !",
 	"mainOffice": "Siège principal",
@@ -107,5 +113,22 @@
 	"romantic": "Romantique",
 
 	"instagramTitle": "Reels Instagram",
-	"instagramSubtitle": "Nos derniers reels de voyage sur Instagram ✈️"
+	"instagramSubtitle": "Nos derniers reels de voyage sur Instagram ✈️",
+
+	"licenses": "Licences",
+
+	"viennaDestinationsTitle": "Vienne",
+	"viennaDestinationsSubtitle": "La capitale autrichienne Vienne allie grandeur impériale et culture vivante. Découvrez le palais de Schönbrunn, la cathédrale Saint-Étienne et l’Opéra d’État de Vienne.",
+
+	"zurichDestinationsTitle": "Zurich",
+	"zurichDestinationsSubtitle": "Zurich, la plus grande ville de Suisse, mêle vie moderne, histoire et nature. Promenez-vous dans la vieille ville, profitez du lac de Zurich et admirez les chutes du Rhin.",
+
+	"interlakenDestinationsTitle": "Interlaken",
+	"interlakenDestinationsSubtitle": "Située entre le lac de Thoune et le lac de Brienz, Interlaken est entourée par l’Eiger, le Mönch et la Jungfrau. Un lieu idéal pour l’aventure comme pour la détente.",
+
+	"genevaDestinationsTitle": "Genève",
+	"genevaDestinationsSubtitle": "Genève, au bord du lac Léman, allie élégance et dimension internationale. Célèbre pour son Jet d’Eau, ses institutions mondiales et son chocolat suisse.",
+
+	"parisDestinationsTitle": "Paris – La Ville Lumière",
+	"parisDestinationsSubtitle": "Paris, capitale de la France, est un symbole intemporel de romantisme, d’art et d’élégance. De la tour Eiffel au Louvre, chaque coin raconte une histoire."
 }

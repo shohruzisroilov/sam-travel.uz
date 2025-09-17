@@ -39,9 +39,15 @@
 	"ourMission": "Bizning missiyamiz",
 	"missionText": "Doimiy xotiralar qoldiradigan sayohatlarni tashkil etish va barqaror turizmni rivojlantirish.",
 	"ourVision": "Bizning viziyamiz",
+
 	"visionText": "Shaxsiy xizmat va unutilmas sarguzashtlari bilan yetakchi agentlik bo‘lish.",
 	"destinationsTitle": "Manzillar - Avvalgi guruh rasmlari va videolari bilan shaharlar",
 	"destinationsSubtitle": "Ehtiyotkorlik bilan tanlangan yo‘nalishlarimizni kashf qiling",
+	"destinationNotFound": "Manzil topilmadi",
+	"destinationNotFoundDescription": "Qidirayotgan manzilingiz topilmadi.",
+	"backToDestinations": "Manzillar sahifasiga qaytish",
+	"gallery": "Galereya",
+
 	"contactTitle": "Biz bilan bog‘laning",
 	"contactSubtitle": "Sarguzashtingizni boshlashga tayyormisiz? Bugun bog‘laning!",
 	"mainOffice": "Asosiy ofis",
@@ -107,5 +113,22 @@
 	"romantic": "Romantik",
 
 	"instagramTitle": "Instagram Reels",
-	"instagramSubtitle": "Instagramdagi so‘nggi sayohat reel videolarimiz ✈️"
+	"instagramSubtitle": "Instagramdagi so‘nggi sayohat reel videolarimiz ✈️",
+
+	"licenses": "Litsenziyalar",
+
+	"viennaDestinationsTitle": "Vena",
+	"viennaDestinationsSubtitle": "Avstriya poytaxti Vena o‘zining ulug‘vor tarixi va boy madaniyati bilan mashhur. Schönbrunn saroyi, Avliyo Stefan sobori va Davlat operasini kashf eting. Kofe uylarida mashhur Sacher tortidan tatib ko‘ring va Dunay daryosining go‘zalligidan bahramand bo‘ling.",
+
+	"zurichDestinationsTitle": "Syurix",
+	"zurichDestinationsSubtitle": "Shveytsariyaning eng katta shahri Syurix zamonaviy hayot, tarix va tabiat go‘zalligini o‘zida mujassam etgan. Eski shaharchada sayr qiling, ko‘llar va Alp tog‘laridan zavqlaning va Reyn sharsharasini kashf eting.",
+
+	"interlakenDestinationsTitle": "Interlaken",
+	"interlakenDestinationsSubtitle": "Tunning va Bryenz ko‘llari orasida joylashgan Interlaken Shveytsariyaning eng go‘zal manzillaridan biridir. Tog‘larda sayr, parashyutda uchish yoki sokin dam olish – barchasi bu yerda mavjud.",
+
+	"genevaDestinationsTitle": "Jeneva",
+	"genevaDestinationsSubtitle": "Jeneva ko‘li bo‘yida joylashgan bu shahar o‘zining nafisligi va xalqaro muhit bilan mashhur. Jet d’Eau favvorasi, hashamatli butiklari va BMT kabi muassasalari bilan Jeneva dunyo miqyosida alohida o‘rin tutadi.",
+
+	"parisDestinationsTitle": "Parij – Nurlar shahri",
+	"parisDestinationsSubtitle": "Fransiya poytaxti Parij – muhabbat, san’at va nafislik ramzi. Eyfel minorasi, Luvr muzeyi va Sena bo‘yidagi sayohatlar bilan mashhur."
 }

@@ -14,7 +14,6 @@ export default function Destinations() {
 	const [searchTerm, setSearchTerm] = useState('')
 	const [selectedCategory, setSelectedCategory] = useState('all')
 
-	// kategoriya labelini tarjima qilish
 	const categories = useMemo(
 		() =>
 			CATEGORIES.map(c => ({

@@ -11,7 +11,7 @@ interface TeamCardProps {
 
 const TeamCard = ({ image, name, role, description }: TeamCardProps) => {
 	return (
-		<div className='h-[450px] border border-gray-200 bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 flex-shrink-0 w-72'>
+		<div className='border border-gray-300 bg-white rounded-xl overflow-hidden hover:shadow-sm transition-shadow duration-300 flex-shrink-0 w-72'>
 			<div className='h-64 overflow-hidden'>
 				<Image
 					src={image}
@@ -24,7 +24,7 @@ const TeamCard = ({ image, name, role, description }: TeamCardProps) => {
 			<div className='p-6'>
 				<h3 className='text-xl font-semibold text-gray-800 mb-2'>{name}</h3>
 				<p className='text-orange-500 font-medium mb-4'>{role}</p>
-				<p className='text-gray-600 leading-relaxed'>{description}</p>
+				{/* <p className='text-gray-600 leading-relaxed'>{description}</p> */}
 			</div>
 		</div>
 	)

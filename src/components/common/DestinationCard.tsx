@@ -3,11 +3,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { MapPin } from 'lucide-react'
+import { Translations, useLanguage } from '@/contexts/LanguageContext'
 
 interface DestinationCardProps {
 	slug: string
-	title: string
-	description: string
+	title: keyof Translations
+	description: keyof Translations
 	image: string
 }
 
@@ -17,6 +18,8 @@ export default function DestinationCard({
 	description,
 	image,
 }: DestinationCardProps) {
+	const { t } = useLanguage()
+
 	return (
 		<div className='bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:-translate-y-2 group'>
 			{/* Image Section */}
@@ -36,18 +39,18 @@ export default function DestinationCard({
 			<div className='p-6'>
 				<div className='flex items-center space-x-1 text-orange-500 mb-2'>
 					<MapPin className='w-4 h-4' />
-					<h3 className='text-lg font-semibold text-gray-800'>{title}</h3>
+					<h3 className='text-lg font-semibold text-gray-800'>{t(title)}</h3>
 				</div>
 
 				<p className='text-gray-600 mb-4 leading-relaxed line-clamp-2 h-[3rem]'>
-					{description}
+					{t(description)}
 				</p>
 
 				<Link
 					href={`/destinations/${slug}`}
 					className='inline-block bg-gradient-to-r from-orange-400 to-orange-500 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 hover:from-orange-500 hover:to-orange-600 hover:scale-105'
 				>
-					Learn More
+					{t('learnMore')}
 				</Link>
 			</div>
 		</div>

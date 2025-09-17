@@ -10,7 +10,7 @@ import ru from '@/locales/ru.json'
 import de from '@/locales/de.json'
 import fr from '@/locales/fr.json'
 
-type Translations = typeof en
+export type Translations = typeof en
 
 const translations: Record<Language, Translations> = { en, uz, ru, de, fr }
 
@@ -25,7 +25,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 )
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-	const [language, setLanguage] = useState<Language>('uz')
+	const [language, setLanguage] = useState<Language>('en')
 
 	const t = (key: keyof Translations): string => {
 		return translations[language][key] || key

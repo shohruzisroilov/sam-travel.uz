@@ -42,6 +42,12 @@
 	"visionText": "Das führende Reisebüro für persönlichen Service und unvergessliche Abenteuer zu sein.",
 	"destinationsTitle": "Reiseziele - Städte mit früheren Gruppenfotos und -videos",
 	"destinationsSubtitle": "Entdecken Sie unsere sorgfältig ausgewählten Reiseziele",
+
+	"destinationNotFound": "Reiseziel nicht gefunden",
+	"destinationNotFoundDescription": "Wir konnten das gesuchte Reiseziel nicht finden.",
+	"backToDestinations": "Zurück zu den Reisezielen",
+	"gallery": "Galerie",
+
 	"contactTitle": "Kontaktieren Sie uns",
 	"contactSubtitle": "Bereit für Ihr Abenteuer? Kontaktieren Sie uns noch heute!",
 	"mainOffice": "Hauptbüro",
@@ -106,5 +112,22 @@
 	"nature": "Natur",
 	"romantic": "Romantisch",
 	"instagramTitle": "Instagram Reels",
-	"instagramSubtitle": "Unsere neuesten Travel-Reels auf Instagram ✈️"
+	"instagramSubtitle": "Unsere neuesten Travel-Reels auf Instagram ✈️",
+
+	"licenses": "Lizenzen",
+
+	"viennaDestinationsTitle": "Wien",
+	"viennaDestinationsSubtitle": "Die Hauptstadt Österreichs verbindet kaiserliche Pracht mit lebendiger Kultur. Besuchen Sie Schloss Schönbrunn, den Stephansdom und die Wiener Staatsoper.",
+
+	"zurichDestinationsTitle": "Zürich",
+	"zurichDestinationsSubtitle": "Zürich, die größte Stadt der Schweiz, vereint modernes Leben, Geschichte und Natur. Spazieren Sie durch die Altstadt, genießen Sie den Zürichsee und besuchen Sie den Rheinfall.",
+
+	"interlakenDestinationsTitle": "Interlaken",
+	"interlakenDestinationsSubtitle": "Zwischen dem Thunersee und dem Brienzersee gelegen, ist Interlaken von den Bergen Eiger, Mönch und Jungfrau umgeben. Ideal für Abenteuer und Erholung.",
+
+	"genevaDestinationsTitle": "Genf",
+	"genevaDestinationsSubtitle": "Genf liegt am Ufer des Genfersees und ist bekannt für Eleganz und internationale Bedeutung. Berühmt für den Jet d’Eau, die Vereinten Nationen und feine Schokolade.",
+
+	"parisDestinationsTitle": "Paris – Die Stadt des Lichts",
+	"parisDestinationsSubtitle": "Paris, die Hauptstadt Frankreichs, ist ein zeitloses Symbol für Romantik, Kunst und Eleganz. Der Eiffelturm, der Louvre und Spaziergänge an der Seine machen die Stadt unvergesslich."
 }
