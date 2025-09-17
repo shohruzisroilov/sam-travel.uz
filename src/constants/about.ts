@@ -1,7 +1,7 @@
 import { FileText, Shield, Building } from 'lucide-react'
 
 export const stats = [
-	{ label: 'Happy Clients', value: 1520, suffix: '+' },
+	{ label: 'Happy Clients', value: 1500, suffix: '+' },
 	{ label: 'Destinations', value: 15, suffix: '+' },
 	{ label: 'Years Experience', value: 8, suffix: '+' },
 	{ label: 'Expert Guides', value: 170, suffix: '+' },
