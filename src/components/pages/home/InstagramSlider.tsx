@@ -22,9 +22,9 @@ export default function InstagramSlider() {
 		<section className='py-20 bg-gray-50 relative'>
 			<div className='max-w-6xl mx-auto px-4'>
 				<div className='text-center mb-12'>
-					<h2 className='text-3xl font-bold mb-4'>{t('instagramTitle')}</h2>
+					<h2 className='text-3xl font-bold mb-4'>{t('testimonialsTitle')}</h2>
 					<div className='w-24 h-1 bg-[rgb(247,162,31)] mx-auto mb-6 rounded-full' />
-					<p className='text-lg text-gray-600'>{t('instagramSubtitle')}</p>
+					<p className='text-lg text-gray-600'>{t('testimonialsSubtitle')}</p>
 				</div>
 
 				<div className='relative'>
