@@ -129,5 +129,14 @@
 	"genevaDestinationsSubtitle": "Jeneva ko‘li bo‘yida joylashgan bu shahar o‘zining nafisligi va xalqaro muhit bilan mashhur. Jet d’Eau favvorasi, hashamatli butiklari va BMT kabi muassasalari bilan Jeneva dunyo miqyosida alohida o‘rin tutadi.",
 
 	"parisDestinationsTitle": "Parij – Nurlar shahri",
-	"parisDestinationsSubtitle": "Fransiya poytaxti Parij – muhabbat, san’at va nafislik ramzi. Eyfel minorasi, Luvr muzeyi va Sena bo‘yidagi sayohatlar bilan mashhur."
+	"parisDestinationsSubtitle": "Fransiya poytaxti Parij – muhabbat, san’at va nafislik ramzi. Eyfel minorasi, Luvr muzeyi va Sena bo‘yidagi sayohatlar bilan mashhur.",
+
+	"newMessage": "Yangi xabar",
+	"notProvided": "kiritilmagan",
+	"sending": " Yuborilmoqda...",
+	"messageSent": " Xabaringiz yuborildi!",
+	"messageError": " Xabar yuborishda xatolik!",
+	"businessHours": "Ish vaqtlari",
+	"monFri": "Dushanba - Juma: 9:00 - 18:00",
+	"satSun": "Shanba - Yakshanba: 10:00 - 16:00"
 }

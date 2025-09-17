@@ -128,5 +128,14 @@
 	"genevaDestinationsSubtitle": "Genf liegt am Ufer des Genfersees und ist bekannt für Eleganz und internationale Bedeutung. Berühmt für den Jet d’Eau, die Vereinten Nationen und feine Schokolade.",
 
 	"parisDestinationsTitle": "Paris – Die Stadt des Lichts",
-	"parisDestinationsSubtitle": "Paris, die Hauptstadt Frankreichs, ist ein zeitloses Symbol für Romantik, Kunst und Eleganz. Der Eiffelturm, der Louvre und Spaziergänge an der Seine machen die Stadt unvergesslich."
+	"parisDestinationsSubtitle": "Paris, die Hauptstadt Frankreichs, ist ein zeitloses Symbol für Romantik, Kunst und Eleganz. Der Eiffelturm, der Louvre und Spaziergänge an der Seine machen die Stadt unvergesslich.",
+
+	"newMessage": "Neue Nachricht",
+	"notProvided": "nicht angegeben",
+	"sending": " Wird gesendet...",
+	"messageSent": "Ihre Nachricht wurde gesendet!",
+	"messageError": " Fehler beim Senden der Nachricht!",
+	"businessHours": "Öffnungszeiten",
+	"monFri": "Mo - Fr: 9:00 - 18:00",
+	"satSun": "Sa - So: 10:00 - 16:00"
 }

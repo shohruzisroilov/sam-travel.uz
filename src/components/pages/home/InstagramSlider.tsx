@@ -7,6 +7,7 @@ import 'swiper/css/navigation'
 
 import { useLanguage } from '@/contexts/LanguageContext'
 import VideoPlayer from './VideoPlayer'
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 
 export default function InstagramSlider() {
 	const { t } = useLanguage()
@@ -53,12 +54,12 @@ export default function InstagramSlider() {
 
 					{/* Left button */}
 					<button className='custom-prev absolute top-1/2 left-2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center rounded bg-orange-400 text-white shadow-lg hover:bg-orange-500 transition'>
-						←
+						<IoIosArrowBack />
 					</button>
 
 					{/* Right button */}
 					<button className='custom-next absolute top-1/2 right-2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center rounded bg-orange-400 text-white shadow-lg hover:bg-orange-500 transition'>
-						→
+						<IoIosArrowForward />
 					</button>
 				</div>
 			</div>

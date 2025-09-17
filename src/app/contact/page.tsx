@@ -10,6 +10,8 @@ import { Button } from '@/components/ui/button'
 import type { Value as E164Number } from 'react-phone-number-input'
 import { PhoneNumberInput } from '../../components/pages/contact/PhoneNumberInput'
 
+import { toast, Toaster } from 'react-hot-toast'
+
 export default function Contact() {
 	const { t } = useLanguage()
 
@@ -22,10 +24,46 @@ export default function Contact() {
 		message: '',
 	})
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
-		console.log('Form submitted:', formData)
-		setFormData({ name: '', message: '', tel: undefined })
+
+		const telegramToken =
+			process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN || 'YOUR_REAL_TOKEN'
+		const chatId =
+			process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID || 'YOUR_REAL_CHAT_ID'
+
+		const text = `📩 ${t('newMessage')}:\n\n👤 ${t('name')}: ${
+			formData.name
+		}\n📞 ${t('phone')}: ${formData.tel || t('notProvided')}\n💬 ${t(
+			'message'
+		)}: ${formData.message}`
+
+		const toastId = toast.loading(t('sending'))
+
+		try {
+			const res = await fetch(
+				`https://api.telegram.org/bot${telegramToken}/sendMessage`,
+				{
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+						chat_id: chatId,
+						text,
+						parse_mode: 'Markdown',
+					}),
+				}
+			)
+
+			if (!res.ok) {
+				throw new Error(`Telegram API error: ${res.status}`)
+			}
+
+			toast.success(t('messageSent'), { id: toastId })
+			setFormData({ name: '', message: '', tel: undefined })
+		} catch (err) {
+			console.error('Telegram API error:', err)
+			toast.error(t('messageError'), { id: toastId })
+		}
 	}
 
 	const contactInfo = [
@@ -41,8 +79,8 @@ export default function Contact() {
 		},
 		{
 			icon: <Clock className='w-6 h-6 text-white' />,
-			title: 'Business Hours',
-			lines: ['Mon - Fri: 9:00 - 18:00', 'Sat - Sun: 10:00 - 16:00'],
+			title: t('businessHours'),
+			lines: [t('monFri'), t('satSun')],
 		},
 	]
 
@@ -59,6 +97,9 @@ export default function Contact() {
 
 	return (
 		<div className='min-h-screen'>
+			{/* 🔥 Toast konteyneri */}
+			<Toaster position='top-right' reverseOrder={false} />
+
 			{/* Hero Section */}
 			<section
 				className='relative py-40 bg-center bg-cover text-center'

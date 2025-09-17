@@ -129,5 +129,14 @@
 	"genevaDestinationsSubtitle": "Genève, au bord du lac Léman, allie élégance et dimension internationale. Célèbre pour son Jet d’Eau, ses institutions mondiales et son chocolat suisse.",
 
 	"parisDestinationsTitle": "Paris – La Ville Lumière",
-	"parisDestinationsSubtitle": "Paris, capitale de la France, est un symbole intemporel de romantisme, d’art et d’élégance. De la tour Eiffel au Louvre, chaque coin raconte une histoire."
+	"parisDestinationsSubtitle": "Paris, capitale de la France, est un symbole intemporel de romantisme, d’art et d’élégance. De la tour Eiffel au Louvre, chaque coin raconte une histoire.",
+
+	"newMessage": "Nouveau message",
+	"notProvided": "non fourni",
+	"sending": " Envoi en cours...",
+	"messageSent": " Votre message a été envoyé !",
+	"messageError": " Erreur lors de l'envoi du message !",
+	"businessHours": "Heures d'ouverture",
+	"monFri": "Lun - Ven : 9h00 - 18h00",
+	"satSun": "Sam - Dim : 10h00 - 16h00"
 }

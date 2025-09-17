@@ -135,5 +135,14 @@
 	"genevaDestinationsSubtitle": "Nestled on the shores of Lake Geneva with the Alps and Jura mountains as a backdrop, Geneva is a city of elegance...",
 
 	"parisDestinationsTitle": "Paris – The City of Light",
-	"parisDestinationsSubtitle": "Paris, the capital of France, is a timeless symbol of romance, art, and elegance..."
+	"parisDestinationsSubtitle": "Paris, the capital of France, is a timeless symbol of romance, art, and elegance...",
+
+	"newMessage": "New message",
+	"notProvided": "not provided",
+	"sending": " Sending...",
+	"messageSent": " Your message has been sent!",
+	"messageError": " Error while sending message!",
+	"businessHours": "Business Hours",
+	"monFri": "Mon - Fri: 9:00 - 18:00",
+	"satSun": "Sat - Sun: 10:00 - 16:00"
 }
