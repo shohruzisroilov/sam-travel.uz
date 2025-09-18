@@ -28,15 +28,13 @@ export const DESTINATIONS: Destination[] = [
 		key: 'zurich',
 		title: 'zurichDestinationsTitle',
 		description: 'zurichDestinationsSubtitle',
-		mainImage: '/images/destinations/zurich.jpg',
+		mainImage: '/images/destinations/zurich.png',
 		category: 'modern',
 		gallery: [
 			'/images/destinations/zurich1.jpg',
 			'/images/destinations/zurich2.jpg',
-			'/images/destinations/zurich3.jpg',
-			'/images/destinations/zurich4.jpg',
-			'/images/destinations/zurich5.jpg',
-			'/images/destinations/zurich6.jpg',
+			'/images/destinations/zurich3.png',
+			'/images/destinations/zurich4.png',
 		],
 	},
 	{
