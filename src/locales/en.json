@@ -61,6 +61,7 @@
 	"contactInfo": "Contact Information",
 	"phone": "Phone",
 	"address": "Address",
+	"addressDes": "Shayhontohur Street, Tashkent, Uzbekistan",
 
 	"customerReviews": "Customer Reviews",
 	"whatClientsSay": "What Our Clients Say",
@@ -144,5 +145,31 @@
 	"messageError": " Error while sending message!",
 	"businessHours": "Business Hours",
 	"monFri": "Mon - Fri: 9:00 - 18:00",
-	"satSun": "Sat - Sun: 10:00 - 16:00"
+	"satSun": "Sat - Sun: 10:00 - 16:00",
+
+	"faqtitle": "Frequently Asked Questions",
+
+	"faqq1": "How far in advance should I book my trip?",
+	"faqa1": "We recommend booking at least 3-4 weeks in advance to secure the best availability. However, last-minute bookings may also be possible depending on the tour.",
+
+	"faqq2": "Do you provide travel insurance?",
+	"faqa2": "Yes, we will provide medical insurance for our clients.",
+
+	"faqq3": "Can you arrange custom itineraries?",
+	"faqa3": "Absolutely. We can tailor tours to match your group’s preferences, interests, and schedule.",
+
+	"faqq4": "What payment methods do you accept?",
+	"faqa4": "We accept bank transfers, credit/debit cards, and other commonly used international payment methods.",
+
+	"faqq5": "What kind of transport will be used?",
+	"faqa5": "We travel with comfortable, modern buses that are never older than 3 years. All buses are equipped with air conditioning, spacious seating, and safety features to ensure a pleasant journey.",
+
+	"faqq6": "Is travelling through Europe by bus comfortable?",
+	"faqa6": "Yes, travelling by bus is often more convenient than trains or planes. You don’t need to worry about carrying luggage between stations, booking multiple tickets, or arranging transfers to hotels. Our buses take you directly from city to city, while our experienced guides share insights about the destinations along the way. You can relax, enjoy the scenery, and make the most of your time.",
+
+	"faqq7": "Is European bus travel suitable for children?",
+	"faqa7": "Absolutely. Many families choose our tours and find them enjoyable for children. Kids appreciate the comfort of traveling in one vehicle without frequent changes, and the sightseeing breaks keep them entertained. Our guides also do their best to make the journey fun and engaging for young travelers.",
+
+	"faqq8": "What kind of food will we eat?",
+	"faqa8": "We take special care to guide you to halal-friendly restaurants. Our guides will help you choose meals and explain local dishes, ensuring you can enjoy authentic European cuisine with peace of mind."
 }

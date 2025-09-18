@@ -59,6 +59,7 @@
 	"contactInfo": "Aloqa ma’lumotlari",
 	"phone": "Telefon",
 	"address": "Manzil",
+	"addressDes": "Shayhontohur ko'chasi, Toshkent, O‘zbekiston",
 	"customerReviews": "Mijozlar fikrlari",
 	"whatClientsSay": "Mijozlarimiz nima deydi",
 	"samarkand": "Samarqand",
@@ -138,5 +139,31 @@
 	"messageError": " Xabar yuborishda xatolik!",
 	"businessHours": "Ish vaqtlari",
 	"monFri": "Dushanba - Juma: 9:00 - 18:00",
-	"satSun": "Shanba - Yakshanba: 10:00 - 16:00"
+	"satSun": "Shanba - Yakshanba: 10:00 - 16:00",
+
+	"faqtitle": "Ko‘p so‘raladigan savollar",
+
+	"faqq1": "Safarni qancha oldin buyurtma qilishim kerak?",
+	"faqa1": "Eng yaxshi joylarni ta’minlash uchun 3-4 hafta oldin buyurtma qilishni tavsiya qilamiz. Ammo, ayrim hollarda so‘nggi daqiqalarda ham buyurtma qilish mumkin.",
+
+	"faqq2": "Siz sug‘urta xizmatini taqdim qilasizmi?",
+	"faqa2": "Ha, biz mijozlarimizga tibbiy sug‘urta taqdim etamiz.",
+
+	"faqq3": "Maxsus marshrutlar tuzib bera olasizmi?",
+	"faqa3": "Albatta. Biz sizning guruhingizning istaklari, qiziqishlari va jadvaliga mos tur paketlarini tuzib bera olamiz.",
+
+	"faqq4": "Qanday to‘lov usullarini qabul qilasiz?",
+	"faqa4": "Biz bank o‘tkazmalari, kredit/debet kartalari va xalqaro to‘lov usullarini qabul qilamiz.",
+
+	"faqq5": "Qanday transport vositalaridan foydalaniladi?",
+	"faqa5": "Biz qulay, zamonaviy va 3 yildan oshmagan avtobuslardan foydalanamiz. Avtobuslar konditsioner, keng o‘rindiqlar va xavfsizlik tizimlari bilan jihozlangan.",
+
+	"faqq6": "Avtobusda Yevropa bo‘ylab sayohat qilish qulaymi?",
+	"faqa6": "Ha, avtobusda sayohat ko‘pincha poyezd yoki samolyotdan ham qulayroq. Bagaj tashish, ko‘p chipta olish yoki mehmonxonaga transfer haqida qayg‘urishingiz shart emas. Avtobuslarimiz sizni shaharlar orasida to‘g‘ridan-to‘g‘ri olib o‘tadi, yo‘l davomida gidlarimiz esa manzillar haqida ma’lumot berib boradi.",
+
+	"faqq7": "Yevropada avtobus sayohati bolalar uchun mosmi?",
+	"faqa7": "Albatta. Ko‘plab oilalar bizning turlarimizni tanlashadi va bolalari bilan qulay sayohat qilishadi. Bolalar bir avtobusda bemalol safar qilishni va sayohat davomida beriladigan tanaffuslarni yoqtirishadi.",
+
+	"faqq8": "Ovqat qanday bo‘ladi?",
+	"faqa8": "Biz sizni halol ovqatlanish joylariga olib borishga alohida e’tibor beramiz. Gidlarimiz sizga taomlarni tanlashda yordam beradi va mahalliy taomlarni tushuntirib beradi."
 }

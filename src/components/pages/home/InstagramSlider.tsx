@@ -13,10 +13,10 @@ export default function InstagramSlider() {
 	const { t } = useLanguage()
 
 	const videos = [
-		'/videos/video1.mp4',
-		'/videos/video2.mp4',
-		'/videos/video3.mp4',
-		'/videos/video4.mp4',
+		'https://res.cloudinary.com/dj3epjudt/video/upload/v1758217834/fpu4bnadr0mh733vsphk.mp4',
+		'https://res.cloudinary.com/dj3epjudt/video/upload/v1758217836/ynqcjuwyuvohiane6xt5.mp4',
+		'https://res.cloudinary.com/dj3epjudt/video/upload/v1758217837/gucnqzzhiotidra8so64.mp4',
+		'https://res.cloudinary.com/dj3epjudt/video/upload/v1758217841/rb5ph0v9ycbmexdvnkm3.mp4',
 	]
 
 	return (

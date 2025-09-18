@@ -6,9 +6,9 @@
 	"tours": "Circuits",
 	"hotels": "Hôtels",
 	"reports": "Rapports",
-	"getInTouch": "",
-	"contactUs": "",
-	"contactDesc": "",
+	"getInTouch": "Entrer en contact",
+	"contactUs": "Contactez-nous",
+	"contactDesc": "Nous serons ravis de recevoir votre message et de vous aider.",
 	"heroTitle": "Nouvelles aventures en Europe avec SamTravel",
 	"heroSubtitle": "Ne rêvez pas seulement de voyager – Commencez avec nous",
 	"exploreButton": "Explorer les destinations",
@@ -59,6 +59,7 @@
 	"contactInfo": "Informations de contact",
 	"phone": "Téléphone",
 	"address": "Adresse",
+	"addressDes": "Rue Shayhontohur, Tachkent, Ouzbékistan",
 	"customerReviews": "Avis des clients",
 	"whatClientsSay": "Ce que disent nos clients",
 	"samarkand": "Samarkand",
@@ -138,5 +139,31 @@
 	"messageError": " Erreur lors de l'envoi du message !",
 	"businessHours": "Heures d'ouverture",
 	"monFri": "Lun - Ven : 9h00 - 18h00",
-	"satSun": "Sam - Dim : 10h00 - 16h00"
+	"satSun": "Sam - Dim : 10h00 - 16h00",
+
+	"faqtitle": "Sıkça Sorulan Sorular",
+
+	"faqq1": "Seyahatimi ne kadar önceden ayırtmalıyım?",
+	"faqa1": "En iyi imkanları sağlamak için en az 3-4 hafta önceden rezervasyon yapmanızı öneriyoruz. Ancak, tura bağlı olarak son dakika rezervasyonları da mümkün olabilir.",
+
+	"faqq2": "Seyahat sigortası sağlıyor musunuz?",
+	"faqa2": "Evet, müşterilerimize sağlık sigortası sağlıyoruz.",
+
+	"faqq3": "Özel gezi programı hazırlayabilir misiniz?",
+	"faqa3": "Kesinlikle. Turları grubunuzun ilgi alanlarına, tercihlerinize ve programınıza göre uyarlayabiliriz.",
+
+	"faqq4": "Hangi ödeme yöntemlerini kabul ediyorsunuz?",
+	"faqa4": "Banka havalesi, kredi/banka kartı ve diğer yaygın uluslararası ödeme yöntemlerini kabul ediyoruz.",
+
+	"faqq5": "Hangi ulaşım araçları kullanılacak?",
+	"faqa5": "Modern ve konforlu, 3 yıldan eski olmayan otobüslerle seyahat ediyoruz. Tüm otobüsler klima, geniş koltuklar ve güvenlik sistemleriyle donatılmıştır.",
+
+	"faqq6": "Avrupa’yı otobüsle gezmek rahat mı?",
+	"faqa6": "Evet, otobüsle seyahat genellikle tren veya uçaktan daha rahattır. Bagaj taşımak, birden fazla bilet almak veya otel transferleriyle uğraşmanıza gerek yoktur. Otobüslerimiz sizi doğrudan şehirden şehre götürür, rehberlerimiz ise yol boyunca bilgiler paylaşır.",
+
+	"faqq7": "Avrupa’da otobüsle seyahat çocuklar için uygun mu?",
+	"faqa7": "Kesinlikle. Birçok aile turlarımızı tercih ediyor ve çocuklar için keyifli buluyor. Çocuklar sık sık araç değiştirmeden seyahat etmenin rahatlığını sever ve mola yerlerinde eğlenirler.",
+
+	"faqq8": "Ne tür yemekler yiyeceğiz?",
+	"faqa8": "Sizi helal dostu restoranlara yönlendirmeye özen gösteriyoruz. Rehberlerimiz yemek seçmenize yardımcı olur ve yerel yemekleri açıklar."
 }

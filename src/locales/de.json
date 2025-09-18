@@ -6,9 +6,9 @@
 	"tours": "Touren",
 	"hotels": "Hotels",
 	"reports": "Berichte",
-	"getInTouch": "",
-	"contactUs": "",
-	"contactDesc": "",
+	"getInTouch": "Kontakt aufnehmen",
+	"contactUs": "Kontaktieren Sie uns",
+	"contactDesc": "Wir freuen uns auf Ihre Nachricht und helfen Ihnen gerne weiter.",
 	"heroTitle": "Neue Abenteuer in Europa mit SamTravel",
 	"heroSubtitle": "Träumen Sie nicht nur vom Reisen – Beginnen Sie mit uns",
 	"exploreButton": "Reiseziele entdecken",
@@ -59,6 +59,7 @@
 	"contactInfo": "Kontaktinformationen",
 	"phone": "Telefon",
 	"address": "Adresse",
+	"addressDes": "Shayhontohur-Straße, Taschkent, Usbekistan",
 	"customerReviews": "Kundenbewertungen",
 	"whatClientsSay": "Was unsere Kunden sagen",
 	"samarkand": "Samarkand",
@@ -137,5 +138,31 @@
 	"messageError": " Fehler beim Senden der Nachricht!",
 	"businessHours": "Öffnungszeiten",
 	"monFri": "Mo - Fr: 9:00 - 18:00",
-	"satSun": "Sa - So: 10:00 - 16:00"
+	"satSun": "Sa - So: 10:00 - 16:00",
+
+	"faqtitle": "Häufig gestellte Fragen",
+
+	"faqq1": "Wie lange im Voraus sollte ich meine Reise buchen?",
+	"faqa1": "Wir empfehlen, mindestens 3-4 Wochen im Voraus zu buchen, um die beste Verfügbarkeit zu sichern. Last-Minute-Buchungen sind je nach Tour ebenfalls möglich.",
+
+	"faqq2": "Bieten Sie eine Reiseversicherung an?",
+	"faqa2": "Ja, wir bieten unseren Kunden eine Krankenversicherung an.",
+
+	"faqq3": "Können Sie individuelle Reiserouten arrangieren?",
+	"faqa3": "Absolut. Wir können Touren an die Interessen, Vorlieben und den Zeitplan Ihrer Gruppe anpassen.",
+
+	"faqq4": "Welche Zahlungsmethoden akzeptieren Sie?",
+	"faqa4": "Wir akzeptieren Banküberweisungen, Kredit-/Debitkarten und andere gängige internationale Zahlungsmethoden.",
+
+	"faqq5": "Welche Transportmittel werden verwendet?",
+	"faqa5": "Wir reisen mit modernen, komfortablen Bussen, die nicht älter als 3 Jahre sind. Alle Busse sind mit Klimaanlage, bequemen Sitzen und Sicherheitsausstattung ausgestattet.",
+
+	"faqq6": "Ist Reisen durch Europa mit dem Bus bequem?",
+	"faqa6": "Ja, Reisen mit dem Bus ist oft bequemer als mit dem Zug oder Flugzeug. Sie müssen sich keine Sorgen um Gepäck, mehrere Tickets oder Transfers machen. Unsere Busse bringen Sie direkt von Stadt zu Stadt, während unsere erfahrenen Guides unterwegs Informationen teilen.",
+
+	"faqq7": "Ist Busreisen durch Europa für Kinder geeignet?",
+	"faqa7": "Auf jeden Fall. Viele Familien wählen unsere Touren und finden sie für Kinder angenehm. Kinder genießen es, ohne häufige Umstiege zu reisen, und die Pausen während der Fahrt halten sie bei Laune.",
+
+	"faqq8": "Welche Art von Essen werden wir essen?",
+	"faqa8": "Wir achten besonders darauf, Sie zu halal-freundlichen Restaurants zu führen. Unsere Guides helfen Ihnen bei der Auswahl und erklären lokale Gerichte."
 }

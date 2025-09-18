@@ -7,27 +7,27 @@ import {
 	AccordionTrigger,
 } from '@/components/ui/accordion'
 
+import { useLanguage } from '@/contexts/LanguageContext'
+
 export default function FAQ() {
+	const { t } = useLanguage()
+
 	const faqs = [
 		{
-			question: 'How far in advance should I book my trip?',
-			answer:
-				'We recommend booking at least 2-3 months in advance for international destinations and 3-4 weeks for domestic trips.',
+			question: t('faqq1'),
+			answer: t('faqa1'),
 		},
 		{
-			question: 'Do you provide travel insurance?',
-			answer:
-				'Yes, we offer comprehensive travel insurance packages covering medical emergencies, cancellations, and lost luggage.',
+			question: t('faqq2'),
+			answer: t('faqa2'),
 		},
 		{
-			question: 'Can you arrange custom itineraries?',
-			answer:
-				'Absolutely! We specialize in personalized travel experiences tailored to your preferences, budget, and interests.',
+			question: t('faqq3'),
+			answer: t('faqa3'),
 		},
 		{
-			question: 'What payment methods do you accept?',
-			answer:
-				'We accept all major credit cards, bank transfers, and offer flexible payment plans for larger bookings.',
+			question: t('faqq4'),
+			answer: t('faqa4'),
 		},
 	]
 
@@ -35,9 +35,7 @@ export default function FAQ() {
 		<section className='py-20'>
 			<div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
 				<div className='text-center mb-16'>
-					<h2 className='text-3xl font-bold mb-4'>
-						Frequently Asked Questions
-					</h2>
+					<h2 className='text-3xl font-bold mb-4'>{t('faqtitle')}</h2>
 					<div className='w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto' />
 				</div>
 

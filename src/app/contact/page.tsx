@@ -27,10 +27,8 @@ export default function Contact() {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
 
-		const telegramToken =
-			process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN || 'YOUR_REAL_TOKEN'
-		const chatId =
-			process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID || 'YOUR_REAL_CHAT_ID'
+		const telegramToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN
+		const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID
 
 		const text = `📩 ${t('newMessage')}:\n\n👤 ${t('name')}: ${
 			formData.name
@@ -75,7 +73,7 @@ export default function Contact() {
 		{
 			icon: <MapPin className='w-6 h-6 text-white' />,
 			title: t('address'),
-			lines: ["Shayhontohur ko'chasi", 'Tashkent, Uzbekistan'],
+			lines: [t('addressDes')],
 		},
 		{
 			icon: <Clock className='w-6 h-6 text-white' />,
@@ -181,7 +179,10 @@ export default function Contact() {
 									<div>
 										<h3 className='font-semibold mb-1'>{item.title}</h3>
 										{item.lines.map((line, j) => (
-											<p key={j} className='text-gray-600 text-sm md:text-base'>
+											<p
+												key={j}
+												className='text-gray-600 max-w-[200px] text-sm md:text-base'
+											>
 												{line}
 											</p>
 										))}
