@@ -59,7 +59,7 @@
 	"contactInfo": "Informations de contact",
 	"phone": "Téléphone",
 	"address": "Adresse",
-	"addressDes": "Rue Shayhontohur, Tachkent, Ouzbékistan",
+	"addressDes": "Labzak 64, Tashkent, Uzbekistan",
 	"customerReviews": "Avis des clients",
 	"whatClientsSay": "Ce que disent nos clients",
 	"samarkand": "Samarkand",
@@ -118,20 +118,19 @@
 	"licenses": "Licences",
 
 	"viennaDestinationsTitle": "Vienne",
-	"viennaDestinationsSubtitle": "La capitale autrichienne Vienne allie grandeur impériale et culture vivante. Découvrez le palais de Schönbrunn, la cathédrale Saint-Étienne et l’Opéra d’État de Vienne.",
+	"viennaDestinationsSubtitle": "Capitale de l’Autriche, Vienne allie grandeur impériale et culture vibrante. Découvrez le palais de Schönbrunn, la cathédrale Saint-Étienne et l’opéra national de Vienne. Promenez-vous sur les élégants boulevards, visitez des musées de renommée mondiale et dégustez une part de Sachertorte dans un café historique. Entre concerts classiques et charme du Danube, Vienne offre une expérience inoubliable.",
 
 	"zurichDestinationsTitle": "Zurich",
-	"zurichDestinationsSubtitle": "Zurich, la plus grande ville de Suisse, mêle vie moderne, histoire et nature. Promenez-vous dans la vieille ville, profitez du lac de Zurich et admirez les chutes du Rhin.",
+	"zurichDestinationsSubtitle": "Plus grande ville de Suisse, Zurich allie vie moderne, histoire et nature spectaculaire. Explorez la vieille ville médiévale, les boutiques de luxe et les cafés au bord de la Limmat. Découvrez des musées de classe mondiale, une scène artistique dynamique et le lac de Zurich avec les Alpes en arrière-plan. À proximité, les impressionnantes chutes du Rhin, les plus grandes d’Europe, complètent cette destination unique.",
 
 	"interlakenDestinationsTitle": "Interlaken",
-	"interlakenDestinationsSubtitle": "Située entre le lac de Thoune et le lac de Brienz, Interlaken est entourée par l’Eiger, le Mönch et la Jungfrau. Un lieu idéal pour l’aventure comme pour la détente.",
+	"interlakenDestinationsSubtitle": "Située entre les lacs de Thoune et de Brienz, Interlaken est l’une des destinations les plus spectaculaires de Suisse. Entourée des majestueuses montagnes Eiger, Mönch et Jungfrau, c’est l’endroit idéal pour l’aventure et la détente. Parapente au-dessus des lacs turquoise, randonnées paisibles, balades en bateau et excursions alpines font d’Interlaken une expérience mémorable en toute saison.",
 
 	"genevaDestinationsTitle": "Genève",
-	"genevaDestinationsSubtitle": "Genève, au bord du lac Léman, allie élégance et dimension internationale. Célèbre pour son Jet d’Eau, ses institutions mondiales et son chocolat suisse.",
+	"genevaDestinationsSubtitle": "Située sur les rives du lac Léman, avec les Alpes et le Jura en toile de fond, Genève est une ville d’élégance et de charme international. Célèbre pour son Jet d’Eau, ses promenades fleuries et ses boutiques de montres de luxe, elle abrite également des institutions mondiales telles que l’ONU. Les visiteurs peuvent découvrir la vieille ville, profiter de croisières sur le lac et savourer du chocolat suisse. Genève allie parfaitement beauté naturelle, culture et vie cosmopolite.",
 
 	"parisDestinationsTitle": "Paris – La Ville Lumière",
-	"parisDestinationsSubtitle": "Paris, capitale de la France, est un symbole intemporel de romantisme, d’art et d’élégance. De la tour Eiffel au Louvre, chaque coin raconte une histoire.",
-
+	"parisDestinationsSubtitle": "Capitale de la France, Paris est un symbole intemporel de romance, d’art et d’élégance. De la tour Eiffel au musée du Louvre, en passant par les rues charmantes de Montmartre, chaque recoin raconte une histoire. Promenez-vous le long de la Seine, détendez-vous dans de confortables cafés et savourez la gastronomie française. Paris n’est pas seulement une ville, c’est une expérience culturelle et esthétique unique.",
 	"newMessage": "Nouveau message",
 	"notProvided": "non fourni",
 	"sending": " Envoi en cours...",

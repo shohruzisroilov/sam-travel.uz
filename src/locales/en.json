@@ -61,7 +61,7 @@
 	"contactInfo": "Contact Information",
 	"phone": "Phone",
 	"address": "Address",
-	"addressDes": "Shayhontohur Street, Tashkent, Uzbekistan",
+	"addressDes": "Labzak 64, Tashkent, Uzbekistan",
 
 	"customerReviews": "Customer Reviews",
 	"whatClientsSay": "What Our Clients Say",
@@ -124,20 +124,19 @@
 	"licenses": "Licenses",
 
 	"viennaDestinationsTitle": "Vienna",
-	"viennaDestinationsSubtitle": "Vienna, Austria’s capital, blends imperial grandeur with vibrant culture. Explore stunning landmarks like Schönbrunn Palace, St. Stephen’s Cathedral, and the Vienna State Opera...",
+	"viennaDestinationsSubtitle": "Vienna, Austria’s capital, blends imperial grandeur with vibrant culture. Explore stunning landmarks like Schönbrunn Palace, St. Stephen’s Cathedral, and the Vienna State Opera. Stroll elegant boulevards, enjoy world-class museums, and relax in historic coffeehouses with a slice of Sachertorte. From classical concerts to the charm of the Danube, Vienna promises a timeless and unforgettable experience.",
 
 	"zurichDestinationsTitle": "Zürich",
-	"zurichDestinationsSubtitle": "Zürich, Switzerland’s largest city, is a perfect blend of modern life, history, and breathtaking nature...",
+	"zurichDestinationsSubtitle": "Zürich, Switzerland’s largest city, is a perfect blend of modern life, history, and breathtaking nature. Wander through its charming Old Town with medieval streets, luxury boutiques, and cozy cafés along the Limmat River. Discover world-class museums, vibrant art, and the beauty of Lake Zürich, where the Alps rise in the distance. Just a short trip away lies the spectacular Rhine Falls, Europe’s largest waterfall, making Zürich a destination that combines cultural elegance with stunning alpine landscapes.",
 
 	"interlakenDestinationsTitle": "Interlaken",
-	"interlakenDestinationsSubtitle": "Nestled between Lake Thun and Lake Brienz, Interlaken is one of Switzerland’s most breathtaking destinations...",
+	"interlakenDestinationsSubtitle": "Nestled between Lake Thun and Lake Brienz, Interlaken is one of Switzerland’s most breathtaking destinations. Surrounded by the majestic Eiger, Mönch, and Jungfrau mountains, it’s the perfect place for adventure and relaxation alike. From paragliding above turquoise lakes to peaceful hikes through alpine meadows, scenic boat rides, and mountain excursions, Interlaken offers unforgettable experiences in every season.",
 
 	"genevaDestinationsTitle": "Geneva",
-	"genevaDestinationsSubtitle": "Nestled on the shores of Lake Geneva with the Alps and Jura mountains as a backdrop, Geneva is a city of elegance...",
+	"genevaDestinationsSubtitle": "Nestled on the shores of Lake Geneva with the Alps and Jura mountains as a backdrop, Geneva is a city of elegance and international charm. Famous for its Jet d’Eau fountain, flower-filled promenades, and luxury watch boutiques, it’s also home to global institutions like the United Nations. Visitors can explore the atmospheric Old Town, enjoy lake cruises, and savor Swiss chocolate in cozy cafés. Geneva perfectly blends natural beauty, culture, and cosmopolitan life.",
 
 	"parisDestinationsTitle": "Paris – The City of Light",
-	"parisDestinationsSubtitle": "Paris, the capital of France, is a timeless symbol of romance, art, and elegance...",
-
+	"parisDestinationsSubtitle": "Paris, the capital of France, is a timeless symbol of romance, art, and elegance. From the iconic Eiffel Tower and the majestic Louvre Museum to the charming streets of Montmartre, every corner of Paris tells a story. Stroll along the Seine River, relax in cozy cafés, and savor world-famous French cuisine. Paris is not just a city – it’s an experience of culture, beauty, and unforgettable moments.",
 	"newMessage": "New message",
 	"notProvided": "not provided",
 	"sending": " Sending...",

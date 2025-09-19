@@ -59,7 +59,7 @@
 	"contactInfo": "Aloqa ma’lumotlari",
 	"phone": "Telefon",
 	"address": "Manzil",
-	"addressDes": "Shayhontohur ko'chasi, Toshkent, O‘zbekiston",
+	"addressDes": "Labzak 64, Tashkent, Uzbekistan",
 	"customerReviews": "Mijozlar fikrlari",
 	"whatClientsSay": "Mijozlarimiz nima deydi",
 	"samarkand": "Samarqand",
@@ -118,20 +118,19 @@
 	"licenses": "Litsenziyalar",
 
 	"viennaDestinationsTitle": "Vena",
-	"viennaDestinationsSubtitle": "Avstriya poytaxti Vena o‘zining ulug‘vor tarixi va boy madaniyati bilan mashhur. Schönbrunn saroyi, Avliyo Stefan sobori va Davlat operasini kashf eting. Kofe uylarida mashhur Sacher tortidan tatib ko‘ring va Dunay daryosining go‘zalligidan bahramand bo‘ling.",
+	"viennaDestinationsSubtitle": "Avstriyaning poytaxti Vena imperatorona ulug‘vorlik va boy madaniyat uyg‘unligidir. Schönbrunn saroyi, Avliyo Stefan sobori va Vena davlat operasini tomosha qiling. Nafis ko‘chalarda sayr qiling, mashhur muzeylarga tashrif buyuring va tarixiy qahvaxonada Sachertorte shirinidan tatib ko‘ring. Klassik musiqiy konsertlardan tortib Dunay daryosining jozibasigacha, Vena unutilmas taassurotlarni taqdim etadi.",
 
 	"zurichDestinationsTitle": "Syurix",
-	"zurichDestinationsSubtitle": "Shveytsariyaning eng katta shahri Syurix zamonaviy hayot, tarix va tabiat go‘zalligini o‘zida mujassam etgan. Eski shaharchada sayr qiling, ko‘llar va Alp tog‘laridan zavqlaning va Reyn sharsharasini kashf eting.",
+	"zurichDestinationsSubtitle": "Shveysariyaning eng katta shahri Syurix zamonaviy hayot, tarix va go‘zal tabiat uyg‘unligidir. O‘rta asr ko‘chalari, hashamatli butiklari va chiroyli qahvaxonalari bilan qadimiy shahar markazida sayr qiling. Jahon darajasidagi muzeylarni, san’atni va Syurix ko‘li bo‘yidagi manzaralarni kashf eting. Qisqa safardan so‘ng Yevropaning eng katta sharsharasi — Reyn sharsharasiga borishingiz mumkin. Syurix — madaniy nafislik va Alp manzaralarini uyg‘unlashtiruvchi manzil.",
 
 	"interlakenDestinationsTitle": "Interlaken",
-	"interlakenDestinationsSubtitle": "Tunning va Bryenz ko‘llari orasida joylashgan Interlaken Shveytsariyaning eng go‘zal manzillaridan biridir. Tog‘larda sayr, parashyutda uchish yoki sokin dam olish – barchasi bu yerda mavjud.",
+	"interlakenDestinationsSubtitle": "Thun va Brienz ko‘llari orasida joylashgan Interlaken Shveysariyaning eng go‘zal maskanlaridan biridir. Ulug‘vor Eiger, Mönch va Jungfrau tog‘lari bilan o‘ralgan bu shahar dam olish va sarguzasht uchun ideal joydir. Ko‘klam osmonida parashyut bilan uchishdan tortib, alp yaylovlarida tinch sayrlar va ko‘lda qayiqda sayohat qilishgacha — Interlaken har faslda unutilmas tajribalar taqdim etadi.",
 
 	"genevaDestinationsTitle": "Jeneva",
-	"genevaDestinationsSubtitle": "Jeneva ko‘li bo‘yida joylashgan bu shahar o‘zining nafisligi va xalqaro muhit bilan mashhur. Jet d’Eau favvorasi, hashamatli butiklari va BMT kabi muassasalari bilan Jeneva dunyo miqyosida alohida o‘rin tutadi.",
+	"genevaDestinationsSubtitle": "Jeneva, Jeneva ko‘li sohilida, Alp va Yura tog‘lari orasida joylashgan nafislik va xalqaro jozibaga ega shahar. Mashhur Jet d’Eau favvorasi, gullarga to‘la yo‘laklar va hashamatli soat do‘konlari bilan tanilgan. Bu yerda BMT kabi xalqaro tashkilotlar ham joylashgan. Mehmonlar qadimiy shahar markazida sayr qilib, ko‘lda sayohat qilishi va shveytsariya shokoladidan bahramand bo‘lishi mumkin. Jeneva — tabiat, madaniyat va kosmopolit hayot uyg‘unlashgan joydir.",
 
-	"parisDestinationsTitle": "Parij – Nurlar shahri",
-	"parisDestinationsSubtitle": "Fransiya poytaxti Parij – muhabbat, san’at va nafislik ramzi. Eyfel minorasi, Luvr muzeyi va Sena bo‘yidagi sayohatlar bilan mashhur.",
-
+	"parisDestinationsTitle": "Parij – Nur shahri",
+	"parisDestinationsSubtitle": "Fransiyaning poytaxti Parij sevgi, san’at va nafislik ramzi sifatida mashhur. Eyfel minorasi, Luvr muzeyi va Montmartre ko‘chalari kabi mashhur joylarni kashf eting. Sena bo‘yida sayr qiling, shinam qahvaxonalarda hordiq chiqaring va mashhur fransuz taomlaridan tatib ko‘ring. Parij — shunchaki shahar emas, balki unutilmas madaniy va estetik tajriba.",
 	"newMessage": "Yangi xabar",
 	"notProvided": "kiritilmagan",
 	"sending": " Yuborilmoqda...",

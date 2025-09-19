@@ -21,7 +21,7 @@ export default function VideoPlayer({ src }: VideoPlayerProps) {
 					className='rounded-lg shadow-lg w-full max-w-[320px]'
 				/>
 			) : (
-				<div className='rounded-lg shadow-lg w-full max-w-[320px] h-[180px] bg-gray-200 animate-pulse' />
+				<div className='rounded-lg shadow-lg w-full max-w-[320px] bg-gray-200 animate-pulse' />
 			)}
 		</div>
 	)

@@ -103,11 +103,11 @@ export default function Footer() {
 							</li>
 							<li className='flex items-center space-x-2 text-gray-300'>
 								<Mail className='w-4 h-4' />
-								<span>samtravel@gmail.com</span>
+								<span>info@sam-travel.uz</span>
 							</li>
 							<li className='flex items-center space-x-2 text-gray-300'>
 								<MapPin className='w-4 h-4' />
-								<span>Tashkent, Uzbekistan</span>
+								<span>Labzak 64, Tashkent, Uzbekistan</span>
 							</li>
 						</ul>
 					</div>

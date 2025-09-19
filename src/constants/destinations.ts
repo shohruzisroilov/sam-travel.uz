@@ -18,10 +18,9 @@ export const DESTINATIONS: Destination[] = [
 		category: 'historical',
 		gallery: [
 			'/images/destinations/vienna1.jpg',
-			'/images/destinations/vienna2.jpg',
-			'/images/destinations/vienna3.jpg',
-			'/images/destinations/vienna4.jpg',
-			'/images/destinations/vienna5.jpg',
+			'/images/destinations/vienna2.png',
+			'/images/destinations/vienna3.png',
+			'/images/destinations/vienna4.png',
 		],
 	},
 	{
