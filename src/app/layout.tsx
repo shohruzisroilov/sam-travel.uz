@@ -68,6 +68,22 @@ export const metadata: Metadata = {
 			'ru-RU': 'https://sam-travel.uz',
 		},
 	},
+	verification: {
+		google: 'LXxYKX5RI-jD0o5vJGHAAGOsJb70yykn1WsOh8jDbvw',
+	},
+	authors: [{ name: 'SamTravel Team', url: 'https://sam-travel.uz' }],
+	creator: 'SamTravel',
+	publisher: 'SamTravel',
+	metadataBase: new URL('https://sam-travel.uz'),
+	category: 'travel',
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+		},
+	},
 }
 
 export default function RootLayout({
