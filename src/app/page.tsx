@@ -24,20 +24,21 @@ export default function Home() {
 	return (
 		<>
 			{/* Hero Section */}
-			<section className='relative h-screen overflow-hidden'>
-				<Swiper
-					modules={[Pagination, Autoplay]}
-					pagination={{ clickable: true }}
-					autoplay={{ delay: 5000, disableOnInteraction: false }}
-					className='h-full'
-				>
-					{HERO_SLIDES.map(({ image, titleKey, subKey }, i) => (
-						<SwiperSlide key={i}>
-							<div className='relative h-screen w-full'>
-								<div className='absolute inset-0'>
+			<section className='relative h-screen overflow-hidden flex items-center justify-center text-center'>
+				{/* Background Slider */}
+				<div className='absolute inset-0 -z-10'>
+					<Swiper
+						modules={[Autoplay]}
+						autoplay={{ delay: 4000, disableOnInteraction: false }}
+						effect='fade'
+						className='h-full'
+					>
+						{HERO_SLIDES.map(({ image }, i) => (
+							<SwiperSlide key={i}>
+								<div className='relative h-screen w-full'>
 									<Image
 										src={image}
-										alt={t(titleKey)}
+										alt='Background'
 										fill
 										priority={i === 0}
 										sizes='100vw'
@@ -46,19 +47,27 @@ export default function Home() {
 									/>
 									<div className='absolute inset-0 bg-black/60' />
 								</div>
+							</SwiperSlide>
+						))}
+					</Swiper>
+				</div>
 
-								<div className='relative z-10 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8'>
-									<h1 className='text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight'>
-										{t(titleKey)}
-									</h1>
-									<p className='text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed'>
-										{t(subKey)}
-									</p>
-								</div>
-							</div>
-						</SwiperSlide>
-					))}
-				</Swiper>
+				{/* Static Content */}
+				<div className='relative z-10 px-4 sm:px-6 lg:px-8 text-white max-w-4xl mx-auto'>
+					<h1 className='text-4xl md:text-6xl font-bold mb-6 leading-tight'>
+						{t('heroTitle')}
+					</h1>
+					<p className='text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl mx-auto'>
+						{t('heroSubtitle')}
+					</p>
+					<Link
+						href='/destinations'
+						className='inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:from-orange-500 hover:to-orange-600'
+					>
+						<span>{t('exploreButton')}</span>
+						<ArrowRight className='w-5 h-5' />
+					</Link>
+				</div>
 			</section>
 
 			{/* Features Section */}
