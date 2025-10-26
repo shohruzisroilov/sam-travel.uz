@@ -8,6 +8,7 @@ import Image from 'next/image'
 
 export default function Footer() {
 	const { t } = useLanguage()
+	const currentYear = new Date().getFullYear() // 🕒 hozirgi yilni olish
 
 	return (
 		<footer className='bg-gray-900 text-white'>
@@ -116,7 +117,7 @@ export default function Footer() {
 				{/* Bottom */}
 				<div className='border-t border-gray-800 mt-8 pt-8 text-center'>
 					<p className='text-gray-300'>
-						© 2024 Sam Travel. {t('allRightsReserved')}
+						© {currentYear} Sam Travel. {t('allRightsReserved')}
 					</p>
 				</div>
 			</div>

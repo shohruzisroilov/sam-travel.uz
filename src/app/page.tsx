@@ -16,6 +16,7 @@ import { Pagination, Autoplay } from 'swiper/modules'
 import { FEATURES, HERO_SLIDES } from '@/constants/homeConstants'
 import InstagramSlider from '../components/pages/home/InstagramSlider'
 import { DESTINATIONS } from '@/constants/destinations'
+import Image from 'next/image'
 
 export default function Home() {
 	const { t } = useLanguage()
@@ -32,27 +33,28 @@ export default function Home() {
 				>
 					{HERO_SLIDES.map(({ image, titleKey, subKey }, i) => (
 						<SwiperSlide key={i}>
-							<div
-								className='absolute inset-0 bg-cover bg-center'
-								style={{ backgroundImage: `url(${image})` }}
-							>
-								<div className='absolute inset-0 bg-black/60' />
-							</div>
+							<div className='relative h-screen w-full'>
+								<div className='absolute inset-0'>
+									<Image
+										src={image}
+										alt={t(titleKey)}
+										fill
+										priority={i === 0}
+										sizes='100vw'
+										className='object-cover'
+										quality={90}
+									/>
+									<div className='absolute inset-0 bg-black/60' />
+								</div>
 
-							<div className='relative z-10 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8'>
-								<h1 className='text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight'>
-									{t(titleKey)}
-								</h1>
-								<p className='text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed'>
-									{t(subKey)}
-								</p>
-								<Link
-									href='/destinations'
-									className='inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:from-orange-500 hover:to-orange-600'
-								>
-									<span>{t('exploreButton')}</span>
-									<ArrowRight className='w-5 h-5' />
-								</Link>
+								<div className='relative z-10 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8'>
+									<h1 className='text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight'>
+										{t(titleKey)}
+									</h1>
+									<p className='text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed'>
+										{t(subKey)}
+									</p>
+								</div>
 							</div>
 						</SwiperSlide>
 					))}
