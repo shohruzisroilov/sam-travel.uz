@@ -1,22 +1,22 @@
 'use client'
 
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
-import { useLanguage } from '@/contexts/LanguageContext'
 import DestinationCard from '@/components/common/DestinationCard'
 import FAQ from '@/components/pages/home/FAQ'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 // Swiper
-import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import { Pagination, Autoplay } from 'swiper/modules'
+import { Autoplay } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 // Constants
-import { FEATURES, HERO_SLIDES } from '@/constants/homeConstants'
-import InstagramSlider from '../components/pages/home/InstagramSlider'
 import { DESTINATIONS } from '@/constants/destinations'
+import { FEATURES, HERO_SLIDES } from '@/constants/homeConstants'
 import Image from 'next/image'
+import InstagramSlider from '../components/pages/home/InstagramSlider'
 
 export default function Home() {
 	const { t } = useLanguage()
@@ -53,16 +53,23 @@ export default function Home() {
 				</div>
 
 				{/* Static Content */}
-				<div className='relative z-10 px-4 sm:px-6 lg:px-8 text-white max-w-4xl mx-auto'>
-					<h1 className='text-4xl md:text-6xl font-bold mb-6 leading-tight'>
+				<div className='relative z-10 px-4 sm:px-6 lg:px-8 text-white max-w-6xl mx-auto'>
+					<h1
+						className='text-4xl md:text-6xl font-bold mb-6 leading-tight'
+						data-aos='fade-up'
+					>
 						{t('heroTitle')}
 					</h1>
-					<p className='text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl mx-auto'>
+					<p
+						className='text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl mx-auto'
+						data-aos='fade-up'
+					>
 						{t('heroSubtitle')}
 					</p>
 					<Link
 						href='/destinations'
 						className='inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:from-orange-500 hover:to-orange-600'
+						data-aos='fade-up'
 					>
 						<span>{t('exploreButton')}</span>
 						<ArrowRight className='w-5 h-5' />

@@ -2,9 +2,10 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
-import { LanguageProvider } from '@/contexts/LanguageContext'
-import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
+import Navigation from '@/components/layout/Navigation'
+import AOSProvider from '@/components/providers/AOSProvider'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 
 // Inter fontini qo'shish
 const inter = Inter({
@@ -94,13 +95,15 @@ export default function RootLayout({
 	return (
 		<html lang='uz'>
 			<body className={`${inter.variable} antialiased`}>
-				<LanguageProvider>
-					<div className='min-h-screen flex flex-col'>
-						<Navigation />
-						<main className='flex-grow'>{children}</main>
-						<Footer />
-					</div>
-				</LanguageProvider>
+				<AOSProvider>
+					<LanguageProvider>
+						<div className='min-h-screen flex flex-col'>
+							<Navigation />
+							<main className='flex-grow'>{children}</main>
+							<Footer />
+						</div>
+					</LanguageProvider>
+				</AOSProvider>
 			</body>
 		</html>
 	)
