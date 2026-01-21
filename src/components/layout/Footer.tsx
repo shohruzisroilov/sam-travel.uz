@@ -100,7 +100,7 @@ export default function Footer() {
 						<ul className='space-y-2'>
 							<li className='flex items-center space-x-2 text-gray-300'>
 								<Phone className='w-4 h-4' />
-								<span>+998 90 167 37 44</span>
+								<span>+998 55 520 55 37</span>
 							</li>
 							<li className='flex items-center space-x-2 text-gray-300'>
 								<Mail className='w-4 h-4' />
@@ -108,7 +108,7 @@ export default function Footer() {
 							</li>
 							<li className='flex items-center space-x-2 text-gray-300'>
 								<MapPin className='w-4 h-4' />
-								<span>Labzak 64, Tashkent, Uzbekistan</span>
+								<span>Sharof Rashidov 99a, Tashkent, Uzbekistan</span>
 							</li>
 						</ul>
 					</div>

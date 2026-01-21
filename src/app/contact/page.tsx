@@ -1,12 +1,12 @@
 'use client'
 
-import * as React from 'react'
-import { useState } from 'react'
-import { Phone, MapPin, Clock, Send } from 'lucide-react'
-import { useLanguage } from '@/contexts/LanguageContext'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Button } from '@/components/ui/button'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { Clock, MapPin, Phone, Send } from 'lucide-react'
+import * as React from 'react'
+import { useState } from 'react'
 import type { Value as E164Number } from 'react-phone-number-input'
 import { PhoneNumberInput } from '../../components/pages/contact/PhoneNumberInput'
 
@@ -33,7 +33,7 @@ export default function Contact() {
 		const text = `📩 ${t('newMessage')}:\n\n👤 ${t('name')}: ${
 			formData.name
 		}\n📞 ${t('phone')}: ${formData.tel || t('notProvided')}\n💬 ${t(
-			'message'
+			'message',
 		)}: ${formData.message}`
 
 		const toastId = toast.loading(t('sending'))
@@ -49,7 +49,7 @@ export default function Contact() {
 						text,
 						parse_mode: 'Markdown',
 					}),
-				}
+				},
 			)
 
 			if (!res.ok) {
@@ -68,7 +68,7 @@ export default function Contact() {
 		{
 			icon: <Phone className='w-6 h-6 text-white' />,
 			title: t('phone'),
-			lines: ['+998 90 167 37 44', '+998 66 233 12 96'],
+			lines: ['+998 55 520 55 37', '+998 55 520 55 37'],
 		},
 		{
 			icon: <MapPin className='w-6 h-6 text-white' />,
@@ -85,11 +85,12 @@ export default function Contact() {
 	const maps = [
 		{
 			title: `${t('mainOffice')} - Tashkent`,
-			src: 'https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d12279699.68253075!2d69.2912128!3d41.28768!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDE5JzU1LjgiTiA2OcKwMTUnNDkuMCJF!5e0!3m2!1suz!2s!4v1757525883059!5m2!1suz!2s',
+			src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.347436682621!2d69.278258!3d41.3330333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8bf1d8fdeb89%3A0xae5a5169d41df098!2sSamTravel!5e1!3m2!1sen!2s!4v1768979798093!5m2!1sen!2s',
 		},
+
 		{
 			title: `${t('branchOffice')} - Samarkand`,
-			src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1554015.6308099083!2d66.42802687616248!3d40.4711327222789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8bf1d8fdeb89%3A0xae5a5169d41df098!2sSamTravel!5e0!3m2!1suz!2s!4v1757525964248!5m2!1suz!2s',
+			src: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15120.87525837725!2d66.95069479989323!3d39.64571223878444!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d19c3f4b7ac45%3A0x2585e48efdd96bf7!2s%22Belt%20of%20the%20orion%22%20aviakassa!5e1!3m2!1sen!2s!4v1768979883111!5m2!1sen!2s',
 		},
 	]
 
