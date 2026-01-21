@@ -1,9 +1,9 @@
 'use client'
 
+import { Translations, useLanguage } from '@/contexts/LanguageContext'
+import { MapPin } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { MapPin } from 'lucide-react'
-import { Translations, useLanguage } from '@/contexts/LanguageContext'
 
 interface DestinationCardProps {
 	slug: string
@@ -18,6 +18,7 @@ export default function DestinationCard({
 	description,
 	image,
 }: DestinationCardProps) {
+	
 	const { t } = useLanguage()
 
 	return (
