@@ -13,7 +13,6 @@ interface TimerRef {
 const YevropaPage: React.FC = () => {
   const [showButton, setShowButton] = useState<boolean>(false);
   const [watchTime, setWatchTime] = useState<number>(0);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
 
   const intervalRef = useRef<TimerRef["current"]>(null);
@@ -29,27 +28,20 @@ const YevropaPage: React.FC = () => {
 
   // Handle timer logic
   useEffect(() => {
-    if (isPlaying && watchTime < REQUIRED_WATCH_TIME) {
+    if (watchTime < REQUIRED_WATCH_TIME) {
       intervalRef.current = setInterval(() => {
         setWatchTime((prev: number) => {
           const newTime: number = prev + 1;
-
           if (newTime >= REQUIRED_WATCH_TIME) {
             setShowButton(true);
             clearWatchInterval();
           }
-
           return newTime;
         });
       }, 1000);
     }
-
     return () => clearWatchInterval();
-  }, [isPlaying, watchTime, REQUIRED_WATCH_TIME, clearWatchInterval]);
-
-  const handleVideoStart = useCallback((): void => {
-    setIsPlaying(true);
-  }, []);
+  }, [watchTime, REQUIRED_WATCH_TIME, clearWatchInterval]);
 
   const handleVideoLoad = useCallback((): void => {
     setIsVideoLoaded(true);
@@ -113,7 +105,6 @@ const YevropaPage: React.FC = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               onLoad={handleVideoLoad}
-              onPlay={handleVideoStart}
             />
           </div>
         </div>
