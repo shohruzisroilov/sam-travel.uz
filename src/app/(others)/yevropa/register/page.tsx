@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
-  MapPin,
   User,
   Phone,
   CheckCircle,
@@ -29,6 +28,7 @@ const RegistrationPage: React.FC = () => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const phoneInputRef = useRef<HTMLInputElement>(null);
 
   const validatePhone = (phone: string): boolean => {
     const phoneRegex = /^\+998 \d{2} \d{3} \d{2} \d{2}$/;
@@ -39,8 +39,39 @@ const RegistrationPage: React.FC = () => {
     return name.trim().length >= 2;
   };
 
+  const setCursorPosition = (input: HTMLInputElement, position: number) => {
+    setTimeout(() => {
+      input.setSelectionRange(position, position);
+    }, 0);
+  };
+
+  const handlePhoneFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    const input = e.target;
+    const value = input.value;
+
+    // Agar input bo'sh yoki faqat "+998 " bo'lsa
+    if (value === "+998 " || value.length <= 5) {
+      setFormData({ ...formData, phone: "+998 " });
+      setCursorPosition(input, 5);
+    } else {
+      const cursorPos = value.length;
+      setCursorPosition(input, cursorPos);
+    }
+  };
+
+  const handlePhoneClick = (e: React.MouseEvent<HTMLInputElement>) => {
+    const input = e.currentTarget;
+
+    // Agar bosilgan joy +998 dan oldin bo'lsa, kursorni +998 dan keyinga o'tkazish
+    if (input.selectionStart !== null && input.selectionStart < 5) {
+      setCursorPosition(input, 5);
+    }
+  };
+
   const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>): void => {
     let value = e.target.value;
+    const input = e.target;
+    const cursorPos = input.selectionStart || 0;
 
     // Remove any non-digit characters except +
     const digits = value.replace(/[^\d+]/g, "");
@@ -61,6 +92,27 @@ const RegistrationPage: React.FC = () => {
     }
 
     setFormData({ ...formData, phone: value });
+
+    // Kursorni to'g'ri joyga qo'yish
+    setTimeout(() => {
+      if (cursorPos < 5) {
+        // Agar kursor +998 dan oldinda bo'lsa, +998 dan keyinga qo'yish
+        input.setSelectionRange(5, 5);
+      } else {
+        // Aks holda, yangi value uzunligiga qarab kursor joyini saqlash
+        const newLength = value.length;
+        const oldLength = formData.phone.length;
+        const diff = newLength - oldLength;
+
+        if (diff > 0) {
+          // Agar matn qo'shilgan bo'lsa, kursorni qo'shilgan joydan keyinga qo'yish
+          input.setSelectionRange(cursorPos + diff, cursorPos + diff);
+        } else {
+          // Agar matn o'chirilgan bo'lsa, kursorni joriy joyda qoldirish
+          input.setSelectionRange(cursorPos, cursorPos);
+        }
+      }
+    }, 0);
   };
 
   const handleBlur = (field: string): void => {
@@ -73,12 +125,12 @@ const RegistrationPage: React.FC = () => {
 
     // Validate form
     if (!validateName(formData.full_name)) {
-      setError("Исм майдони камида 2 та белгидан иборат бўлиши керак");
+      setError("Исмингизни тўлиқ ёзинг");
       return;
     }
 
     if (!validatePhone(formData.phone)) {
-      setError("Телефон рақами тўғри форматда киритилмаган");
+      setError("Телефон рақамингизни тўғри форматда киринг: +998 90 123 45 67");
       return;
     }
 
@@ -91,6 +143,7 @@ const RegistrationPage: React.FC = () => {
       //   phone: formData.phone,
       //   status: "new",
       // });
+      console.log("Submitting registration:", formData);
 
       // Simulated success
       await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -120,7 +173,7 @@ const RegistrationPage: React.FC = () => {
   if (isSuccess) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-white flex items-center justify-center px-4">
-        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 max-w-lg w-full text-center animate-in fade-in zoom-in duration-500">
+        <div className="bg-white rounded-3xl shadow-sm p-8 md:p-12 max-w-lg w-full text-center animate-in fade-in zoom-in duration-500">
           <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle
               className="w-14 h-14 text-green-500"
@@ -134,16 +187,15 @@ const RegistrationPage: React.FC = () => {
             Маълумотларингиз қабул қилинди. Менежерларимиз тез орада сиз билан
             алоқага чиқади.
           </p>
-          <Link href="/yevropa" passHref>
+          <a href="https://www.instagram.com/samtraveluz?igsh=MTAyZm1mZTh1Y2Vnag==">
             <Button
               variant="outline"
               size="lg"
               className="text-lg px-8 py-6 rounded-xl border-2 border-orange-300 text-orange-600 hover:bg-orange-50 focus:ring-4 focus:ring-orange-200"
             >
-              <ArrowLeft className="w-5 h-5 mr-2" aria-hidden="true" />
-              Бош саҳифага қайтиш
+              Мижозларимиз отзывлари
             </Button>
-          </Link>
+          </a>
         </div>
       </div>
     );
@@ -163,7 +215,6 @@ const RegistrationPage: React.FC = () => {
             <span className="text-lg font-medium">Орқага</span>
           </Link>
           <div className="flex items-center gap-3">
-            <MapPin className="w-7 h-7 text-orange-500" aria-hidden="true" />
             <span className="text-xl font-bold text-gray-800">
               Европа саёҳати
             </span>
@@ -175,7 +226,7 @@ const RegistrationPage: React.FC = () => {
       <main className="max-w-xl mx-auto px-4 py-8 md:py-16">
         {/* Title */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center leading-relaxed">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6 text-center leading-relaxed">
             Туримизга ёзилиш учун маълумотларингизни қолдиринг
           </h1>
         </div>
@@ -203,7 +254,7 @@ const RegistrationPage: React.FC = () => {
               <Input
                 id="full_name"
                 type="text"
-                placeholder="Исломбек"
+                placeholder="Исмингиз"
                 value={formData.full_name}
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setFormData({ ...formData, full_name: e.target.value })
@@ -220,7 +271,7 @@ const RegistrationPage: React.FC = () => {
               />
               {touched.full_name && !validateName(formData.full_name) && (
                 <p className="text-sm text-red-500 mt-1">
-                  Исм камида 2 та белгидан иборат бўлиши керак
+                  Исмингизни тўлиқ ёзинг
                 </p>
               )}
             </div>
@@ -235,11 +286,14 @@ const RegistrationPage: React.FC = () => {
                 Телефон рақамингиз
               </Label>
               <Input
+                ref={phoneInputRef}
                 id="phone"
                 type="tel"
                 placeholder="+998 90 123 45 67"
                 value={formData.phone}
                 onChange={handlePhoneChange}
+                onFocus={handlePhoneFocus}
+                onClick={handlePhoneClick}
                 onBlur={() => handleBlur("phone")}
                 required
                 className={`text-xl py-7 px-5 rounded-xl border-2 transition-colors ${
@@ -250,8 +304,7 @@ const RegistrationPage: React.FC = () => {
               />
               {touched.phone && !validatePhone(formData.phone) && (
                 <p className="text-base text-red-500 mt-2 font-medium">
-                  Телефон рақами тўғри форматда киритилиши керак: +998 90 123 45
-                  67
+                  Телефон рақамингизни тўғри форматда киринг: +998 90 123 45 67
                 </p>
               )}
             </div>
@@ -264,7 +317,7 @@ const RegistrationPage: React.FC = () => {
                 !validateName(formData.full_name) ||
                 !validatePhone(formData.phone)
               }
-              className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-2xl py-8 rounded-2xl shadow-lg font-bold transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 focus:ring-4 focus:ring-orange-300"
+              className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-2xl py-8 rounded-2xl shadow-sm font-bold transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 focus:ring-4 focus:ring-orange-300"
             >
               {isSubmitting ? (
                 <span className="flex items-center justify-center">
@@ -281,13 +334,13 @@ const RegistrationPage: React.FC = () => {
           </form>
 
           {/* Help Text */}
-          <div className="mt-8 p-6 bg-orange-50 rounded-2xl border-2 border-orange-200">
+          <div className="mt-8 p-4 bg-orange-50 rounded-2xl border-2 border-orange-200">
             <p className="text-xl text-gray-700 text-center leading-relaxed">
-              Маълумотларингизни тўлдириб,{" "}
+              Тўлдиринг ва, <br />
               <span className="font-bold text-orange-600 text-2xl">
                 “Турга ёзилиш”
               </span>{" "}
-              тугмасини босинг. Менежерларимиз тез орада алоқага чиқади.
+              тугмасини босинг.
             </p>
           </div>
         </div>

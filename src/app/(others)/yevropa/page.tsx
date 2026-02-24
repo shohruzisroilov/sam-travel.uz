@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { MapPin, ArrowDown, Clock, Award } from "lucide-react";
+import { ArrowDown, Clock } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -16,7 +16,7 @@ const YevropaPage: React.FC = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
 
   const intervalRef = useRef<TimerRef["current"]>(null);
-  const REQUIRED_WATCH_TIME: number = 300;
+  const REQUIRED_WATCH_TIME: number = 180; // 3 minutes in seconds
 
   // Clear interval utility
   const clearWatchInterval = useCallback((): void => {
@@ -63,11 +63,11 @@ const YevropaPage: React.FC = () => {
           />
 
           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
-            <MapPin
+            {/* <MapPin
               className="w-5 h-5 sm:w-8 sm:h-8 text-orange-500 flex-shrink-0"
               aria-hidden="true"
-            />
-            <h1 className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-800 truncate">
+            /> */}
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 truncate">
               Европа саёҳати
             </h1>
           </div>
@@ -79,8 +79,7 @@ const YevropaPage: React.FC = () => {
         {/* Hero Text */}
         <div className="text-center mb-8 md:mb-10">
           <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800 leading-relaxed mb-4">
-            Европа бўйлаб саёҳатга оид барча муҳим маълумотларни қуйидаги
-            видеода батафсил билиб олишингиз мумкин
+            Европа бўйлаб саёҳат ҳақида муҳим маълумотлар видеода
           </h2>
           <div className="flex items-center justify-center gap-2 text-orange-600">
             <ArrowDown className="w-6 h-6 animate-bounce" aria-hidden="true" />
@@ -90,44 +89,37 @@ const YevropaPage: React.FC = () => {
         </div>
 
         {/* Video Container */}
-        <div className="bg-white rounded-3xl shadow-sm p-4 md:p-6 mb-8">
+        <div className="bg-white rounded-3xl shadow-sm md:p-6 mb-8">
           <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-gray-100">
             {!isVideoLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-200 animate-pulse">
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-200 animate-pulse z-10">
                 <Clock className="w-12 h-12 text-gray-400" />
               </div>
             )}
             <iframe
-              src="https://www.youtube.com/embed/NdWCO38Toro?enablejsapi=1"
-              title="Европа саёҳати видеоси"
-              className={`w-full h-full transition-opacity duration-300`}
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/S2JYvxyIr1I?rel=0"
+              title="Ажойиб Европа саёҳати - классик тур 2026"
               frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
               onLoad={handleVideoLoad}
             />
           </div>
         </div>
 
-        {/* Registration Button - appears after 5 minutes */}
+        {/* Registration Button - appears after 3 minutes */}
         {showButton && (
           <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <div className="bg-gradient-to-r from-orange-500 to-amber-500 rounded-3xl p-8 shadow-sm">
-              <div className="flex justify-center mb-4">
-                <Award className="w-16 h-16 text-white" />
-              </div>
-              <p className="text-white text-xl mb-6 font-medium">
-                Табриклаймиз! Энди турга ёзилишингиз мумкин
-              </p>
-              <Link href="/yevropa/register" passHref>
-                <Button
-                  size="lg"
-                  className="bg-white text-orange-600 hover:bg-orange-50 text-xl md:text-2xl px-10 py-8 rounded-2xl shadow-lg font-bold transition-all hover:scale-105 focus:ring-4 focus:ring-white/50"
-                >
-                  Турга ёзилиш
-                </Button>
-              </Link>
-            </div>
+            <Link href="/yevropa/register" passHref>
+              <Button
+                type="submit"
+                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-2xl py-8 rounded-2xl shadow-sm font-bold transition-all hover:scale-[1.02] focus:ring-4 focus:ring-orange-300"
+              >
+                Турга ёзилиш
+              </Button>
+            </Link>
           </div>
         )}
 
