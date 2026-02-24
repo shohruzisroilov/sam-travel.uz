@@ -334,7 +334,7 @@ const RegistrationPage: React.FC = () => {
           </form>
 
           {/* Help Text */}
-          <div className="mt-8 p-4 bg-orange-50 rounded-2xl border-2 border-orange-200">
+          {/* <div className="mt-8 p-4 bg-orange-50 rounded-2xl border-2 border-orange-200">
             <p className="text-xl text-gray-700 text-center leading-relaxed">
               Тўлдиринг ва, <br />
               <span className="font-bold text-orange-600 text-2xl">
@@ -342,7 +342,7 @@ const RegistrationPage: React.FC = () => {
               </span>{" "}
               тугмасини босинг.
             </p>
-          </div>
+          </div> */}
         </div>
 
         {/* Footer spacing */}
