@@ -119,40 +119,37 @@ const RegistrationPage: React.FC = () => {
     setTouched({ ...touched, [field]: true });
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(null);
 
-    // Validate form
-    if (!validateName(formData.full_name)) {
-      setError("Исмингизни тўлиқ ёзинг");
-      return;
-    }
-
-    if (!validatePhone(formData.phone)) {
-      setError("Телефон рақамингизни тўғри форматда киринг: +998 90 123 45 67");
-      return;
-    }
+    if (!validateName(formData.full_name)) return;
+    if (!validatePhone(formData.phone)) return;
 
     setIsSubmitting(true);
+    setError(null);
 
     try {
-      // Simulate API call - replace with your actual base44 call
-      // const response: RegistrationResponse = await base44.entities.TourRegistration.create({
-      //   full_name: formData.full_name,
-      //   phone: formData.phone,
-      //   status: "new",
-      // });
-      console.log("Submitting registration:", formData);
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.full_name,
+          phone: formData.phone,
+        }),
+      });
 
-      // Simulated success
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const data = await res.json();
 
+      if (data.success) {
+        setIsSuccess(true);
+      } else {
+        setError(data.error_description || "Xatolik yuz berdi");
+      }
+    } catch (err) {
+      setError("Server xatosi");
+      console.log(err);
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-    } catch {
-      setIsSubmitting(false);
-      setError("Хатолик юз берди. Қайтадан уриниб кўринг.");
     }
   };
 
