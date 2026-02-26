@@ -21,7 +21,7 @@ export async function POST(request: Request) {
         NAME: name,
         PHONE: [{ VALUE: phone, VALUE_TYPE: "WORK" }],
         SOURCE_ID: "WEB", // Источник - Веб сайт
-        // ASSIGNED_BY_ID: 100,
+        ASSIGNED_BY_ID: 11,
       },
       params: { REGISTER_SONET_EVENT: "Y" },
     };
