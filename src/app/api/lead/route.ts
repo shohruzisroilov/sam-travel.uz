@@ -17,9 +17,11 @@ export async function POST(request: Request) {
 
     const data = {
       fields: {
-        TITLE: `С сайта: ${name}`,
+        TITLE: "website classic", // Lead номи
         NAME: name,
         PHONE: [{ VALUE: phone, VALUE_TYPE: "WORK" }],
+        SOURCE_ID: "WEB", // Источник - Веб сайт
+        // ASSIGNED_BY_ID: 100,
       },
       params: { REGISTER_SONET_EVENT: "Y" },
     };
