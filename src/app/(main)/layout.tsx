@@ -1,110 +1,124 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "../globals.css";
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import '../globals.css'
 
-import Footer from "@/components/layout/Footer";
-import Navigation from "@/components/layout/Navigation";
-import AOSProvider from "@/components/providers/AOSProvider";
-import { LanguageProvider } from "@/contexts/LanguageContext";
+import Footer from '@/components/layout/Footer'
+import Navigation from '@/components/layout/Navigation'
+import AOSProvider from '@/components/providers/AOSProvider'
+import { LanguageProvider } from '@/contexts/LanguageContext'
+import Script from 'next/script'
 
 // Inter fontini qo'shish
 const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
+	variable: '--font-inter',
+	subsets: ['latin'],
+	weight: ['400', '500', '600', '700'],
+})
 
 const seoContent = {
-  uz: {
-    title: "SamTravel - Yevropa sari yangi sarguzasht | TravelAgent",
-    description:
-      "🌍 SamTravel bilan Yevropaga ishonchli sayohat: viza, turpaketlar va individual xizmatlar. ✈️ Orzu qilmang – biz bilan boshlang!",
-  },
-  en: {
-    title: "SamTravel - New Adventures to Europe | TravelAgent",
-    description:
-      "🌍 Trusted travel to Europe with SamTravel: visas, packages, and personalized experiences. ✈️ Don’t just dream – start with us!",
-  },
-  ru: {
-    title: "SamTravel - Новые приключения в Европе | TravelAgent",
-    description:
-      "🌍 Путешествуйте в Европу с SamTravel: визы, турпакеты и индивидуальные услуги. ✈️ Не мечтайте – начинайте с нами!",
-  },
-};
+	uz: {
+		title: 'SamTravel - Yevropa sari yangi sarguzasht | TravelAgent',
+		description:
+			'🌍 SamTravel bilan Yevropaga ishonchli sayohat: viza, turpaketlar va individual xizmatlar. ✈️ Orzu qilmang – biz bilan boshlang!',
+	},
+	en: {
+		title: 'SamTravel - New Adventures to Europe | TravelAgent',
+		description:
+			'🌍 Trusted travel to Europe with SamTravel: visas, packages, and personalized experiences. ✈️ Don’t just dream – start with us!',
+	},
+	ru: {
+		title: 'SamTravel - Новые приключения в Европе | TravelAgent',
+		description:
+			'🌍 Путешествуйте в Европу с SamTravel: визы, турпакеты и индивидуальные услуги. ✈️ Не мечтайте – начинайте с нами!',
+	},
+}
 
 export const metadata: Metadata = {
-  title: seoContent.uz.title,
-  description: seoContent.uz.description,
-  keywords: [
-    "SamTravel",
-    "Yevropa sayohati",
-    "Travel to Europe",
-    "Путешествие в Европу",
-    "Turpaketlar",
-    "Viza xizmatlari",
-    "TravelAgent",
-    "Sayohat agentligi",
-  ],
-  openGraph: {
-    title: seoContent.uz.title,
-    description: seoContent.uz.description,
-    url: "https://sam-travel.uz",
-    siteName: "SamTravel",
-    images: [
-      {
-        url: "/samtravel-og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "SamTravel",
-      },
-    ],
-    locale: "uz_UZ",
-    type: "website",
-  },
-  alternates: {
-    canonical: "https://sam-travel.uz",
-    languages: {
-      "uz-UZ": "https://sam-travel.uz",
-      "en-US": "https://sam-travel.uz",
-      "ru-RU": "https://sam-travel.uz",
-    },
-  },
-  verification: {
-    google: "LXxYKX5RI-jD0o5vJGHAAGOsJb70yykn1WsOh8jDbvw",
-  },
-  authors: [{ name: "SamTravel Team", url: "https://sam-travel.uz" }],
-  creator: "SamTravel",
-  publisher: "SamTravel",
-  metadataBase: new URL("https://sam-travel.uz"),
-  category: "travel",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
-  },
-};
+	title: seoContent.uz.title,
+	description: seoContent.uz.description,
+	keywords: [
+		'SamTravel',
+		'Yevropa sayohati',
+		'Travel to Europe',
+		'Путешествие в Европу',
+		'Turpaketlar',
+		'Viza xizmatlari',
+		'TravelAgent',
+		'Sayohat agentligi',
+	],
+	openGraph: {
+		title: seoContent.uz.title,
+		description: seoContent.uz.description,
+		url: 'https://sam-travel.uz',
+		siteName: 'SamTravel',
+		images: [
+			{
+				url: '/samtravel-og.jpg',
+				width: 1200,
+				height: 630,
+				alt: 'SamTravel',
+			},
+		],
+		locale: 'uz_UZ',
+		type: 'website',
+	},
+	alternates: {
+		canonical: 'https://sam-travel.uz',
+		languages: {
+			'uz-UZ': 'https://sam-travel.uz',
+			'en-US': 'https://sam-travel.uz',
+			'ru-RU': 'https://sam-travel.uz',
+		},
+	},
+	verification: {
+		google: 'LXxYKX5RI-jD0o5vJGHAAGOsJb70yykn1WsOh8jDbvw',
+	},
+	authors: [{ name: 'SamTravel Team', url: 'https://sam-travel.uz' }],
+	creator: 'SamTravel',
+	publisher: 'SamTravel',
+	metadataBase: new URL('https://sam-travel.uz'),
+	category: 'travel',
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+		},
+	},
+}
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode
 }) {
-  return (
-    <html lang="uz">
-      <body className={`${inter.variable} antialiased`}>
-        <AOSProvider>
-          <LanguageProvider>
-            <div className="min-h-screen flex flex-col">
-              <Navigation />
-              <main className="flex-grow">{children}</main>
-              <Footer />
-            </div>
-          </LanguageProvider>
-        </AOSProvider>
-      </body>
-    </html>
-  );
+	return (
+		<html lang='uz'>
+			<body className={`${inter.variable} antialiased`}>
+				{/* Google Analytics */}
+				<Script
+					src='https://www.googletagmanager.com/gtag/js?id=G-E5Y4HECMZ0'
+					strategy='afterInteractive'
+				/>
+				<Script id='google-analytics' strategy='afterInteractive'>
+					{`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E5Y4HECMZ0');
+    `}
+				</Script>
+				<AOSProvider>
+					<LanguageProvider>
+						<div className='min-h-screen flex flex-col'>
+							<Navigation />
+							<main className='flex-grow'>{children}</main>
+							<Footer />
+						</div>
+					</LanguageProvider>
+				</AOSProvider>
+			</body>
+		</html>
+	)
 }
