@@ -68,12 +68,17 @@ export default function Contact() {
     {
       icon: <Phone className="w-6 h-6 text-white" />,
       title: t("phone"),
-      lines: ["+998 55 520 55 37", "+998 55 520 55 37"],
+      lines: ["+998 55 520 55 37"],
     },
     {
       icon: <MapPin className="w-6 h-6 text-white" />,
-      title: t("address"),
+      title: t("mainOffice"),
       lines: [t("addressDes")],
+    },
+    {
+      icon: <MapPin className="w-6 h-6 text-white" />,
+      title: t("branchOffice"),
+      lines: [t("addressDes2")],
     },
     {
       icon: <Clock className="w-6 h-6 text-white" />,
@@ -84,19 +89,19 @@ export default function Contact() {
 
   const maps = [
     {
-      title: `${t("mainOffice")} - Tashkent`,
+      title: `${t("mainOffice")}`,
       src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.347436682621!2d69.278258!3d41.3330333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8bf1d8fdeb89%3A0xae5a5169d41df098!2sSamTravel!5e1!3m2!1sen!2s!4v1768979798093!5m2!1sen!2s",
     },
 
     {
-      title: `${t("branchOffice")} - Samarkand`,
+      title: `${t("branchOffice")}`,
       src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15120.87525837725!2d66.95069479989323!3d39.64571223878444!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d19c3f4b7ac45%3A0x2585e48efdd96bf7!2s%22Belt%20of%20the%20orion%22%20aviakassa!5e1!3m2!1sen!2s!4v1768979883111!5m2!1sen!2s",
     },
   ];
 
   return (
     <div className="min-h-screen">
-      {/* 🔥 Toast konteyneri */}
+      {/*  Toast konteyneri */}
       <Toaster position="top-right" reverseOrder={false} />
 
       {/* Hero Section */}
