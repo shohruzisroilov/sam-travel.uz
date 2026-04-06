@@ -142,6 +142,20 @@ const RegistrationPage: React.FC = () => {
 
       if (data.success) {
         setIsSuccess(true);
+        // Google Analytics event
+        if (typeof window !== "undefined" && (window as any).gtag) {
+          (window as any).gtag("event", "generate_lead", {
+            event_category: "registration",
+            event_label: "yevropa",
+          });
+        }
+        // Facebook Pixel event
+        if (typeof window !== "undefined" && (window as any).fbq) {
+          (window as any).fbq("track", "Lead", {
+            content_name: "Yevropa Sayohati",
+            status: "success",
+          });
+        }
       } else {
         setError(data.error_description || "Xatolik yuz berdi");
       }
