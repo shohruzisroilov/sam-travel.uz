@@ -6,12 +6,11 @@ interface TeamCardProps {
 	image: string
 	name: string
 	role: string
-	description: string
 }
 
-const TeamCard = ({ image, name, role, description }: TeamCardProps) => {
+const TeamCard = ({ image, name, role }: TeamCardProps) => {
 	return (
-		<div className='border border-gray-300 bg-white rounded-xl overflow-hidden hover:shadow-sm transition-shadow duration-300 flex-shrink-0 w-72'>
+		<div className='border border-gray-300 bg-white rounded-xl overflow-hidden hover:border-brand/40 transition-colors duration-300 flex-shrink-0 w-72'>
 			<div className='h-64 overflow-hidden'>
 				<Image
 					src={image}

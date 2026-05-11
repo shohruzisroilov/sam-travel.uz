@@ -47,53 +47,48 @@ const YevropaPage: React.FC = () => {
     setIsVideoLoaded(true);
   }, []);
 
+  const progress = Math.min((watchTime / REQUIRED_WATCH_TIME) * 100, 100);
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-white">
+    <div className="min-h-screen bg-cream">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-orange-100 sticky top-0 z-50">
-        <div className="max-w-5xl mx-auto px-4 py-2 flex items-center justify-between gap-3">
-          {/* Logo image */}
+      <header className="bg-white/90 backdrop-blur-md border-b border-ink/5 sticky top-0 z-50">
+        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
           <Image
             src="/images/logo.png"
             alt="Europe Travel Logo"
-            width={200}
-            height={200}
-            className="w-14 h-14 sm:w-20 sm:h-20 object-contain flex-shrink-0"
+            width={56}
+            height={56}
+            className="w-12 h-12 sm:w-14 sm:h-14 object-contain shrink-0"
             priority
           />
-
-          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
-            {/* <MapPin
-              className="w-5 h-5 sm:w-8 sm:h-8 text-orange-500 flex-shrink-0"
-              aria-hidden="true"
-            /> */}
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 truncate">
-              Европа саёҳати
-            </h1>
-          </div>
+          <h1 className="text-lg sm:text-xl font-semibold text-ink truncate text-right">
+            Европа саёҳати
+          </h1>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="max-w-5xl mx-auto px-4 py-8 md:py-12">
-        {/* Hero Text */}
-        <div className="text-center mb-8 md:mb-10">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800 leading-relaxed mb-4">
-            Европа бўйлаб саёҳат ҳақида муҳим маълумотлар видеода
+      <main className="max-w-5xl mx-auto px-4 py-10 md:py-16">
+        {/* Hero */}
+        <div className="text-center mb-10 md:mb-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand mb-4">
+            Эксклюзив видео
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-ink leading-tight max-w-3xl mx-auto mb-5">
+            Европа бўйлаб саёҳат ҳақида муҳим маълумотлар
           </h2>
-          <div className="flex items-center justify-center gap-2 text-orange-600">
-            <ArrowDown className="w-6 h-6 animate-bounce" aria-hidden="true" />
-            <span className="text-lg font-medium">Видеони томоша қилинг</span>
-            <ArrowDown className="w-6 h-6 animate-bounce" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 text-brand">
+            <ArrowDown className="w-5 h-5 animate-bounce-slow" aria-hidden="true" />
+            <span className="text-base font-medium">Видеони охиригача томоша қилинг</span>
           </div>
         </div>
 
-        {/* Video Container */}
-        <div className="bg-white rounded-3xl shadow-sm md:p-6 mb-8">
-          <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-gray-100">
+        {/* Video Card */}
+        <div className="relative bg-white rounded-3xl p-2 md:p-3 mb-6 ring-1 ring-ink/5">
+          <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-ink">
             {!isVideoLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-200 animate-pulse z-10">
-                <Clock className="w-12 h-12 text-gray-400" />
+              <div className="absolute inset-0 flex items-center justify-center bg-ink z-10">
+                <Clock className="w-12 h-12 text-white/40 animate-pulse" />
               </div>
             )}
             <iframe
@@ -109,31 +104,49 @@ const YevropaPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Registration Button - appears after 3 minutes */}
+        {/* Progress bar */}
+        {!showButton && (
+          <div className="mb-8">
+            <div className="flex items-center justify-between text-sm mb-2">
+              <span className="text-ink-soft">
+                Рўйхатдан ўтиш тугмаси очилишига
+              </span>
+              <span className="font-bold text-brand tabular-nums">
+                {Math.floor((REQUIRED_WATCH_TIME - watchTime) / 60)}:
+                {String((REQUIRED_WATCH_TIME - watchTime) % 60).padStart(2, "0")}
+              </span>
+            </div>
+            <div className="h-2 rounded-full bg-ink/10 overflow-hidden">
+              <div
+                className="h-full bg-brand-gradient transition-all duration-500"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Registration Button */}
         {showButton && (
-          <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-700 mb-8">
             <Link href="/yevropa/register" passHref>
               <Button
-                type="submit"
-                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-2xl py-8 rounded-2xl shadow-sm font-bold transition-all hover:scale-[1.02] focus:ring-4 focus:ring-orange-300"
+                type="button"
+                className="w-full bg-brand-gradient text-white text-xl md:text-2xl py-7 rounded-2xl shadow-brand font-bold transition-transform hover:scale-[1.02] focus:ring-4 focus:ring-brand/30"
               >
-                Турга ёзилиш
+                Турга ёзилиш →
               </Button>
             </Link>
           </div>
         )}
 
-        {/* Instruction Text */}
-        <div className="bg-orange-100/50 rounded-2xl p-6 md:p-8 mt-8 border-2 border-orange-200">
-          <p className="text-lg md:text-xl text-gray-700 text-center leading-relaxed">
-            Турга ёзилиш учун видеони охиригача томоша қилинг — видео якунида
-            пастда{" "}
-            <span className="font-bold text-orange-600">{"Турга ёзилиш"}</span>{" "}
-            тугмаси пайдо бўлади.
+        {/* Instruction */}
+        <div className="rounded-2xl bg-white p-6 md:p-8 ring-1 ring-ink/5">
+          <p className="text-base md:text-lg text-ink-soft text-center leading-relaxed">
+            Турга ёзилиш учун видеони охиригача томоша қилинг. Видео якунида пастда{" "}
+            <span className="font-bold text-brand">«Турга ёзилиш»</span> тугмаси пайдо бўлади.
           </p>
         </div>
 
-        {/* Footer spacing */}
         <div className="h-20" aria-hidden="true" />
       </main>
     </div>

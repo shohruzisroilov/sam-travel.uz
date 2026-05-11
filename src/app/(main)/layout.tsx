@@ -3,16 +3,16 @@ import { Inter } from 'next/font/google'
 import '../globals.css'
 
 import Footer from '@/components/layout/Footer'
+import MobileStickyCTA from '@/components/layout/MobileStickyCTA'
 import Navigation from '@/components/layout/Navigation'
-import AOSProvider from '@/components/providers/AOSProvider'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import Script from 'next/script'
 
-// Inter fontini qo'shish
 const inter = Inter({
 	variable: '--font-inter',
-	subsets: ['latin'],
-	weight: ['400', '500', '600', '700'],
+	subsets: ['latin', 'cyrillic', 'cyrillic-ext'],
+	weight: ['400', '500', '600', '700', '800'],
+	display: 'swap',
 })
 
 const seoContent = {
@@ -65,9 +65,7 @@ export const metadata: Metadata = {
 	alternates: {
 		canonical: 'https://sam-travel.uz',
 		languages: {
-			'uz-UZ': 'https://sam-travel.uz',
-			'en-US': 'https://sam-travel.uz',
-			'ru-RU': 'https://sam-travel.uz',
+			'x-default': 'https://sam-travel.uz',
 		},
 	},
 	verification: {
@@ -94,8 +92,8 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang='uz'>
-			<body className={`${inter.variable} antialiased`}>
+		<html lang='uz' className={inter.variable}>
+			<body className='antialiased bg-cream font-sans text-ink'>
 				{/* Google Analytics */}
 				<Script
 					src='https://www.googletagmanager.com/gtag/js?id=G-E5Y4HECMZ0'
@@ -109,15 +107,14 @@ export default function RootLayout({
       gtag('config', 'G-E5Y4HECMZ0');
     `}
 				</Script>
-				<AOSProvider>
-					<LanguageProvider>
-						<div className='min-h-screen flex flex-col'>
-							<Navigation />
-							<main className='flex-grow'>{children}</main>
-							<Footer />
-						</div>
-					</LanguageProvider>
-				</AOSProvider>
+				<LanguageProvider>
+					<div className='min-h-screen flex flex-col'>
+						<Navigation />
+						<main className='flex-grow'>{children}</main>
+						<Footer />
+					</div>
+					<MobileStickyCTA />
+				</LanguageProvider>
 			</body>
 		</html>
 	)

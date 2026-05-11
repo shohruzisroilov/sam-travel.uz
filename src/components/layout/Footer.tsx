@@ -1,130 +1,146 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { Mail, Phone, MapPin } from "lucide-react";
-import { FaFacebook, FaInstagram, FaTelegram } from "react-icons/fa";
-import { useLanguage } from "@/contexts/LanguageContext";
-import Image from "next/image";
+import Link from 'next/link'
+import Image from 'next/image'
+import { Mail, Phone, MapPin } from 'lucide-react'
+import { FaFacebook, FaInstagram, FaTelegram } from 'react-icons/fa'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Footer() {
-  const { t } = useLanguage();
-  const currentYear = new Date().getFullYear(); // 🕒 hozirgi yilni olish
+	const { t } = useLanguage()
+	const currentYear = new Date().getFullYear()
 
-  return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="col-span-1 md:col-span-2">
-            <Link href="/">
-              <Image
-                src="/images/logo.png"
-                alt="SamTravel Logo"
-                width={60}
-                height={60}
-              />
-            </Link>
-            <p className="text-gray-300 mt-2 mb-4 max-w-md">
-              {t("footerAbout")}
-            </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://t.me/samtravel_uz"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-orange-400 transition-colors duration-200"
-              >
-                <FaTelegram className="w-5 h-5" />
-              </a>
-              <a
-                href="https://www.instagram.com/samtraveluz/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-orange-400 transition-colors duration-200"
-              >
-                <FaInstagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-orange-400 transition-colors duration-200"
-              >
-                <FaFacebook className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
+	return (
+		<footer className='relative bg-ink text-white overflow-hidden'>
+			{/* Decorative gradient blob */}
+			<div className='pointer-events-none absolute -top-32 right-0 h-96 w-96 rounded-full bg-brand/20 blur-3xl' />
+			<div className='pointer-events-none absolute -bottom-32 left-0 h-96 w-96 rounded-full bg-brand/10 blur-3xl' />
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">{t("quickLinks")}</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/"
-                  className="text-gray-300 hover:text-orange-400 transition-colors duration-200"
-                >
-                  {t("home")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-gray-300 hover:text-orange-400 transition-colors duration-200"
-                >
-                  {t("about")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/destinations"
-                  className="text-gray-300 hover:text-orange-400 transition-colors duration-200"
-                >
-                  {t("destinations")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-gray-300 hover:text-orange-400 transition-colors duration-200"
-                >
-                  {t("contact")}
-                </Link>
-              </li>
-            </ul>
-          </div>
+			<div className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+				{/* Main */}
+				<div className='pt-14 pb-12 grid grid-cols-1 md:grid-cols-12 gap-10'>
+					<div className='md:col-span-5'>
+						<Link href='/' className='inline-block'>
+							<Image
+								src='/images/logo.png'
+								alt='SamTravel Logo'
+								width={56}
+								height={56}
+								className='brightness-0 invert'
+							/>
+						</Link>
+						<p className='text-white/70 mt-4 max-w-md leading-relaxed'>
+							{t('footerAbout')}
+						</p>
+						<div className='flex gap-3 mt-6'>
+							{[
+								{
+									href: 'https://t.me/samtravel_uz',
+									Icon: FaTelegram,
+									label: 'Telegram',
+								},
+								{
+									href: 'https://www.instagram.com/samtraveluz/',
+									Icon: FaInstagram,
+									label: 'Instagram',
+								},
+								{
+									href: '#',
+									Icon: FaFacebook,
+									label: 'Facebook',
+								},
+							].map(({ href, Icon, label }) => (
+								<a
+									key={label}
+									href={href}
+									target='_blank'
+									rel='noopener noreferrer'
+									aria-label={label}
+									className='w-10 h-10 grid place-items-center rounded-full bg-white/5 border border-white/10 text-white/80 hover:text-white hover:bg-brand hover:border-brand transition-colors'
+								>
+									<Icon className='w-4 h-4' />
+								</a>
+							))}
+						</div>
+					</div>
 
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">{t("contactInfo")}</h3>
-            <ul className="space-y-2">
-              <li className="flex items-center space-x-2 text-gray-300">
-                <Phone className="w-4 h-4" />
-                <span>+998 55 520 55 37</span>
-              </li>
-              <li className="flex items-center space-x-2 text-gray-300">
-                <Mail className="w-4 h-4" />
-                <span>info@sam-travel.uz</span>
-              </li>
-              <li className="flex items-center space-x-2 text-gray-300">
-                <MapPin className="w-4 h-4" />
-                <span>{t("addressDes")}</span>
-              </li>
-              <li className="flex items-center space-x-2 text-gray-300">
-                <MapPin className="w-4 h-4" />
-                <span>{t("addressDes2")}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+					<div className='md:col-span-3'>
+						<h4 className='text-sm font-semibold uppercase tracking-[0.2em] text-white/50 mb-4'>
+							{t('quickLinks')}
+						</h4>
+						<ul className='space-y-3'>
+							{[
+								{ href: '/', label: t('home') },
+								{ href: '/about', label: t('about') },
+								{ href: '/destinations', label: t('destinations') },
+								{ href: '/contact', label: t('contact') },
+							].map(item => (
+								<li key={item.href}>
+									<Link
+										href={item.href}
+										className='text-white/80 hover:text-brand transition-colors inline-flex items-center group'
+									>
+										<span className='w-0 group-hover:w-3 h-px bg-brand transition-all duration-300 mr-0 group-hover:mr-2' />
+										{item.label}
+									</Link>
+								</li>
+							))}
+						</ul>
+					</div>
 
-        {/* Bottom */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-gray-300">
-            © {currentYear} Sam Travel. {t("allRightsReserved")}
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
+					<div className='md:col-span-4'>
+						<h4 className='text-sm font-semibold uppercase tracking-[0.2em] text-white/50 mb-4'>
+							{t('contactInfo')}
+						</h4>
+						<ul className='space-y-3 text-white/80'>
+							<li>
+								<a
+									href='tel:+998555205537'
+									className='flex items-center gap-3 hover:text-brand transition-colors'
+								>
+									<Phone className='w-4 h-4 shrink-0 text-brand' />
+									<span>+998 55 520 55 37</span>
+								</a>
+							</li>
+							<li>
+								<a
+									href='mailto:info@sam-travel.uz'
+									className='flex items-center gap-3 hover:text-brand transition-colors'
+								>
+									<Mail className='w-4 h-4 shrink-0 text-brand' />
+									<span>info@sam-travel.uz</span>
+								</a>
+							</li>
+							<li className='flex items-start gap-3'>
+								<MapPin className='w-4 h-4 shrink-0 mt-1 text-brand' />
+								<span>{t('addressDes')}</span>
+							</li>
+							<li className='flex items-start gap-3'>
+								<MapPin className='w-4 h-4 shrink-0 mt-1 text-brand' />
+								<span>{t('addressDes2')}</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				{/* Bottom */}
+				<div className='border-t border-white/10 py-6 flex flex-col md:flex-row items-center justify-between gap-2'>
+					<p className='text-white/50 text-sm'>
+						© {currentYear} Sam Travel. {t('allRightsReserved')}
+					</p>
+					<p className='text-white/40 text-xs'>
+						Designed & developed by{' '}
+						<a
+							href='https://t.me/Shohruz_Isroilov'
+							target='_blank'
+							rel='noopener noreferrer'
+							className='font-semibold text-white/70 hover:text-brand transition-colors'
+						>
+							ShohruzDev
+						</a>
+					</p>
+				</div>
+			</div>
+		</footer>
+	)
 }

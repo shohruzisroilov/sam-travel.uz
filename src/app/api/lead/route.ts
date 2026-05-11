@@ -1,52 +1,62 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server'
+import { validateLead } from '@/lib/validation'
+import { getClientIp, rateLimit } from '@/lib/rateLimit'
+
+export const runtime = 'nodejs'
 
 export async function POST(request: Request) {
-  try {
-    const body = await request.json();
-    const { name, phone } = body;
+	const ip = getClientIp(request)
+	const { allowed, retryAfter } = rateLimit(`lead:${ip}`, 5, 60_000)
+	if (!allowed) {
+		return NextResponse.json(
+			{ error: 'Too many requests' },
+			{ status: 429, headers: { 'Retry-After': String(retryAfter) } },
+		)
+	}
 
-    if (!name || !phone) {
-      return NextResponse.json(
-        { error: "Name and phone required" },
-        { status: 400 },
-      );
-    }
+	const endpoint = process.env.BITRIX_WEBHOOK_URL
+	if (!endpoint) {
+		return NextResponse.json({ error: 'Server misconfiguration' }, { status: 500 })
+	}
 
-    const BX_ENDPOINT =
-      "https://samtravel.bitrix24.kz/rest/13/2bdfbb9qfnkmjwtw/crm.lead.add.json";
+	let body: unknown
+	try {
+		body = await request.json()
+	} catch {
+		return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
+	}
 
-    const data = {
-      fields: {
-        TITLE: "website classic", // Lead номи
-        NAME: name,
-        PHONE: [{ VALUE: phone, VALUE_TYPE: "WORK" }],
-        SOURCE_ID: "WEB", // Источник - Веб сайт
-        ASSIGNED_BY_ID: 11,
-      },
-      params: { REGISTER_SONET_EVENT: "Y" },
-    };
+	const parsed = validateLead(body)
+	if (!parsed.ok) {
+		return NextResponse.json({ error: parsed.error }, { status: 400 })
+	}
 
-    const res = await fetch(BX_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+	const payload = {
+		fields: {
+			TITLE: 'website classic',
+			NAME: parsed.data.name,
+			PHONE: [{ VALUE: parsed.data.phone, VALUE_TYPE: 'WORK' }],
+			SOURCE_ID: 'WEB',
+			ASSIGNED_BY_ID: Number(process.env.BITRIX_ASSIGNED_BY_ID ?? 11),
+		},
+		params: { REGISTER_SONET_EVENT: 'Y' },
+	}
 
-    const result = await res.json();
+	try {
+		const res = await fetch(endpoint, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(payload),
+		})
 
-    if (result.error) {
-      return NextResponse.json(
-        { error: result.error, error_description: result.error_description },
-        { status: 400 },
-      );
-    }
+		const result = await res.json()
 
-    return NextResponse.json({ success: true, lead: result.result });
-  } catch (err) {
-    console.error(err);
-    return NextResponse.json(
-      { error: "Server error", message: err },
-      { status: 500 },
-    );
-  }
+		if (!res.ok || result.error) {
+			return NextResponse.json({ error: 'Lead creation failed' }, { status: 502 })
+		}
+
+		return NextResponse.json({ success: true, lead: result.result })
+	} catch {
+		return NextResponse.json({ error: 'Upstream error' }, { status: 502 })
+	}
 }

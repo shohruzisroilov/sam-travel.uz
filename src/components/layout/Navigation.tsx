@@ -1,11 +1,19 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Globe } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+
+type Language = 'en' | 'uz' | 'ru' | 'de' | 'fr'
+
+interface LanguageSwitcherProps {
+	language: Language
+	setLanguage: (lang: Language) => void
+	isScrolled: boolean
+}
 
 // --- Custom hook for scroll ---
 const useScroll = (threshold = 100) => {
@@ -22,42 +30,70 @@ const useScroll = (threshold = 100) => {
 }
 
 // --- Language Switcher Component ---
-const LanguageSwitcher = ({ language, setLanguage, isScrolled }: any) => {
+const LANGUAGES: { code: Language; label: string }[] = [
+	{ code: 'en', label: 'EN' },
+	{ code: 'uz', label: 'UZ' },
+	{ code: 'ru', label: 'RU' },
+	{ code: 'de', label: 'DE' },
+	{ code: 'fr', label: 'FR' },
+]
+
+const LanguageSwitcher = ({ language, setLanguage, isScrolled }: LanguageSwitcherProps) => {
 	const [isOpen, setIsOpen] = useState(false)
-	const languages = [
-		{ code: 'en', label: 'EN' },
-		{ code: 'uz', label: 'UZ' },
-		{ code: 'ru', label: 'RU' },
-		{ code: 'de', label: 'DE' },
-		{ code: 'fr', label: 'FR' },
-	]
+	const containerRef = useRef<HTMLDivElement>(null)
+
+	useEffect(() => {
+		if (!isOpen) return
+		const onDocClick = (e: MouseEvent) => {
+			if (!containerRef.current?.contains(e.target as Node)) setIsOpen(false)
+		}
+		const onKey = (e: KeyboardEvent) => {
+			if (e.key === 'Escape') setIsOpen(false)
+		}
+		document.addEventListener('mousedown', onDocClick)
+		document.addEventListener('keydown', onKey)
+		return () => {
+			document.removeEventListener('mousedown', onDocClick)
+			document.removeEventListener('keydown', onKey)
+		}
+	}, [isOpen])
 
 	return (
-		<div className='relative'>
+		<div ref={containerRef} className='relative'>
 			<button
+				type='button'
 				onClick={() => setIsOpen(!isOpen)}
+				aria-haspopup='listbox'
+				aria-expanded={isOpen}
+				aria-label='Change language'
 				className={`flex items-center space-x-1 px-3 py-2 rounded-md font-medium transition-colors duration-200 ${
 					isScrolled
-						? 'text-gray-700 hover:text-orange-500'
-						: 'text-white hover:text-orange-300'
+						? 'text-gray-700 hover:text-brand'
+						: 'text-white hover:text-brand-from'
 				}`}
 			>
-				<Globe className='w-5 h-5' />
+				<Globe className='w-5 h-5' aria-hidden='true' />
 				<span className='text-base'>{language.toUpperCase()}</span>
 			</button>
 
 			{isOpen && (
-				<div className='absolute right-0 mt-2 w-24 bg-white rounded-md shadow-lg border border-gray-200'>
-					{languages.map(lang => (
+				<div
+					role='listbox'
+					className='absolute right-0 mt-2 w-24 bg-white rounded-md border border-gray-200'
+				>
+					{LANGUAGES.map(lang => (
 						<button
 							key={lang.code}
+							type='button'
+							role='option'
+							aria-selected={language === lang.code}
 							onClick={() => {
 								setLanguage(lang.code)
 								setIsOpen(false)
 							}}
 							className={`block w-full px-4 py-2 text-sm text-left hover:bg-gray-50 ${
 								language === lang.code
-									? 'bg-orange-50 text-orange-600'
+									? 'bg-brand-muted text-brand'
 									: 'text-gray-700'
 							}`}
 						>
@@ -84,18 +120,18 @@ export default function Navigation() {
 	]
 
 	const getLinkClasses = (path: string) =>
-		`px-4 py-3 rounded-md font-medium transition-colors duration-200 text-base ${
+		`relative px-4 py-3 font-medium transition-colors duration-200 text-base ${
 			pathname === path
-				? 'text-[#f97316]'
+				? 'text-brand after:absolute after:left-4 after:right-4 after:-bottom-1 after:h-0.5 after:bg-brand-gradient after:rounded-full'
 				: isScrolled
-				? 'text-gray-700 hover:text-orange-500'
-				: 'text-white hover:text-orange-300'
+				? 'text-gray-700 hover:text-brand'
+				: 'text-white hover:text-brand-from'
 		}`
 
 	return (
 		<nav
 			className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
-				isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+				isScrolled ? 'bg-white border-b border-gray-200' : 'bg-transparent'
 			}`}
 		>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -140,8 +176,8 @@ export default function Navigation() {
 							onClick={() => setIsOpen(!isOpen)}
 							className={`inline-flex items-center justify-center p-2 rounded-md transition-colors duration-200 ${
 								isScrolled
-									? 'text-gray-700 hover:text-orange-500'
-									: 'text-white hover:text-orange-300'
+									? 'text-gray-700 hover:text-brand'
+									: 'text-white hover:text-brand-from'
 							}`}
 						>
 							{isOpen ? (
@@ -164,8 +200,8 @@ export default function Navigation() {
 									onClick={() => setIsOpen(false)}
 									className={`block px-4 py-3 rounded-md font-medium transition-colors duration-200 ${
 										pathname === item.href
-											? 'text-[#f97316]'
-											: 'text-gray-700 hover:text-orange-500'
+											? 'text-brand bg-brand-muted'
+											: 'text-gray-700 hover:text-brand'
 									}`}
 								>
 									{item.name}

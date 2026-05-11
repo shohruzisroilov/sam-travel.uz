@@ -16,7 +16,23 @@ module.exports = {
     			md: 'calc(var(--radius) - 2px)',
     			sm: 'calc(var(--radius) - 4px)'
     		},
+    		fontFamily: {
+    			sans: ['var(--font-inter)', 'system-ui', 'sans-serif']
+    		},
     		colors: {
+    			brand: {
+    				DEFAULT: 'hsl(var(--brand))',
+    				foreground: 'hsl(var(--brand-foreground))',
+    				muted: 'hsl(var(--brand-muted))',
+    				from: 'hsl(var(--brand-from))',
+    				to: 'hsl(var(--brand-to))'
+    			},
+    			ink: {
+    				DEFAULT: 'hsl(var(--ink))',
+    				soft: 'hsl(var(--ink-soft))'
+    			},
+    			cream: 'hsl(var(--cream))',
+    			surface: 'hsl(var(--surface))',
     			background: 'hsl(var(--background))',
     			foreground: 'hsl(var(--foreground))',
     			card: {

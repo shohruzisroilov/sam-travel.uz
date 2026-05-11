@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Clock, MapPin, Phone, Send } from "lucide-react";
 import * as React from "react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { Value as E164Number } from "react-phone-number-input";
 
 import { toast, Toaster } from "react-hot-toast";
@@ -19,52 +19,80 @@ export default function Contact() {
     name: string;
     message: string;
     tel?: E164Number;
+    hp: string;
   }>({
     name: "",
     message: "",
+    hp: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [touched, setTouched] = useState<{
+    name: boolean;
+    tel: boolean;
+    message: boolean;
+  }>({ name: false, tel: false, message: false });
+
+  const NAME_RE = /^[\p{L}\p{M}\s'.-]{2,80}$/u;
+  const nameValid = NAME_RE.test(formData.name.trim());
+  const telValid = !!formData.tel && /^\+?[0-9]{9,15}$/.test(formData.tel);
+  const messageValid = formData.message.trim().length >= 3;
+  const formValid = nameValid && telValid && messageValid;
+
+  const SERVER_ERROR_MAP: Record<string, string> = {
+    "Invalid name": "errorNameInvalid",
+    "Invalid phone": "errorPhoneInvalid",
+    "Invalid message": "errorMessageShort",
+    "Too many requests": "errorTooManyRequests",
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
 
-    const telegramToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
-
-    const text = `📩 ${t("newMessage")}:\n\n👤 ${t("name")}: ${
-      formData.name
-    }\n📞 ${t("phone")}: ${formData.tel || t("notProvided")}\n💬 ${t(
-      "message",
-    )}: ${formData.message}`;
+    if (!formValid) {
+      setTouched({ name: true, tel: true, message: true });
+      toast.error(t("fillRequired"));
+      return;
+    }
 
     const toastId = toast.loading(t("sending"));
+    setIsSubmitting(true);
 
     try {
-      const res = await fetch(
-        `https://api.telegram.org/bot${telegramToken}/sendMessage`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            chat_id: chatId,
-            text,
-            parse_mode: "Markdown",
-          }),
-        },
-      );
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.tel ?? "",
+          message: formData.message,
+          hp: formData.hp,
+        }),
+      });
+
+      const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
-        throw new Error(`Telegram API error: ${res.status}`);
+        const serverError = typeof data?.error === "string" ? data.error : "";
+        const localeKey = SERVER_ERROR_MAP[serverError];
+        const errorMessage = localeKey
+          ? t(localeKey as Parameters<typeof t>[0])
+          : t("messageError");
+        toast.error(errorMessage, { id: toastId });
+        return;
       }
 
       toast.success(t("messageSent"), { id: toastId });
-      setFormData({ name: "", message: "", tel: undefined });
-    } catch (err) {
-      console.error("Telegram API error:", err);
+      setFormData({ name: "", message: "", tel: undefined, hp: "" });
+      setTouched({ name: false, tel: false, message: false });
+    } catch {
       toast.error(t("messageError"), { id: toastId });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  const contactInfo = [
+  const contactInfo = useMemo(() => [
     {
       icon: <Phone className="w-6 h-6 text-white" />,
       title: t("phone"),
@@ -85,9 +113,9 @@ export default function Contact() {
       title: t("businessHours"),
       lines: [t("monFri"), t("satSun")],
     },
-  ];
+  ], [t]);
 
-  const maps = [
+  const maps = useMemo(() => [
     {
       title: `${t("mainOffice")}`,
       src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.347436682621!2d69.278258!3d41.3330333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8bf1d8fdeb89%3A0xae5a5169d41df098!2sSamTravel!5e1!3m2!1sen!2s!4v1768979798093!5m2!1sen!2s",
@@ -97,73 +125,153 @@ export default function Contact() {
       title: `${t("branchOffice")}`,
       src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15120.87525837725!2d66.95069479989323!3d39.64571223878444!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d19c3f4b7ac45%3A0x2585e48efdd96bf7!2s%22Belt%20of%20the%20orion%22%20aviakassa!5e1!3m2!1sen!2s!4v1768979883111!5m2!1sen!2s",
     },
-  ];
+  ], [t]);
 
   return (
-    <div className="min-h-screen">
-      {/*  Toast konteyneri */}
+    <div className="min-h-screen bg-cream">
       <Toaster position="top-right" reverseOrder={false} />
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section
-        className="relative py-40 bg-center bg-cover text-center"
+        className="relative min-h-[50vh] flex items-center justify-center bg-center bg-cover"
         style={{ backgroundImage: "url('/images/contact-hero.jpg')" }}
       >
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 max-w-3xl mx-auto px-4">
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/85" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center text-white">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-from mb-4">
+            {t("contact")}
+          </p>
+          <h1 className="text-4xl md:text-6xl font-bold leading-[1.1] mb-4 tracking-tight">
             {t("contactTitle")}
           </h1>
-          <p className="text-lg md:text-xl text-gray-200 mb-6 md:mb-8">
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
             {t("contactSubtitle")}
           </p>
-          <div className="w-20 h-1 bg-white mx-auto" />
         </div>
       </section>
 
-      {/* Contact Form + Info */}
-      <section className="py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Form */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+      <section className="py-16 sm:py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
+          <div className="lg:col-span-3 bg-white rounded-3xl ring-1 ring-ink/5 p-6 md:p-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-ink mb-2">
               {t("sendMessage")}
             </h2>
+            <p className="text-ink-soft mb-8">
+              {t("contactSubtitle")}
+            </p>
 
-            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
-              <Input
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
-                placeholder={t("yourName")}
-                className="h-12 px-4 focus:outline-none focus:ring-0 placeholder:text-gray-400"
-                required
-              />
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-3 sm:space-y-4"
+              noValidate
+            >
+              <div>
+                <label htmlFor="name" className="sr-only">
+                  {t("yourName")}
+                </label>
+                <Input
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  onBlur={() => setTouched((p) => ({ ...p, name: true }))}
+                  placeholder={t("yourName")}
+                  className={`h-14 px-4 text-base focus:outline-none focus:ring-0 placeholder:text-gray-400 ${
+                    touched.name && !nameValid
+                      ? "border-red-500 focus:border-red-500"
+                      : ""
+                  }`}
+                  autoComplete="name"
+                  required
+                  aria-required="true"
+                  aria-invalid={touched.name && !nameValid}
+                />
+                {touched.name && !nameValid && (
+                  <p className="text-sm text-red-500 mt-1.5">
+                    {formData.name.trim().length < 2
+                      ? t("errorNameShort")
+                      : t("errorNameInvalid")}
+                  </p>
+                )}
+              </div>
 
-              <PhoneNumberInput
-                value={formData.tel}
-                onChange={(val) => setFormData({ ...formData, tel: val })}
-                required
-              />
+              <div>
+                <label htmlFor="phone" className="sr-only">
+                  {t("phone")}
+                </label>
+                <div
+                  onBlur={() => setTouched((p) => ({ ...p, tel: true }))}
+                  className={
+                    touched.tel && !telValid
+                      ? "[&_input]:border-red-500"
+                      : ""
+                  }
+                >
+                  <PhoneNumberInput
+                    value={formData.tel}
+                    onChange={(val) => setFormData({ ...formData, tel: val })}
+                    required
+                  />
+                </div>
+                {touched.tel && !telValid && (
+                  <p className="text-sm text-red-500 mt-1.5">
+                    {t("errorPhoneInvalid")}
+                  </p>
+                )}
+              </div>
 
-              <Textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
-                placeholder={t("yourMessage")}
-                className="min-h-[100px] px-4 py-3 focus:outline-none focus:ring-0 placeholder:text-gray-400"
-                required
-              />
+              <div>
+                <label htmlFor="message" className="sr-only">
+                  {t("yourMessage")}
+                </label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                  onBlur={() => setTouched((p) => ({ ...p, message: true }))}
+                  placeholder={t("yourMessage")}
+                  className={`min-h-[140px] px-4 py-4 text-base focus:outline-none focus:ring-0 placeholder:text-gray-400 ${
+                    touched.message && !messageValid
+                      ? "border-red-500 focus:border-red-500"
+                      : ""
+                  }`}
+                  maxLength={2000}
+                  required
+                  aria-required="true"
+                  aria-invalid={touched.message && !messageValid}
+                />
+                {touched.message && !messageValid && (
+                  <p className="text-sm text-red-500 mt-1.5">
+                    {t("errorMessageShort")}
+                  </p>
+                )}
+              </div>
+
+              {/* Honeypot field — hidden from real users */}
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="hp">Leave blank</label>
+                <input
+                  id="hp"
+                  name="hp"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.hp}
+                  onChange={(e) =>
+                    setFormData({ ...formData, hp: e.target.value })
+                  }
+                />
+              </div>
 
               <Button
                 type="submit"
-                className="w-full bg-[rgb(247,162,31)] hover:bg-[rgb(230,145,20)] text-white font-semibold flex items-center justify-center"
+                disabled={isSubmitting}
+                className="w-full h-14 bg-brand-gradient hover:scale-[1.01] text-white font-semibold flex items-center justify-center transition-transform disabled:opacity-60 disabled:hover:scale-100"
               >
                 <Send className="w-5 h-5 mr-2" />
                 {t("sendMessage")}
@@ -171,24 +279,24 @@ export default function Contact() {
             </form>
           </div>
 
-          {/* Contact Info + Maps */}
-          <div>
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+          {/* Contact Info */}
+          <div className="lg:col-span-2">
+            <h2 className="text-2xl md:text-3xl font-bold text-ink mb-6">
               {t("contactInfo")}
             </h2>
-            <div className="space-y-6 mb-8">
+            <div className="space-y-5">
               {contactInfo.map((item, i) => (
-                <div key={i} className="flex items-start space-x-4">
-                  <div className="w-12 h-12 shrink-0 bg-gradient-to-br from-orange-400 to-orange-500 rounded-lg flex items-center justify-center">
+                <div
+                  key={i}
+                  className="flex items-start gap-4 p-5 rounded-2xl bg-white ring-1 ring-ink/5 hover:ring-brand/30 transition-colors"
+                >
+                  <div className="w-11 h-11 shrink-0 bg-brand-gradient rounded-xl flex items-center justify-center shadow-brand">
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">{item.title}</h3>
+                    <h3 className="font-semibold text-ink mb-1">{item.title}</h3>
                     {item.lines.map((line, j) => (
-                      <p
-                        key={j}
-                        className="text-gray-600 max-w-[200px] text-sm md:text-base"
-                      >
+                      <p key={j} className="text-ink-soft text-sm md:text-base">
                         {line}
                       </p>
                     ))}
@@ -200,16 +308,17 @@ export default function Contact() {
         </div>
 
         {/* Maps */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto px-4">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {maps.map((map, i) => (
             <div key={i}>
-              <h3 className="text-lg font-semibold mb-4">{map.title}</h3>
-              <div className="rounded-xl overflow-hidden shadow-md h-[250px] sm:h-[350px]">
+              <h3 className="text-lg font-semibold text-ink mb-4">{map.title}</h3>
+              <div className="rounded-2xl overflow-hidden ring-1 ring-ink/5 h-[280px] sm:h-[360px]">
                 <iframe
+                  title={map.title}
                   src={map.src}
                   width="100%"
                   height="100%"
-                  style={{ border: 0 }}
+                  className="border-0"
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

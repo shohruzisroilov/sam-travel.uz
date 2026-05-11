@@ -1,8 +1,11 @@
 'use client'
 
-import { createContext, useContext, useState, ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useState, ReactNode } from 'react'
 
 type Language = 'en' | 'uz' | 'ru' | 'de' | 'fr'
+
+const SUPPORTED: Language[] = ['en', 'uz', 'ru', 'de', 'fr']
+const STORAGE_KEY = 'samtravel.lang'
 
 import en from '@/locales/en.json'
 import uz from '@/locales/uz.json'
@@ -20,16 +23,47 @@ interface LanguageContextType {
 	t: (key: keyof Translations) => string
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(
-	undefined
-)
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
+
+const isLanguage = (v: unknown): v is Language =>
+	typeof v === 'string' && (SUPPORTED as string[]).includes(v)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-	const [language, setLanguage] = useState<Language>('uz')
+	const [language, setLanguageState] = useState<Language>('uz')
 
-	const t = (key: keyof Translations): string => {
-		return translations[language][key] || key
-	}
+	useEffect(() => {
+		try {
+			const stored = window.localStorage.getItem(STORAGE_KEY)
+			if (isLanguage(stored)) {
+				setLanguageState(stored)
+				return
+			}
+			const nav = window.navigator.language.slice(0, 2)
+			if (isLanguage(nav)) setLanguageState(nav)
+		} catch {
+			/* ignore */
+		}
+	}, [])
+
+	useEffect(() => {
+		if (typeof document !== 'undefined') {
+			document.documentElement.lang = language
+		}
+	}, [language])
+
+	const setLanguage = useCallback((lang: Language) => {
+		setLanguageState(lang)
+		try {
+			window.localStorage.setItem(STORAGE_KEY, lang)
+		} catch {
+			/* ignore */
+		}
+	}, [])
+
+	const t = useCallback(
+		(key: keyof Translations): string => translations[language][key] || (key as string),
+		[language]
+	)
 
 	return (
 		<LanguageContext.Provider value={{ language, setLanguage, t }}>

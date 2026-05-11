@@ -32,6 +32,19 @@ html {
 
 @layer base {
 	:root {
+		/* Brand */
+		--brand: 25 95% 53%;
+		--brand-foreground: 0 0% 100%;
+		--brand-muted: 33 100% 96%;
+		--brand-from: 33 95% 55%;
+		--brand-to: 25 95% 53%;
+
+		/* Editorial palette */
+		--ink: 220 30% 12%;
+		--ink-soft: 220 20% 28%;
+		--cream: 38 50% 97%;
+		--surface: 0 0% 100%;
+
 		--background: 0 0% 100%;
 		--foreground: 0 0% 3.9%;
 		--card: 0 0% 100%;
@@ -93,4 +106,93 @@ html {
 	body {
 		@apply bg-background text-foreground;
 	}
+	h1, h2, h3 {
+		letter-spacing: -0.015em;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+@layer utilities {
+	.bg-brand-gradient {
+		background-image: linear-gradient(
+			135deg,
+			hsl(var(--brand-from)),
+			hsl(var(--brand-to))
+		);
+	}
+	.text-brand-gradient {
+		background-image: linear-gradient(
+			135deg,
+			hsl(var(--brand-from)),
+			hsl(var(--brand-to))
+		);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+	.shadow-brand {
+		box-shadow: 0 4px 14px -4px hsl(var(--brand) / 0.25);
+	}
+	.animate-bounce-slow {
+		animation: bounce-slow 2s infinite;
+	}
+	@keyframes bounce-slow {
+		0%, 100% { transform: translateY(0); opacity: 0.7; }
+		50% { transform: translateY(8px); opacity: 1; }
+	}
+	@keyframes heroZoom {
+		from { transform: scale(1.15); }
+		to { transform: scale(1); }
+	}
+	.animate-heroZoom {
+		animation: heroZoom 7s ease-out forwards;
+	}
+}
+
+/* Hero swiper pagination — progress bar style */
+.hero-swiper .swiper-pagination {
+	bottom: 32px !important;
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+}
+.hero-swiper .swiper-pagination-bullet {
+	background: rgba(255, 255, 255, 0.25);
+	opacity: 1;
+	width: 44px;
+	height: 3px;
+	border-radius: 2px;
+	position: relative;
+	overflow: hidden;
+	margin: 0 !important;
+	transition: width 0.3s ease;
+	cursor: pointer;
+}
+.hero-swiper .swiper-pagination-bullet-active {
+	width: 60px;
+	background: rgba(255, 255, 255, 0.3);
+}
+.hero-swiper .swiper-pagination-bullet-active::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(90deg, hsl(var(--brand-from)), hsl(var(--brand-to)));
+	border-radius: 2px;
+	transform-origin: left;
+	animation: heroProgress 6s linear forwards;
+}
+@keyframes heroProgress {
+	from { transform: scaleX(0); }
+	to { transform: scaleX(1); }
+}
+.hero-swiper:hover .swiper-pagination-bullet-active::after {
+	animation-play-state: paused;
 }

@@ -35,7 +35,7 @@ export function PhoneNumberInput({
 				required={required}
 				disabled={disabled}
 				className={clsx(
-					'flex w-full rounded-md border border-input bg-background px-4 py-3 text-base shadow-sm',
+					'flex w-full h-14 rounded-md border border-input bg-background px-4 text-base',
 					'placeholder:text-muted-foreground focus-visible:outline-none',
 					'disabled:cursor-not-allowed disabled:opacity-50',
 					error && 'border-destructive'

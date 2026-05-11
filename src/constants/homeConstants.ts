@@ -21,17 +21,17 @@ export const FEATURES = [
 export const HERO_SLIDES = [
 	{
 		image: '/images/hero-image1.jpg',
-		titleKey: 'heroTitle' as const,
-		subKey: 'heroSubtitle' as const,
+		location: 'Vienna',
+		country: 'Austria',
 	},
 	{
 		image: '/images/hero-image2.jpg',
-		titleKey: 'heroTitle' as const,
-		subKey: 'heroSubtitle' as const,
+		location: 'Zurich',
+		country: 'Switzerland',
 	},
 	{
 		image: '/images/hero-image3.jpg',
-		titleKey: 'heroTitle' as const,
-		subKey: 'heroTitle' as const,
+		location: 'Paris',
+		country: 'France',
 	},
 ] as const

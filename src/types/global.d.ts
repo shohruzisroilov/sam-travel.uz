@@ -1,0 +1,4 @@
+// Side-effect CSS imports (Tailwind, Swiper, etc.)
+declare module "*.css";
+declare module "swiper/css";
+declare module "swiper/css/*";

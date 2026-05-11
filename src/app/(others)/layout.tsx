@@ -2,11 +2,11 @@ import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import '../globals.css'
 
-// Inter
 const inter = Inter({
 	variable: '--font-inter',
-	subsets: ['latin'],
-	weight: ['400', '500', '600', '700'],
+	subsets: ['latin', 'cyrillic', 'cyrillic-ext'],
+	weight: ['400', '500', '600', '700', '800'],
+	display: 'swap',
 })
 
 export default function OtherLayout({
@@ -15,7 +15,7 @@ export default function OtherLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang='uz'>
+		<html lang='uz' className={inter.variable}>
 			<head>
 				<Script
 					id='facebook-pixel'
@@ -50,15 +50,17 @@ export default function OtherLayout({
 				</Script>
 			</head>
 
-			<body className={`${inter.variable} antialiased`}>
+			<body className='antialiased bg-cream font-sans text-ink'>
 				<main>{children}</main>
 
 				{/* noscript fallback */}
 				<noscript>
+					{/* eslint-disable-next-line @next/next/no-img-element */}
 					<img
 						height='1'
 						width='1'
 						style={{ display: 'none' }}
+						alt=''
 						src='https://www.facebook.com/tr?id=1464552195226957&ev=PageView&noscript=1'
 					/>
 				</noscript>

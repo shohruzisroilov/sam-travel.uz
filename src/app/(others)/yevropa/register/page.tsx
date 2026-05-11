@@ -13,6 +13,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import Link from "next/link";
+import { trackEvent, trackPixel } from "@/lib/analytics";
 
 interface FormData {
   full_name: string;
@@ -30,9 +31,24 @@ const RegistrationPage: React.FC = () => {
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const phoneInputRef = useRef<HTMLInputElement>(null);
 
+  // Valid Uzbek mobile operator codes
+  const UZ_OPERATOR_CODES = [
+    "33", // Humans
+    "50", // Perfectum
+    "55", // UMS
+    "77", // Uztelecom
+    "88", // Uztelecom
+    "90", "91", // Beeline
+    "93", "94", // Ucell
+    "95", // UMS
+    "97", "98", "99", // Mobiuz / UMS
+  ];
+
   const validatePhone = (phone: string): boolean => {
-    const phoneRegex = /^\+998 \d{2} \d{3} \d{2} \d{2}$/;
-    return phoneRegex.test(phone);
+    const phoneRegex = /^\+998 (\d{2}) \d{3} \d{2} \d{2}$/;
+    const match = phone.match(phoneRegex);
+    if (!match) return false;
+    return UZ_OPERATOR_CODES.includes(match[1]);
   };
 
   const validateName = (name: string): boolean => {
@@ -73,23 +89,19 @@ const RegistrationPage: React.FC = () => {
     const input = e.target;
     const cursorPos = input.selectionStart || 0;
 
-    // Remove any non-digit characters except +
-    const digits = value.replace(/[^\d+]/g, "");
+    // Keep only digits; strip prefix if present
+    const allDigits = value.replace(/\D/g, "");
+    const local = (allDigits.startsWith("998") ? allDigits.slice(3) : allDigits).slice(0, 9);
 
-    if (!digits.startsWith("+998")) {
-      value = "+998 " + digits.replace(/^\+998/, "");
-    } else {
-      // Format: +998 XX XXX XX XX
-      const cleaned = digits.slice(4); // Remove +998
-      const match = cleaned.match(/^(\d{0,2})(\d{0,3})(\d{0,2})(\d{0,2})$/);
+    // Format: +998 XX XXX XX XX
+    const parts = [
+      local.slice(0, 2),
+      local.slice(2, 5),
+      local.slice(5, 7),
+      local.slice(7, 9),
+    ].filter(Boolean);
 
-      if (match) {
-        const parts = [match[1], match[2], match[3], match[4]].filter(Boolean);
-        value = "+998 " + parts.join(" ");
-      } else {
-        value = "+998 " + cleaned;
-      }
-    }
+    value = parts.length ? "+998 " + parts.join(" ") : "+998 ";
 
     setFormData({ ...formData, phone: value });
 
@@ -142,26 +154,19 @@ const RegistrationPage: React.FC = () => {
 
       if (data.success) {
         setIsSuccess(true);
-        // Google Analytics event
-        if (typeof window !== "undefined" && (window as any).gtag) {
-          (window as any).gtag("event", "generate_lead", {
-            event_category: "registration",
-            event_label: "yevropa",
-          });
-        }
-        // Facebook Pixel event
-        if (typeof window !== "undefined" && (window as any).fbq) {
-          (window as any).fbq("track", "Lead", {
-            content_name: "Yevropa Sayohati",
-            status: "success",
-          });
-        }
+        trackEvent("generate_lead", {
+          event_category: "registration",
+          event_label: "yevropa",
+        });
+        trackPixel("Lead", {
+          content_name: "Yevropa Sayohati",
+          status: "success",
+        });
       } else {
-        setError(data.error_description || "Xatolik yuz berdi");
+        setError(data.error || "Xatolik yuz berdi");
       }
-    } catch (err) {
+    } catch {
       setError("Server xatosi");
-      console.log(err);
     } finally {
       setIsSubmitting(false);
     }
@@ -183,26 +188,26 @@ const RegistrationPage: React.FC = () => {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-white flex items-center justify-center px-4">
-        <div className="bg-white rounded-3xl shadow-sm p-8 md:p-12 max-w-lg w-full text-center animate-in fade-in zoom-in duration-500">
-          <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle
-              className="w-14 h-14 text-green-500"
-              aria-hidden="true"
-            />
+      <div className="min-h-screen bg-cream flex items-center justify-center px-4">
+        <div className="bg-white rounded-3xl p-8 md:p-12 max-w-lg w-full text-center animate-in fade-in zoom-in duration-500 ring-1 ring-ink/5">
+          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle className="w-12 h-12 text-green-600" aria-hidden="true" />
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-ink mb-3">
             Раҳмат!
           </h2>
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            Маълумотларингиз қабул қилинди. Менежерларимиз тез орада сиз билан
-            алоқага чиқади.
+          <p className="text-lg text-ink-soft mb-8 leading-relaxed">
+            Маълумотларингиз қабул қилинди. Менежерларимиз тез орада сиз билан алоқага чиқади.
           </p>
-          <a href="https://www.instagram.com/samtraveluz?igsh=MTAyZm1mZTh1Y2Vnag==">
+          <a
+            href="https://www.instagram.com/samtraveluz?igsh=MTAyZm1mZTh1Y2Vnag=="
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button
               variant="outline"
               size="lg"
-              className="text-lg px-8 py-6 rounded-xl border-2 border-orange-300 text-orange-600 hover:bg-orange-50 focus:ring-4 focus:ring-orange-200"
+              className="text-base px-6 py-5 rounded-xl border-2 border-brand/30 text-brand hover:bg-brand-muted focus-visible:ring-4 focus-visible:ring-brand/30"
             >
               Мижозларимиз отзывлари
             </Button>
@@ -213,37 +218,41 @@ const RegistrationPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-white">
+    <div className="min-h-screen bg-cream">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-orange-100 sticky top-0 z-50">
+      <header className="bg-white/90 backdrop-blur-md border-b border-ink/5 sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link
             href="/yevropa"
-            className="flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-lg px-2 py-1"
+            className="group inline-flex items-center gap-2 text-ink-soft hover:text-brand transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 rounded-lg px-2 py-1"
             aria-label="Орқага қайтиш"
           >
-            <ArrowLeft className="w-6 h-6" aria-hidden="true" />
-            <span className="text-lg font-medium">Орқага</span>
+            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
+            <span className="text-base font-medium">Орқага</span>
           </Link>
-          <div className="flex items-center gap-3">
-            <span className="text-xl font-bold text-gray-800">
-              Европа саёҳати
-            </span>
-          </div>
+          <span className="text-base sm:text-lg font-semibold text-ink">
+            Европа саёҳати
+          </span>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-xl mx-auto px-4 py-8 md:py-16">
+      <main className="max-w-xl mx-auto px-4 py-10 md:py-16">
         {/* Title */}
         <div className="text-center mb-8">
-          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6 text-center leading-relaxed">
-            Туримизга ёзилиш учун маълумотларингизни қолдиринг
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand mb-3">
+            Рўйхатдан ўтиш
+          </p>
+          <h1 className="text-2xl md:text-3xl font-bold text-ink mb-3 leading-tight">
+            Маълумотларингизни қолдиринг
           </h1>
+          <p className="text-ink-soft">
+            Менежеримиз тез орада сиз билан боғланади
+          </p>
         </div>
 
         {/* Form Card */}
-        <div className="bg-white rounded-3xl shadow-sm p-6 md:p-10 border border-orange-100">
+        <div className="bg-white rounded-3xl p-6 md:p-10 ring-1 ring-ink/5">
           <form onSubmit={handleSubmit} className="space-y-8" noValidate>
             {/* Error Message */}
             {error && (
@@ -259,7 +268,7 @@ const RegistrationPage: React.FC = () => {
                 htmlFor="full_name"
                 className="text-xl font-semibold text-gray-700 flex items-center gap-2"
               >
-                <User className="w-6 h-6 text-orange-500" aria-hidden="true" />
+                <User className="w-6 h-6 text-brand" aria-hidden="true" />
                 Исмингиз
               </Label>
               <Input
@@ -293,19 +302,21 @@ const RegistrationPage: React.FC = () => {
                 htmlFor="phone"
                 className="text-xl font-semibold text-gray-700 flex items-center gap-2"
               >
-                <Phone className="w-6 h-6 text-orange-500" aria-hidden="true" />
+                <Phone className="w-6 h-6 text-brand" aria-hidden="true" />
                 Телефон рақамингиз
               </Label>
               <Input
                 ref={phoneInputRef}
                 id="phone"
                 type="tel"
+                inputMode="tel"
                 placeholder="+998 90 123 45 67"
                 value={formData.phone}
                 onChange={handlePhoneChange}
                 onFocus={handlePhoneFocus}
                 onClick={handlePhoneClick}
                 onBlur={() => handleBlur("phone")}
+                maxLength={17}
                 required
                 className={`text-xl py-7 px-5 rounded-xl border-2 transition-colors ${
                   getPhoneInputClass() || "border-gray-200"
@@ -314,8 +325,16 @@ const RegistrationPage: React.FC = () => {
                 aria-invalid={touched.phone && !validatePhone(formData.phone)}
               />
               {touched.phone && !validatePhone(formData.phone) && (
-                <p className="text-base text-red-500 mt-2 font-medium">
-                  Телефон рақамингизни тўғри форматда киринг: +998 90 123 45 67
+                <p className="text-sm text-red-500 mt-2 font-medium">
+                  {(() => {
+                    const match = formData.phone.match(
+                      /^\+998 (\d{2}) \d{3} \d{2} \d{2}$/,
+                    );
+                    if (match && !UZ_OPERATOR_CODES.includes(match[1])) {
+                      return "Оператор коди нотўғри. Масалан: 90, 91, 93, 94, 95, 97, 98, 99, 33, 50, 55, 77, 88.";
+                    }
+                    return "Телефон рақамингизни тўғри форматда киринг: +998 90 123 45 67";
+                  })()}
                 </p>
               )}
             </div>
@@ -328,7 +347,7 @@ const RegistrationPage: React.FC = () => {
                 !validateName(formData.full_name) ||
                 !validatePhone(formData.phone)
               }
-              className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-2xl py-8 rounded-2xl shadow-sm font-bold transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 focus:ring-4 focus:ring-orange-300"
+              className="w-full bg-brand-gradient text-white text-2xl py-8 rounded-2xl font-bold transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 focus:ring-4 focus:ring-brand/30"
             >
               {isSubmitting ? (
                 <span className="flex items-center justify-center">
@@ -361,11 +380,6 @@ const RegistrationPage: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-orange-100 py-6">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-gray-500 text-lg">© 2026 Европа саёҳати</p>
-        </div>
-      </footer>
     </div>
   );
 };
