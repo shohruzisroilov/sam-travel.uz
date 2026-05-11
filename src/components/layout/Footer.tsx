@@ -124,20 +124,9 @@ export default function Footer() {
 				</div>
 
 				{/* Bottom */}
-				<div className='border-t border-white/10 py-6 flex flex-col md:flex-row items-center justify-between gap-2'>
+				<div className='border-t border-white/10 py-6 text-center'>
 					<p className='text-white/50 text-sm'>
 						© {currentYear} Sam Travel. {t('allRightsReserved')}
-					</p>
-					<p className='text-white/40 text-xs'>
-						Designed & developed by{' '}
-						<a
-							href='https://t.me/Shohruz_Isroilov'
-							target='_blank'
-							rel='noopener noreferrer'
-							className='font-semibold text-white/70 hover:text-brand transition-colors'
-						>
-							ShohruzDev
-						</a>
 					</p>
 				</div>
 			</div>
