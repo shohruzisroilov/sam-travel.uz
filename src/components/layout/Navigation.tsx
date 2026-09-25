@@ -112,6 +112,11 @@ export default function Navigation() {
 	const { language, setLanguage, t } = useLanguage()
 	const isScrolled = useScroll(100)
 
+	// Close the mobile menu whenever the route changes
+	useEffect(() => {
+		setIsOpen(false)
+	}, [pathname])
+
 	const navigation = [
 		{ name: t('home'), href: '/' },
 		// { name: t('about'), href: '/about' },
@@ -131,7 +136,7 @@ export default function Navigation() {
 	return (
 		<nav
 			className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
-				isScrolled ? 'bg-white border-b border-gray-200' : 'bg-transparent'
+				isScrolled || isOpen ? 'bg-white border-b border-gray-200' : 'bg-transparent'
 			}`}
 		>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -169,7 +174,7 @@ export default function Navigation() {
 						<LanguageSwitcher
 							language={language}
 							setLanguage={setLanguage}
-							isScrolled={isScrolled}
+							isScrolled={isScrolled || isOpen}
 						/>
 
 						<button

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -132,10 +133,15 @@ export default function Contact() {
       <Toaster position="top-right" reverseOrder={false} />
 
       {/* Hero */}
-      <section
-        className="relative min-h-[50vh] flex items-center justify-center bg-center bg-cover"
-        style={{ backgroundImage: "url('/images/contact-hero.jpg')" }}
-      >
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
+        <Image
+          src="/images/contact-hero.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/85" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center text-white">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-from mb-4">
@@ -210,6 +216,7 @@ export default function Contact() {
                   }
                 >
                   <PhoneNumberInput
+                    id="phone"
                     value={formData.tel}
                     onChange={(val) => setFormData({ ...formData, tel: val })}
                     required

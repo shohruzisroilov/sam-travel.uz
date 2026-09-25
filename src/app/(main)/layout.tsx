@@ -7,6 +7,7 @@ import MobileStickyCTA from '@/components/layout/MobileStickyCTA'
 import Navigation from '@/components/layout/Navigation'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import Script from 'next/script'
+import { OG_IMAGE, SITE_URL } from '@/lib/seo'
 
 const inter = Inter({
 	variable: '--font-inter',
@@ -51,16 +52,15 @@ export const metadata: Metadata = {
 		description: seoContent.uz.description,
 		url: 'https://sam-travel.uz',
 		siteName: 'SamTravel',
-		images: [
-			{
-				url: '/samtravel-og.jpg',
-				width: 1200,
-				height: 630,
-				alt: 'SamTravel',
-			},
-		],
+		images: [{ url: OG_IMAGE, alt: 'SamTravel' }],
 		locale: 'uz_UZ',
 		type: 'website',
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: seoContent.uz.title,
+		description: seoContent.uz.description,
+		images: [OG_IMAGE],
 	},
 	alternates: {
 		canonical: 'https://sam-travel.uz',
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
 	authors: [{ name: 'SamTravel Team', url: 'https://sam-travel.uz' }],
 	creator: 'SamTravel',
 	publisher: 'SamTravel',
-	metadataBase: new URL('https://sam-travel.uz'),
+	metadataBase: new URL(SITE_URL),
 	category: 'travel',
 	robots: {
 		index: true,
@@ -86,6 +86,32 @@ export const metadata: Metadata = {
 	},
 }
 
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'TravelAgency',
+	name: 'SamTravel',
+	url: SITE_URL,
+	logo: `${SITE_URL}/images/logo.png`,
+	image: `${SITE_URL}${OG_IMAGE}`,
+	telephone: '+998555205537',
+	email: 'info@sam-travel.uz',
+	address: [
+		{
+			'@type': 'PostalAddress',
+			streetAddress: 'Sharof Rashidov 99A',
+			addressLocality: 'Tashkent',
+			addressCountry: 'UZ',
+		},
+		{
+			'@type': 'PostalAddress',
+			streetAddress: 'Mahmud Koshgariy 66',
+			addressLocality: 'Samarkand',
+			addressCountry: 'UZ',
+		},
+	],
+	sameAs: ['https://t.me/samtravel_uz', 'https://www.instagram.com/samtraveluz/'],
+}
+
 export default function RootLayout({
 	children,
 }: {
@@ -94,6 +120,10 @@ export default function RootLayout({
 	return (
 		<html lang='uz' className={inter.variable}>
 			<body className='antialiased bg-cream font-sans text-ink'>
+				<script
+					type='application/ld+json'
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+				/>
 				{/* Google Analytics */}
 				<Script
 					src='https://www.googletagmanager.com/gtag/js?id=G-E5Y4HECMZ0'

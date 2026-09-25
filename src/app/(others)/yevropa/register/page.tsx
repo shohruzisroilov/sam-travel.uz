@@ -15,6 +15,12 @@ import {
 import Link from "next/link";
 import { trackEvent, trackPixel } from "@/lib/analytics";
 
+const SERVER_ERRORS: Record<string, string> = {
+  "Invalid name": "Исмингизни тўлиқ ёзинг",
+  "Invalid phone": "Телефон рақамингизни тўғри форматда киринг",
+  "Too many requests": "Жуда кўп уриниш. Бироздан сўнг қайта уриниб кўринг",
+};
+
 interface FormData {
   full_name: string;
   phone: string;
@@ -150,9 +156,9 @@ const RegistrationPage: React.FC = () => {
         }),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
 
-      if (data.success) {
+      if (res.ok && data.success) {
         setIsSuccess(true);
         trackEvent("generate_lead", {
           event_category: "registration",
@@ -163,10 +169,10 @@ const RegistrationPage: React.FC = () => {
           status: "success",
         });
       } else {
-        setError(data.error || "Xatolik yuz berdi");
+        setError(SERVER_ERRORS[data.error] ?? "Хатолик юз берди. Қайта уриниб кўринг");
       }
     } catch {
-      setError("Server xatosi");
+      setError("Интернет алоқасини текширинг ва қайта уриниб кўринг");
     } finally {
       setIsSubmitting(false);
     }
@@ -199,19 +205,20 @@ const RegistrationPage: React.FC = () => {
           <p className="text-lg text-ink-soft mb-8 leading-relaxed">
             Маълумотларингиз қабул қилинди. Менежерларимиз тез орада сиз билан алоқага чиқади.
           </p>
-          <a
-            href="https://www.instagram.com/samtraveluz?igsh=MTAyZm1mZTh1Y2Vnag=="
-            target="_blank"
-            rel="noopener noreferrer"
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="text-base px-6 py-5 rounded-xl border-2 border-brand/30 text-brand hover:bg-brand-muted focus-visible:ring-4 focus-visible:ring-brand/30"
           >
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-base px-6 py-5 rounded-xl border-2 border-brand/30 text-brand hover:bg-brand-muted focus-visible:ring-4 focus-visible:ring-brand/30"
+            <a
+              href="https://www.instagram.com/samtraveluz/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Мижозларимиз отзывлари
-            </Button>
-          </a>
+            </a>
+          </Button>
         </div>
       </div>
     );
@@ -256,7 +263,7 @@ const RegistrationPage: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-8" noValidate>
             {/* Error Message */}
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center gap-3">
+              <div role="alert" className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center gap-3">
                 <AlertCircle className="w-6 h-6 text-red-500 flex-shrink-0" />
                 <p className="text-red-700">{error}</p>
               </div>
@@ -274,6 +281,7 @@ const RegistrationPage: React.FC = () => {
               <Input
                 id="full_name"
                 type="text"
+                autoComplete="name"
                 placeholder="Исмингиз"
                 value={formData.full_name}
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -310,6 +318,7 @@ const RegistrationPage: React.FC = () => {
                 id="phone"
                 type="tel"
                 inputMode="tel"
+                autoComplete="tel"
                 placeholder="+998 90 123 45 67"
                 value={formData.phone}
                 onChange={handlePhoneChange}

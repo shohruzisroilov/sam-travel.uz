@@ -1,9 +1,9 @@
 export const stats = [
-	{ label: 'Happy Clients', value: 200, suffix: '+' },
-	{ label: 'Destinations', value: 10, suffix: '+' },
-	{ label: 'Years Experience', value: 5, suffix: '+' },
-	{ label: 'Expert Guides', value: 5, suffix: '+' },
-]
+	{ label: 'happyClients', value: 200, suffix: '+' },
+	{ label: 'destinations', value: 10, suffix: '+' },
+	{ label: 'yearsExperience', value: 5, suffix: '+' },
+	{ label: 'expertGuides', value: 5, suffix: '+' },
+] as const
 
 export const team = [
 	{

@@ -33,7 +33,7 @@ export default function DestinationCard({
 					src={image}
 					alt={t(title)}
 					fill
-					className='object-cover transition-transform duration-[900ms] ease-out group-hover:scale-110'
+					className='object-cover transition-transform [transition-duration:900ms] ease-out group-hover:scale-110'
 					sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
 					priority={priority}
 				/>

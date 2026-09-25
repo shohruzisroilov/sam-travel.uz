@@ -7,7 +7,7 @@ import SectionHeading from "@/components/common/SectionHeading";
 import { motion } from "framer-motion";
 import FAQ from "@/components/pages/home/FAQ";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { ArrowRight, PlayCircle } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import Link from "next/link";
 
 // Swiper
@@ -110,7 +110,7 @@ export default function Home() {
               href="/contact"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-base md:text-lg border border-white/40 bg-white/10 text-white backdrop-blur-sm transition-colors duration-300 hover:bg-white/20"
             >
-              <PlayCircle className="w-5 h-5" />
+              <MessageCircle className="w-5 h-5" />
               <span>{t("contactUs")}</span>
             </Link>
           </motion.div>

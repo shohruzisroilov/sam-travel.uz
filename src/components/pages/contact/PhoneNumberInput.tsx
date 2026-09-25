@@ -7,6 +7,7 @@ import 'react-phone-number-input/style.css'
 import clsx from 'clsx'
 
 interface PhoneNumberInputProps {
+	id?: string
 	value?: Value
 	onChange: (value: Value) => void
 	placeholder?: string
@@ -17,6 +18,7 @@ interface PhoneNumberInputProps {
 }
 
 export function PhoneNumberInput({
+	id,
 	value,
 	onChange,
 	placeholder = '',
@@ -28,6 +30,8 @@ export function PhoneNumberInput({
 	return (
 		<div className='space-y-1'>
 			<PhoneInput
+				id={id}
+				autoComplete='tel'
 				value={value}
 				onChange={onChange}
 				defaultCountry={defaultCountry}

@@ -45,6 +45,15 @@ export default function VideoLightbox({ videos, index, onClose, onChange }: Prop
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, total]);
 
+  // Prevent the page behind the lightbox from scrolling
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
+
   const togglePlay = () => {
     const v = videoRef.current;
     if (!v) return;

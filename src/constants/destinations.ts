@@ -18,22 +18,22 @@ export const DESTINATIONS: Destination[] = [
 		category: 'historical',
 		gallery: [
 			'/images/destinations/vienna1.jpg',
-			'/images/destinations/vienna2.png',
-			'/images/destinations/vienna3.png',
-			'/images/destinations/vienna4.png',
+			'/images/destinations/vienna2.jpg',
+			'/images/destinations/vienna3.jpg',
+			'/images/destinations/vienna4.jpg',
 		],
 	},
 	{
 		key: 'zurich',
 		title: 'zurichDestinationsTitle',
 		description: 'zurichDestinationsSubtitle',
-		mainImage: '/images/destinations/zurich.png',
+		mainImage: '/images/destinations/zurich.jpg',
 		category: 'modern',
 		gallery: [
 			'/images/destinations/zurich1.jpg',
 			'/images/destinations/zurich2.jpg',
-			'/images/destinations/zurich3.png',
-			'/images/destinations/zurich4.png',
+			'/images/destinations/zurich3.jpg',
+			'/images/destinations/zurich4.jpg',
 		],
 	},
 	{

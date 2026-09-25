@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useMemo } from "react";
 import { Search, MapPin } from "lucide-react";
+import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import DestinationCard from "@/components/common/DestinationCard";
 import Reveal from "@/components/common/Reveal";
@@ -17,7 +19,10 @@ export default function Destinations() {
 
   const categories = useMemo(
     () =>
-      CATEGORIES.map((c) => ({
+      CATEGORIES.filter(
+        (c) =>
+          c.key === "all" || DESTINATIONS.some((d) => d.category === c.key),
+      ).map((c) => ({
         ...c,
         label: t(c.i18nKey) || c.fallback,
       })),
@@ -25,28 +30,33 @@ export default function Destinations() {
   );
 
   // filterlangan destinatsiyalar
-  const filteredDestinations = useMemo(
-    () =>
-      DESTINATIONS.filter((d) => {
-        const matchesSearch =
-          d.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          d.description.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredDestinations = useMemo(() => {
+    const query = searchTerm.trim().toLowerCase();
+    return DESTINATIONS.filter((d) => {
+      const matchesSearch =
+        !query ||
+        t(d.title).toLowerCase().includes(query) ||
+        t(d.description).toLowerCase().includes(query);
 
-        const matchesCategory =
-          selectedCategory === "all" || d.category === selectedCategory;
+      const matchesCategory =
+        selectedCategory === "all" || d.category === selectedCategory;
 
-        return matchesSearch && matchesCategory;
-      }),
-    [searchTerm, selectedCategory],
-  );
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchTerm, selectedCategory, t]);
 
   return (
     <div className="min-h-screen bg-cream">
       {/* Hero */}
-      <section
-        className="relative min-h-[55vh] flex items-center justify-center bg-center bg-cover"
-        style={{ backgroundImage: "url('/images/destinations-hero.jpg')" }}
-      >
+      <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
+        <Image
+          src="/images/destinations-hero.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/80" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 text-center text-white">
           <Reveal direction="down" distance={16}>
@@ -71,6 +81,7 @@ export default function Destinations() {
               <Input
                 type="text"
                 placeholder={t("searchPlaceholder") || "Search destinations..."}
+                aria-label={t("searchPlaceholder") || "Search destinations"}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-12 h-12 rounded-full border-ink/10 bg-white focus-visible:ring-2 focus-visible:ring-brand/30 shadow-sm"
@@ -91,6 +102,7 @@ export default function Destinations() {
                           : "bg-white border border-ink/10 text-ink-soft hover:border-brand/40 hover:text-brand"
                       }`}
                       variant="ghost"
+                      aria-pressed={isActive}
                     >
                       {cat.label}
                     </Button>
@@ -152,12 +164,12 @@ export default function Destinations() {
               {t("ctaSubtitle") ||
                 "We'll create a custom itinerary just for you."}
             </p>
-            <a
+            <Link
               href="/contact"
               className="relative z-10 inline-flex items-center gap-2 bg-white text-brand px-8 py-3.5 rounded-xl font-semibold hover:scale-[1.03] transition-transform"
             >
               <span>{t("contactUs") || "Contact Us"}</span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

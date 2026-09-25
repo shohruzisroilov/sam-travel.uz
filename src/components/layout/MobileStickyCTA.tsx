@@ -25,9 +25,10 @@ export default function MobileStickyCTA() {
 	return (
 		<div
 			className={`md:hidden fixed bottom-0 inset-x-0 z-40 px-4 pb-3 pt-2 transition-all duration-300 ${
-				visible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+				visible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'
 			}`}
 			aria-hidden={!visible}
+			inert={!visible}
 		>
 			<div className='flex gap-2 rounded-2xl bg-white/95 backdrop-blur-lg border border-gray-200/70 shadow-md p-2'>
 				<a

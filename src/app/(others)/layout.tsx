@@ -1,6 +1,8 @@
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
+import type { Metadata } from 'next'
 import '../globals.css'
+import { SITE_URL } from '@/lib/seo'
 
 const inter = Inter({
 	variable: '--font-inter',
@@ -8,6 +10,10 @@ const inter = Inter({
 	weight: ['400', '500', '600', '700', '800'],
 	display: 'swap',
 })
+
+export const metadata: Metadata = {
+	metadataBase: new URL(SITE_URL),
+}
 
 export default function OtherLayout({
 	children,

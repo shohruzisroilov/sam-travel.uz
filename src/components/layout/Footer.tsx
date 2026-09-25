@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Mail, Phone, MapPin } from 'lucide-react'
-import { FaFacebook, FaInstagram, FaTelegram } from 'react-icons/fa'
+import { FaInstagram, FaTelegram } from 'react-icons/fa'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Footer() {
@@ -43,11 +43,6 @@ export default function Footer() {
 									href: 'https://www.instagram.com/samtraveluz/',
 									Icon: FaInstagram,
 									label: 'Instagram',
-								},
-								{
-									href: '#',
-									Icon: FaFacebook,
-									label: 'Facebook',
 								},
 							].map(({ href, Icon, label }) => (
 								<a

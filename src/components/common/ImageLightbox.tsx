@@ -32,6 +32,15 @@ export default function ImageLightbox({
 		return () => document.removeEventListener("keydown", onKey);
 	}, [index, total, onClose, onChange]);
 
+	// Prevent the page behind the lightbox from scrolling
+	useEffect(() => {
+		const prev = document.body.style.overflow;
+		document.body.style.overflow = "hidden";
+		return () => {
+			document.body.style.overflow = prev;
+		};
+	}, []);
+
 	const onTouchStart = (e: React.TouchEvent) => {
 		touchStartX.current = e.touches[0].clientX;
 	};

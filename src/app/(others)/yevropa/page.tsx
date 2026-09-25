@@ -128,14 +128,12 @@ const YevropaPage: React.FC = () => {
         {/* Registration Button */}
         {showButton && (
           <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-700 mb-8">
-            <Link href="/yevropa/register" passHref>
-              <Button
-                type="button"
-                className="w-full bg-brand-gradient text-white text-xl md:text-2xl py-7 rounded-2xl shadow-brand font-bold transition-transform hover:scale-[1.02] focus:ring-4 focus:ring-brand/30"
-              >
-                Турга ёзилиш →
-              </Button>
-            </Link>
+            <Button
+              asChild
+              className="w-full bg-brand-gradient text-white text-xl md:text-2xl py-7 rounded-2xl shadow-brand font-bold transition-transform hover:scale-[1.02] focus:ring-4 focus:ring-brand/30"
+            >
+              <Link href="/yevropa/register">Турга ёзилиш →</Link>
+            </Button>
           </div>
         )}
 

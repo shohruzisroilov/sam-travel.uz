@@ -50,7 +50,7 @@ export default function DestinationDetailsPage() {
 				/>
 				<div className='absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/85' />
 
-				<div className='absolute top-6 left-4 sm:left-6 lg:left-8 z-10'>
+				<div className='absolute top-24 left-4 sm:left-6 lg:left-8 z-10'>
 					<Reveal direction='down' distance={12}>
 						<Link
 							href='/destinations'

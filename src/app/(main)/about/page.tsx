@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
 
@@ -16,10 +17,15 @@ export default function About() {
 	return (
 		<div className='min-h-screen bg-cream'>
 			{/* Hero */}
-			<section
-				className='relative min-h-[60vh] flex items-center justify-center bg-center bg-cover'
-				style={{ backgroundImage: "url('/images/about-hero.jpg')" }}
-			>
+			<section className='relative min-h-[60vh] flex items-center justify-center overflow-hidden'>
+				<Image
+					src='/images/about-hero.jpg'
+					alt=''
+					fill
+					priority
+					sizes='100vw'
+					className='object-cover'
+				/>
 				<div className='absolute inset-0 bg-gradient-to-b from-black/50 via-black/55 to-black/80' />
 				<div className='relative z-10 max-w-4xl mx-auto px-4 py-32 text-center text-white'>
 					<Reveal direction='down' distance={16}>

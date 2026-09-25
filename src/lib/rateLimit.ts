@@ -4,6 +4,9 @@ const buckets = new Map<string, Bucket>()
 
 export function rateLimit(key: string, limit = 5, windowMs = 60_000): { allowed: boolean; retryAfter: number } {
 	const now = Date.now()
+	if (buckets.size > 10_000) {
+		for (const [k, b] of buckets) if (b.resetAt < now) buckets.delete(k)
+	}
 	const bucket = buckets.get(key)
 	if (!bucket || bucket.resetAt < now) {
 		buckets.set(key, { count: 1, resetAt: now + windowMs })

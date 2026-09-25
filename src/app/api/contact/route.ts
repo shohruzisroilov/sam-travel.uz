@@ -14,8 +14,10 @@ export async function POST(request: Request) {
 		)
 	}
 
-	const token = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN
-	const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID
+	// NEXT_PUBLIC_* names are kept only as a fallback for existing deployments;
+	// the server-only names avoid any chance of the token reaching the client bundle.
+	const token = process.env.TELEGRAM_BOT_TOKEN ?? process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN
+	const chatId = process.env.TELEGRAM_CHAT_ID ?? process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID
 	if (!token || !chatId) {
 		return NextResponse.json({ error: 'Server misconfiguration' }, { status: 500 })
 	}
